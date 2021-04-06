@@ -1,4 +1,4 @@
-form cards import Cards
+from cards import Cards
 
 class Player:
     def __init__(self, player, cards= 0, money = 2):

@@ -1,21 +1,27 @@
 from cards import Cards
+from player import Player
 class Game:
     def play(self):
 
         while True:
-            numberOfPlayers = int(input("Insert the number of players (3 or 4): "))
+            numberOfPlayers = 4 #int(input("Insert the number of players (3 or 4): "))
+
             card = Cards()
-            if numberOfPlayers == 3:
-                player1Card = card.randomCards()
-                player2Card = card.randomCards()
-                player3Card = card.randomCards()
-                break
             
-            elif numberOfPlayers == 4:
+            if numberOfPlayers == 3 or numberOfPlayers == 4:
                 player1Card = card.randomCards()
+                player1 = Player("Player 1", player1Card)
+
                 player2Card = card.randomCards()
+                player2 = Player("Player 2", player2Card)
+
                 player3Card = card.randomCards()
-                player4Card = card.randomCards()
+                player3 = Player("Player 3", player3Card)
+                
+                if numberOfPlayers == 4:
+                    player4Card = card.randomCards()
+                    player4 = Player("Player 4", player4Card)
+
                 break
 
             else:
