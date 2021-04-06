@@ -28,6 +28,13 @@ class Game:
                 print("The game is 3 or 4 players") 
 
 
+        #while
+        player1.printCard()
+        player2.printCard()
+        player3.printCard()
+        player4.printCard()
+        
+
 
 
 

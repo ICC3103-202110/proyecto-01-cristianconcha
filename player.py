@@ -10,12 +10,14 @@ class Player:
     def player(self):
         return self.__player
 
+    def printCard(self):
+        print(self.cards)
+
     def addmoney(self):
         pass
 
     def losemoney(self):
-        print(player1.money)
-        print(player4.money)
+
         pass
 
 

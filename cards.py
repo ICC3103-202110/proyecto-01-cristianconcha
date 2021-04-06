@@ -9,10 +9,14 @@ class Cards:
 
     def randomCards(self):
         card = []
-        card.append(random.randint(0, len(self.cards)))
-        self.cards.pop(card[0])
-        card.append(random.randint(0, len(self.cards)))
-        self.cards.pop(card[1])
+    
+        number = random.randint(0, len(self.cards))
+        card.append(self.cards[number])
+        self.cards.pop(number)
+
+        number = random.randint(0, len(self.cards))
+        card.append(self.cards[number])
+        self.cards.pop(number)
         return card
 
 
@@ -26,5 +30,4 @@ class Cards:
 
 
 
-card = Cards()
-card.randomCards()
+
