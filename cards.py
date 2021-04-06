@@ -15,7 +15,6 @@ class Cards:
         return card
 
 
-    
     def printCard(self):
         #Imprimir las cartas al jugador
         pass

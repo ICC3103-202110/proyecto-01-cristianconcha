@@ -1,5 +1,6 @@
 from cards import Cards
 class CardAction(Cards):
+
     def __init__(self):
         pass
 
@@ -13,12 +14,6 @@ class CardAction(Cards):
     def coup(self):
         pass
 
-    def assassinate(self):
-        pass
 
-    def exchange(self):
-        pass
 
-    def steal(self):
-        pass
 
