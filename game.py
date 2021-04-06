@@ -10,17 +10,17 @@ class Game:
             
             if numberOfPlayers == 3 or numberOfPlayers == 4:
                 player1Card = card.randomCards()
-                player1 = Player("Player 1", player1Card)
+                player1 = Player("P1", player1Card)
 
                 player2Card = card.randomCards()
-                player2 = Player("Player 2", player2Card)
+                player2 = Player("P2", player2Card)
 
                 player3Card = card.randomCards()
-                player3 = Player("Player 3", player3Card)
+                player3 = Player("P3", player3Card)
                 
                 if numberOfPlayers == 4:
                     player4Card = card.randomCards()
-                    player4 = Player("Player 4", player4Card)
+                    player4 = Player("P4", player4Card)
 
                 break
 
@@ -30,10 +30,13 @@ class Game:
 
         #while
         player1.printCard()
-        player2.printCard()
-        player3.printCard()
-        player4.printCard()
-        
+
+        player1.printMoney()
+        player2.printMoney()
+        player3.printMoney()
+        player4.printMoney()
+        print(" ")
+
 
 
 

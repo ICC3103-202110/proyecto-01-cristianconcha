@@ -13,6 +13,10 @@ class Player:
     def printCard(self):
         print(self.cards)
 
+    def printMoney(self):
+        print(self.player +":", end=" ")
+        print(self.money, end = " | ")
+
     def addmoney(self):
         pass
 
