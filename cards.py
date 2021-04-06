@@ -8,10 +8,11 @@ class Cards:
 
 
     def randomCards(self):
-        #cartas aleatorias
-        number = random.randint(0, len(self.cards))
-        card = self.cards[number]
-        self.cards.pop(number)
+        card = []
+        card.append(random.randint(0, len(self.cards)))
+        self.cards.pop(card[0])
+        card.append(random.randint(0, len(self.cards)))
+        self.cards.pop(card[1])
         return card
 
 

@@ -1,3 +1,4 @@
+form cards import Cards
 
 class Player:
     def __init__(self, player, cards= 0, money = 2):
@@ -9,13 +10,20 @@ class Player:
     def player(self):
         return self.__player
 
-    
+    def addmoney(self):
+        pass
+
+    def losemoney(self):
+        print(player1.money)
+        print(player4.money)
+        pass
 
 
 
 
-player1 = Player("player1")
-player2 = Player("player2")
-player3 = Player("player3")
-player4 = Player("player4")
+
+
+
+
+
 
