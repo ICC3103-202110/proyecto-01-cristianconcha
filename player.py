@@ -11,7 +11,8 @@ class Player:
         return self.__player
 
     def printCard(self):
-        print(self.cards)
+        print(self.cards[0], end = ",")
+        print(self.cards[1])
 
     def printMoney(self):
         print(self.player +":", end=" ")

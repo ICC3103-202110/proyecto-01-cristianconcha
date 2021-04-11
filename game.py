@@ -29,13 +29,12 @@ class Game:
 
 
         #while
-        player1.printCard()
-
         player1.printMoney()
         player2.printMoney()
         player3.printMoney()
         player4.printMoney()
         print(" ")
+        
 
 
 
