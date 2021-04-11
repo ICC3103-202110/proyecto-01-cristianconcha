@@ -22,6 +22,7 @@ class Game:
         print("")
         cls.Accion = cls.Player_Accion()
         
+        
        
         
 
