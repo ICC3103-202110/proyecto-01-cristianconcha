@@ -1,39 +1,22 @@
-from cards import Cards
+#import os  # os.system('cls||clear') limpia el tablero
 from player import Player
 class Game:
-    def play(self):
+    print("-----------------------------------")
+    print("---------Wellcome to Coup----------")
+    print("-----------------------------------\n")
+    NUMBER_Players = 3#int(input("Enter the number of playeres (3 or 4): "))
+    players = []
+    
 
-        while True:
-            numberOfPlayers = 4 #int(input("Insert the number of players (3 or 4): "))
 
-            card = Cards()
-            
-            if numberOfPlayers == 3 or numberOfPlayers == 4:
-                player1Card = card.randomCards()
-                player1 = Player("P1", player1Card)
-
-                player2Card = card.randomCards()
-                player2 = Player("P2", player2Card)
-
-                player3Card = card.randomCards()
-                player3 = Player("P3", player3Card)
-                
-                if numberOfPlayers == 4:
-                    player4Card = card.randomCards()
-                    player4 = Player("P4", player4Card)
-
-                break
-
-            else:
-                print("The game is 3 or 4 players") 
-
+    @classmethod
+    def play(cls):
+        cls.name_players()
+        cls.players[0].printMoney()
 
         #while
-        player1.printMoney()
-        player2.printMoney()
-        player3.printMoney()
-        player4.printMoney()
-        print(" ")
+
+        
         
 
 
@@ -42,8 +25,13 @@ class Game:
 
 
 
+    @classmethod
+    def name_players(cls):
+        for i in range(1, cls.NUMBER_Players + 1):
+            name = input("Give the player's %d name: " % i)
+            cls.players.append(Player(name))
+        
 
 
-
-
-
+if __name__ == "__main__":
+    Game.play()
