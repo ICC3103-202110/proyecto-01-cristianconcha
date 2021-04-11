@@ -1,36 +1,40 @@
 from cards import Cards
-
 class Player:
-    def __init__(self, player, cards= 0, money = 2):
+    def __init__(self, player, cards= 0, coin = 7):
         self.__player = player
-        self.__cards = cards
-        self.__money = money
+        self.cards = cards
+        self.coin = coin
 
     @property 
     def player(self):
         return self.__player
     
-    @property
-    def cards(self):
-        return self.__cards
-    
-    @property
-    def money(self):
-        return self.__money
+
 
     def printCard(self):
-        print(self.cards[0] + ", " + self.cards[1])
+        for i in range(len(self.cards)):
+            print(self.cards[i])
 
-    def printMoney(self):
+    def printCoins(self):
         print(self.player + ":", end = " ")
-        print(self.money, end = " | ")
+        print(self.coin, end = " | ")
 
-    def addmoney(self):
-        pass
+    def add_one_coin(self):
+        self.coin += 1
+    
+    def add_two_coin(self):
+        self.coin += 2
+    
+    def pay_7_coins(self):
+        self.coin -= 7
 
-    def losemoney(self):
+    def delete_card(self):
+        self.cards.pop()
+    
+   
+    
+        
 
-        pass
 
 
 

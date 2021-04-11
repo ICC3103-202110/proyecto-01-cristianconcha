@@ -8,21 +8,28 @@ class Game:
     NUMBER_Players = 3#int(input("Enter the number of playeres (3 or 4): "))
     players = []
     turn = 0
-    Accion = 0
+    Number_Action = 0
     
 
 
     @classmethod
     def play(cls):
         cls.name_players()
-        print("")
+        os.system('cls||clear')
 
-        #while
-        cls.print_money()
+
+        #while len(players)
+        cls.print_Coins()
         print("")
-        cls.Accion = cls.Player_Accion()
+        cls.Number_Action = cls.Player_Accion()
+        print("")
+        cls.Action()
+        cls.print_Coins()
+        
+  
         
         
+
        
         
 
@@ -45,10 +52,10 @@ class Game:
             cls.players.append(Player(name, card.randomCards()))
 
     @classmethod
-    def print_money(cls):
-        print("Money:")
+    def print_Coins(cls):
+        print("Coins:")
         for i in range(cls.NUMBER_Players):
-            cls.players[i].printMoney()
+            cls.players[i].printCoins()
 
         print("")
         
@@ -75,6 +82,37 @@ class Game:
             else:
                 os.system('cls||clear') 
                 print("Invalid accion number\n")
+
+
+    @classmethod
+    def Action(cls):
+        if cls.Number_Action == 1: #Income
+            cls.players[cls.turn].add_one_coin()
+        
+        elif cls.Number_Action == 2:  # Foreign Aid
+            cls.players[cls.turn].add_two_coin()
+        
+        elif cls.Number_Action == 3:  # Coup
+            if cls.players[cls.turn].coin >= 7:
+                for i in range(cls.NUMBER_Players):
+                    if i == cls.turn:
+                        continue
+                    else:
+                        print(i, cls.players[i].player)
+                
+                select = int(input(("Choose the player to lose Influence:")))
+                cls.players[select].delete_card()
+                cls.players[cls.turn].pay_7_coins()
+                
+            else:
+                print("You don`t have the money")
+                #Hacer que se repita el ciclo
+        
+        
+
+
+
+            
 
 if __name__ == "__main__":
     Game.play()

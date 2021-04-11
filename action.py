@@ -1,7 +1,8 @@
-from cards import Cards
-class CardAction(Cards):
+
+class Action:
 
     def income(self):
+        player = Player()
         pass
 
     def foreignAid(self):
@@ -10,7 +11,8 @@ class CardAction(Cards):
     def coup(self):
         pass
 
-
+    def printc(self):
+        print(self.player)
 
 
                                                         
