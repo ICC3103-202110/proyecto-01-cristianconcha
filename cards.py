@@ -9,7 +9,6 @@ class Cards:
 
     def randomCards(self):
         card = []
-    
         number = random.randint(0, len(self.cards))
         card.append(self.cards[number])
         self.cards.pop(number)
@@ -19,14 +18,6 @@ class Cards:
         self.cards.pop(number)
         return card
 
-
-    def printCard(self):
-        #Imprimir las cartas al jugador
-        pass
-
-    def deleteCard(self):
-        #eliminar carta
-        pass
 
 
 
