@@ -5,6 +5,7 @@ class Game:
     print("-----------------------------------")
     print("---------Wellcome to Coup----------")
     print("-----------------------------------\n")
+    list_cards = ["Duke", "Assassin", "Ambassador", "Captian","Contessa"]
     NUMBER_Players = 3  #int(input("Enter the number of playeres (3 or 4): "))
     card = Cards()
     players = []
@@ -65,7 +66,6 @@ class Game:
         while True:
             list_action = ["Income", "Foreign Aid", "Coup", "Duke", "Assassin",
                            "Ambassador", "Captian"]
-            list_cards = ["Duke", "Assassin","Ambassador", "Captian"]
             print("It's %s's turn\n" % cls.players[cls.turn].player)
 
             print("Accions:")
@@ -81,7 +81,7 @@ class Game:
             cls.players[cls.turn].printCard()
             action = int(input("Select the accion number: "))
             if action > 0 and action < 8:
-                cls.card_played = list_cards[action-4]
+                cls.card_played = cls.list_cards[action-4]
                 os.system('cls||clear')
                 print("\n",cls.players[cls.turn].player, "select", list_action[action-1], "\n")
                 return action
@@ -117,7 +117,7 @@ class Game:
         true_or_false = cls.players[cls.turn].compare_cards(cls.card_played)
         
         if true_or_false == False:
-            print("The player %s dont`t have the card", cls.players[cls.turn].player)
+            print("The player %s dont`t have the card" %cls.players[cls.turn].player)
             cls.players[cls.turn].delete_one_card()
 
         elif true_or_false == True:
@@ -128,12 +128,44 @@ class Game:
             cls.players[cls.Number_Action[1]].delete_one_card()
             os.system('cls||clear')
             
-            print("The player %s change the card", cls.players[cls.turn].player)
+            print("The player %s change the card" % cls.players[cls.turn].player)
             card = cls.card.One_random_Card()
             cls.players[cls.turn].add_one_card(card)
 
     @classmethod
     def Counterattack(cls):
+        os.system('cls||clear')
+        print("%s selecte the card that do you have" % cls.players[cls.Number_Action[1]].player)
+
+        for i in range(4):
+            print(i, "= %s" % cls.list_cards[i])
+        
+        print("Your cards:", end=" ")
+        cls.players[cls.turn].printCard()
+        select = int(input("\nSelect the cards number: "))
+        os.system('cls||clear')
+
+        print("%s;" % cls.players[cls.turn].player)
+        print("%s say that he have the %s\n" % cls.players[cls.Number_Action[1]].player
+              % cls.list_cards[select])
+        
+        print("You have to options:")
+        print("0 = Belive him\n 1 = Not belive him\n")
+
+        choose = int(input("Choose the option number: "))
+
+        if choose == 0:
+            pass
+
+        elif choose == 1:
+            pass
+
+
+        
+
+
+
+
         pass
 
         
