@@ -29,7 +29,7 @@ class Player:
     
     def delete_two_coins(self):
         self.coin -= 2
-        
+
     def pay_three_coins(self):
         self.coin -= 3
 
@@ -50,6 +50,8 @@ class Player:
             delete = int(input("Choose the number card to delete: "))
             self.cards.pop(delete)
             print("")
+
+    
 
 
 
