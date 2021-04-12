@@ -43,9 +43,6 @@ class Game:
         #cls.print_Coins()
         
   
-        
-        
-
     @classmethod
     def name_players(cls):
         for i in range(1, cls.NUMBER_Players + 1):
@@ -111,7 +108,6 @@ class Game:
             else:
                 cls.selection = select.split(",")
         
-
     @classmethod
     def Challenge(cls):
         true_or_false = cls.players[cls.turn].compare_cards(cls.card_played)
@@ -121,12 +117,12 @@ class Game:
             cls.players[cls.turn].delete_one_card()
 
         elif true_or_false == True:
-            print("The player %s have the card", cls.players[cls.turn].player)
+            print("The player %s have the card" % ls.players[cls.turn].player)
             print(cls.card_played)
 
-            print("The player %s lose one card", cls.Number_Action[1].player)
+            print("The player %s lose one card"%cls.Number_Action[1].player)
             cls.players[cls.Number_Action[1]].delete_one_card()
-            os.system('cls||clear')
+            os.system('cls||clear') #cambiar
             
             print("The player %s change the card" % cls.players[cls.turn].player)
             card = cls.card.One_random_Card()
@@ -143,43 +139,41 @@ class Game:
         print("Your cards:", end=" ")
         cls.players[cls.turn].printCard()
         select = int(input("\nSelect the cards number: "))
-        os.system('cls||clear')
+        os.system('cls||clear') #cambiar
 
         print("%s;" % cls.players[cls.turn].player)
-        print("%s say that he have the %s\n" % cls.players[cls.Number_Action[1]].player
+        print("%s say that he have the %s\n" %cls.players[cls.Number_Action[1]].player
               % cls.list_cards[select])
         
         print("You have to options:")
         print("0 = Belive him\n 1 = Not belive him\n")
 
         choose = int(input("Choose the option number: "))
+        os.system('cls||clear') 
 
         if choose == 0:
-            pass
+            print("%s belive %s" % cls.players[cls.turn].player
+            % cls.players[cls.Number_Action[1]].player)
 
         elif choose == 1:
-            pass
+            true_or_false = cls.players[cls.turn].compare_cards(
+                cls.list_cards[select])
 
+            if true_or_false == False:
+                print("The player %s dont`t have the card" %cls.players[cls.Number_Action[1]].player)
+                cls.players[cls.Number_Action[1]].delete_one_card()
 
-        
+            elif true_or_false == True:
+                print("The player %s have the card"%cls.players[cls.Number_Action[1]].player)
+                print(cls.list_cards[select])
 
+                print("\nThe player %s lose one card" %cls.players[cls.turn].player)
+                cls.players[cls.turn].delete_one_card()
+                os.system('cls||clear')  # cambiar
 
-
-
-        pass
-
-        
-        
-
-        
-        
-
-
-    
-
-
-
-
+                print("The player %s change the card" %cls.players[cls.Number_Action[1]].player)
+                card = cls.card.One_random_Card()
+                cls.players[cls.Number_Action[1]].add_one_card(card)
 
     @classmethod
     def Action(cls): #corroborate inputs numbers

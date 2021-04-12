@@ -71,6 +71,7 @@ class Player:
         if count == 0:
             return False
         else:
+            #Cambiar:debo elgir con cual me quedo
             self.cards.remove(card)
             return True
 
