@@ -9,6 +9,7 @@ class Game:
     card = Cards()
     players = []
     turn = 0
+    card_played = 0
     Number_Action = 0
     selection = 0
     
@@ -44,13 +45,6 @@ class Game:
         
         
 
-       
-        
-
-
-
-
-    
     @classmethod
     def name_players(cls):
         for i in range(1, cls.NUMBER_Players + 1):
@@ -71,6 +65,7 @@ class Game:
         while True:
             list_action = ["Income", "Foreign Aid", "Coup", "Duke", "Assassin",
                            "Ambassador", "Captian"]
+            list_cards = ["Duke", "Assassin","Ambassador", "Captian"]
             print("It's %s's turn\n" % cls.players[cls.turn].player)
 
             print("Accions:")
@@ -84,9 +79,9 @@ class Game:
         
             print("Your cards:", end = " ")
             cls.players[cls.turn].printCard()
-            
             action = int(input("Select the accion number: "))
             if action > 0 and action < 8:
+                cls.card_played = list_cards[action-4]
                 os.system('cls||clear')
                 print("\n",cls.players[cls.turn].player, "select", list_action[action-1], "\n")
                 return action
@@ -119,7 +114,31 @@ class Game:
 
     @classmethod
     def Challenge(cls):
+        true_or_false = cls.players[cls.turn].compare_cards(cls.card_played)
+        
+        if true_or_false == False:
+            print("The player %s dont`t have the card", cls.players[cls.turn].player)
+            cls.players[cls.turn].delete_one_card()
+
+        elif true_or_false == True:
+            print("The player %s have the card", cls.players[cls.turn].player)
+            print(cls.card_played)
+
+            print("The player %s lose one card", cls.Number_Action[1].player)
+            cls.players[cls.Number_Action[1]].delete_one_card()
+            os.system('cls||clear')
+            
+            print("The player %s change the card", cls.players[cls.turn].player)
+            card = cls.card.One_random_Card()
+            cls.players[cls.turn].add_one_card(card)
+
+
+            
+        
+        
         pass
+
+
 
     @classmethod
     def Counterattack(cls):

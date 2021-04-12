@@ -39,17 +39,37 @@ class Player:
     def delete_card(self):
         self.cards.pop()
     
+    def add_one_card(self, card):
+        self.cards += card
+
     def add_two_cards(self, card):
         self.cards += card
     
+    def delete_one_card(self):
+        for i in range(len(self.cards)):
+            print(i, self.cards[i])
+
+        delete = int(input("Choose the number card to delete: "))
+        self.cards.pop(delete)
+        print("")
+
     def delete_two_cards(self):
         for a in range(2):
             for i in range(len(self.cards)):
                 print(i, self.cards[i])
-            
             delete = int(input("Choose the number card to delete: "))
             self.cards.pop(delete)
             print("")
+
+    def compare_cards(self, card):
+        count = self.cards.count(card)
+        if count == 0:
+            return False
+        else:
+            self.cards.remove(card)
+            return True
+
+
 
     
 
