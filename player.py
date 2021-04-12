@@ -18,6 +18,7 @@ class Player:
         print(self.player + ":", end = " ")
         print(self.coin, end = " | ")
 
+    #Add coins
     def add_one_coin(self):
         self.coin += 1
     
@@ -26,7 +27,8 @@ class Player:
     
     def add_three_coin(self):
         self.coin += 3
-    
+
+    #Delete coins
     def delete_two_coins(self):
         self.coin -= 2
 
@@ -36,14 +38,16 @@ class Player:
     def pay_seven_coins(self):
         self.coin -= 7
 
-    def delete_card(self):
-        self.cards.pop()
-    
+    #Add card
     def add_one_card(self, card):
         self.cards += card
 
     def add_two_cards(self, card):
         self.cards += card
+
+    #Delete card
+    def delete_card(self):
+        self.cards.pop()
     
     def delete_one_card(self):
         for i in range(len(self.cards)):
@@ -60,7 +64,8 @@ class Player:
             delete = int(input("Choose the number card to delete: "))
             self.cards.pop(delete)
             print("")
-
+    
+    #Compare Card
     def compare_cards(self, card):
         count = self.cards.count(card)
         if count == 0:

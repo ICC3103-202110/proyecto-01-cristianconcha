@@ -132,14 +132,6 @@ class Game:
             card = cls.card.One_random_Card()
             cls.players[cls.turn].add_one_card(card)
 
-
-            
-        
-        
-        pass
-
-
-
     @classmethod
     def Counterattack(cls):
         pass
