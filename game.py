@@ -2,6 +2,7 @@ import os
 from player import Player
 from cards import Cards
 class Game:
+    os.system('cls||clear')
     print("-----------------------------------")
     print("---------Wellcome to Coup----------")
     print("-----------------------------------\n")
@@ -15,12 +16,10 @@ class Game:
     selection = 0
     
 
-
     @classmethod
     def play(cls):
         cls.name_players()
         os.system('cls||clear')
-
 
         #while len(players)
         cls.print_Coins()
@@ -29,13 +28,11 @@ class Game:
         print("")
         cls.Select_Challenge_Counterattack()
 
-        if cls.selection[0] == 1:
+        if cls.selection[0] == "1":
             cls.Challenge()
-            pass
 
-        elif cls.selection[0] == 2:
+        elif cls.selection[0] == "2":
             cls.Counterattack()
-            pass
 
         else:
             cls.Action()
@@ -113,11 +110,11 @@ class Game:
         true_or_false = cls.players[cls.turn].compare_cards(cls.card_played)
         
         if true_or_false == False:
-            print("The player %s dont`t have the card" %cls.players[cls.turn].player)
+            print("The player %s dont`t have the card\n" %cls.players[cls.turn].player)
             cls.players[cls.turn].delete_one_card()
 
         elif true_or_false == True:
-            print("The player %s have the card" % ls.players[cls.turn].player)
+            print("The player %s have the card" % cls.players[cls.turn].player)
             print(cls.card_played)
 
             print("The player %s lose one card"%cls.Number_Action[1].player)
@@ -234,6 +231,7 @@ class Game:
             cls.players[select].delete_two_coins()
             cls.players[cls.turn].add_two_coin()
         
+    
 
 if __name__ == "__main__":
     Game.play()
