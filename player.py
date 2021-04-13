@@ -1,6 +1,6 @@
 
 class Player:
-    def __init__(self, player, cards, coin = 7): #cambiar coins
+    def __init__(self, player, cards, coin = 7): #change coins
         self.__player = player
         self.cards = cards
         self.coin = coin

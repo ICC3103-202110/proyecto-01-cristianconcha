@@ -28,6 +28,7 @@ class Game:
             print("")
             cls.print_cards()  #borrar
             print("")
+
             cls.Player_Accion()
             cls.Select_Challenge_Counterattack()
 
@@ -87,42 +88,45 @@ class Game:
     @classmethod
     def Player_Accion(cls):
         while True:
-            list_action = ["Income", "Foreign Aid", "Coup", "Duke", "Assassin",
-                           "Ambassador", "Captian"]
             print("It's %s's turn\n" % cls.players[cls.turn].player)
 
-            print("Accions:")
-            print("0 = Income")
-            print("1 = Foreign Aid")
-            print("2 = Coup")
-            print("3 = Duke (tax)")
-            print("4 = Assassin (Assassinate)")
-            print("5 = Ambassador (Exhange)")
-            print("6 = Captian (Steal)\n")
-        
-            print("Your cards:", end = " ")
-            cls.players[cls.turn].printCard()
-            action = int(input("Select the accion number: "))
-
-            if action >= 0 and action < 7:
-                cls.action_played = cls.actions[action]
+            if cls.players[cls.turn].coin >= 10:
+                print("You have more than 10 coins, \nso you must use the coup action\n")
+                input("Press any key to continue...")
                 os.system('cls||clear')
+                cls.action_played = "Coup"
+                print("\n", cls.players[cls.turn].player, "select", cls.action_played, "\n")
+                break
+                
 
-                if cls.action_played == "Coup" and cls.players[cls.turn].coin < 7:
-                    print("You don`t have 7 coins\n")
+            
+            else:
+                for i in range(len(cls.actions)):
+                    print(i, "=" , cls.actions[i])
 
-                elif cls.action_played == "Assassin" and cls.players[cls.turn].coin < 3:
-                    print("You don`t have 3 coins\n")
+                print("\nYour cards:", end = " ")
+                cls.players[cls.turn].printCard()
+                action = int(input("Select the accion number: "))
+
+                if action >= 0 and action < 7:
+                    cls.action_played = cls.actions[action]
+                    os.system('cls||clear')
+
+                    if cls.action_played == "Coup" and cls.players[cls.turn].coin < 7:
+                        print("You don`t have 7 coins\n")
+
+                    elif cls.action_played == "Assassin" and cls.players[cls.turn].coin < 3:
+                        print("You don`t have 3 coins\n")
+
+                    else:
+                        print("\n",cls.players[cls.turn].player, "select", cls.actions[action], "\n")
+                        cls.action_played = str(cls.actions[action])
+                        break
 
                 else:
-                    print("\n",cls.players[cls.turn].player, "select", list_action[action], "\n")
-                    cls.action_played = str(cls.actions[action])
-                    break
-
-            else:
-                os.system('cls||clear') 
-                print("Invalid accion number\n")
-    
+                    os.system('cls||clear') 
+                    print("Invalid accion number\n")
+        
     @classmethod
     def Select_Challenge_Counterattack(cls):
 
