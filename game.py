@@ -5,7 +5,8 @@ class Game:
     print("-----------------------------------")
     print("---------Wellcome to Coup----------")
     print("-----------------------------------\n")
-    actions = ["Income", "Foreign Aid","Coup", "Duke", "Assassin", "Ambassador", "Captian", "Contessa"]
+    actions = ["Income", "Foreign Aid", "Coup", "Duke", "Assassin", "Ambassador", "Captian", "Contessa"]
+    list_cards = ["Duke", "Assassin", "Ambassador", "Captian", "Contessa"]
     NUMBER_Players = 3  #int(input("Enter the number of playeres (3 or 4): "))
     card = Cards()
     players = []
@@ -201,7 +202,7 @@ class Game:
 
         elif cls.action_played == "Assassin":  
             print("The only card to counterattck the action Assassin is:")
-            print("0 = Contessa\n")
+            print("4 = Contessa\n")
 
         elif cls.action_played == 5:  # Ambassador
             pass
@@ -210,7 +211,7 @@ class Game:
             pass
         
         
-        print("%s selecte the card that do you have" % cls.players[cls.challenging_player].player)
+        print("%s selecte the number card" % cls.players[cls.challenging_player].player)
 
     
         print("Your cards:", end=" ")
@@ -219,39 +220,34 @@ class Game:
         os.system('cls||clear') 
 
         print("%s;" % cls.players[cls.turn].player)
-        print("%s say that he have the %s\n" % cls.players[cls.challenging_player].player
-              % cls.list_cards[select])
+        print(cls.players[cls.challenging_player].player,"say that he have the %s\n" % cls.list_cards[select])
         
         print("You have to options:")
-        print("0 = Belive him\n 1 = Not belive him\n")
+        print("0 = Belive him\n1 = Not belive him\n")
 
         choose = int(input("Choose the option number: "))
         os.system('cls||clear') 
 
         if choose == 0:
-            print("%s belive %s" % cls.players[cls.turn].player %
-                  cls.players[cls.challenging_player].player)
+            print(cls.players[cls.turn].player, "belive % s" % cls.players[cls.challenging_player].player)
 
         elif choose == 1:
             true_or_false = cls.players[cls.turn].compare_cards(
                 cls.list_cards[select])
 
             if true_or_false == False:
-                print("The player %s dont`t have the card" %
-                      cls.players[cls.challenging_player].player)
+                print("The player %s dont`t have the card" %cls.players[cls.challenging_player].player)
                 cls.players[cls.challenging_player].delete_one_card()
 
             elif true_or_false == True:
-                print("The player %s have the card" %
-                      cls.players[cls.challenging_player].player)
+                print("The player %s have the card" %cls.players[cls.challenging_player].player)
                 print(cls.list_cards[select])
 
                 print("\nThe player %s lose one card" %cls.players[cls.turn].player)
                 cls.players[cls.turn].delete_one_card()
                 os.system('cls||clear')  # cambiar
 
-                print("The player %s change the card" %
-                      cls.players[cls.challenging_player].player)
+                print("The player %s change the card" %cls.players[cls.challenging_player].player)
                 card = cls.card.One_random_Card()
                 cls.players[cls.challenging_player].add_one_card(card)
 
