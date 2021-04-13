@@ -39,7 +39,7 @@ class Player:
         self.coin -= 7
 
     #Add card
-    def add_one_card(self, card):
+    def add_one_card(self, card):#are the same
         self.cards += card
 
     def add_two_cards(self, card):
@@ -47,7 +47,7 @@ class Player:
 
     #Delete card
     def delete_card(self):
-        if len(self.card) == 0:
+        if len(self.cards) == 0:
             return
         else:
             self.cards.pop()
@@ -77,6 +77,10 @@ class Player:
             #Cambiar:debo elgir con cual me quedo
             self.cards.remove(card)
             return True
+    
+    #len cards
+    def len_cards(self):
+        return len(self.cards)
 
 
 
