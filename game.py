@@ -40,6 +40,10 @@ class Game:
                 cls.Action()
             
             ##cls.Delete_player()
+            if cls.turn == (len(cls.players)-1):
+                cls.turn = 0
+            else:
+                cls.turn += 1
 
             if len(cls.players) == 1:
                 break
@@ -97,7 +101,7 @@ class Game:
             cls.players[cls.turn].printCard()
             action = int(input("Select the accion number: "))
 
-            if action > 0 and action < 8:
+            if action >= 0 and action < 7:
                 cls.action_played = cls.actions[action]
                 os.system('cls||clear')
                 print("\n", cls.players[cls.turn].player, "select", list_action[action], "\n")
@@ -180,20 +184,14 @@ class Game:
             print("The player %s have the card" % cls.players[cls.turn].player)
             print(cls.action_played)
             
-            if cls.action_played == "Assassin":
-                print("\nThe player %s lose two cards" %cls.players[cls.challenging_player].player)
-                cls.players[cls.challenging_player].delete_two_cards()
-                input("Press any key to continue")
-                os.system('cls||clear')
-              
-            else:
-                print("The player %s lose one card" %cls.players[cls.challenging_player].player)
-                cls.players[cls.challenging_player].delete_one_card()
-                input("Press any key to continue")
-                os.system('cls||clear') 
+            print("The player %s lose one card" %cls.players[cls.challenging_player].player)
+            cls.players[cls.challenging_player].delete_one_card()
+            input("Press any key to continue")
+            os.system('cls||clear') 
             
             print("The player %s change the card" % cls.players[cls.turn].player)
             card = cls.card.One_random_Card()
+            cls.action()
             cls.players[cls.turn].add_one_card(card)
 
     @classmethod
@@ -241,11 +239,12 @@ class Game:
         elif choose == 1: #Player turn Not belive
             true_or_false = cls.players[cls.turn].compare_cards(cls.list_cards[select])
 
-            if true_or_false == False:
+            if true_or_false == False: #Other player donthave the card
                 print("The player %s dont`t have the card" %cls.players[cls.challenging_player].player)
                 cls.players[cls.challenging_player].delete_one_card()
+                cls.action()
 
-            elif true_or_false == True:
+            elif true_or_false == True: #Other player have the card
                 print("The player %s have the card" %cls.players[cls.challenging_player].player)
                 print(cls.action_played)
 
