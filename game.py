@@ -11,15 +11,18 @@ class Game:
     card = Cards()
     players = []
     turn = 0
-    action_played = 0 #card
-    Number_Action = 0  # counter attack or challenge
-    challenging_player = 0  # number player
+    action_played = None  #card
+    
+    select_challenge = None  # counter attack or challenge
+    select_counterattack = None
+
+    challenging_player = []  # Player to challenge
+    counterattack_player = [] #Player to counter attack
     
 
     @classmethod
     def play(cls):
         cls.name_players()
-
 
         while True:
             Console.clean()
@@ -30,19 +33,20 @@ class Game:
             print("")
 
             cls.Player_Accion()
-            cls.Select_Challenge_Counterattack()
+            cls.Select_Challenge()
+            cls.Select_Counterattack()
 
             if cls.Number_Action == 1:
                 cls.Challenge()
 
             elif cls.Number_Action == 2:
-                
                 cls.Counterattack()
 
             else:
                 cls.Action()
             
             cls.Delete_player()
+            cls.Clean_values()
 
             if cls.turn == (len(cls.players)-1):
                 cls.turn = 0
@@ -82,6 +86,10 @@ class Game:
         for i in range(len(cls.players)):
             cls.players[i].printCard()
         print("")
+    
+    @classmethod
+    def print_played_cards(cls):
+        pass
         
     @classmethod
     def Player_Accion(cls):
@@ -105,7 +113,7 @@ class Game:
                 action = int(input("Select the accion number: "))
 
                 if action >= 0 and action < 7:
-                    cls.action_played = cls.actions[action]
+                    cls.action_played = str(cls.actions[action])
                     Console.clean()
 
                     if cls.action_played == "Coup" and cls.players[cls.turn].coin < 7:
@@ -115,8 +123,10 @@ class Game:
                         print("You don`t have 3 coins\n")
 
                     else:
-                        print("\n",cls.players[cls.turn].player, "select", cls.actions[action], "\n")
-                        cls.action_played = str(cls.actions[action])
+                        print("\n", cls.players[cls.turn].player, "select", cls.actions[action], "\n")
+                        
+                        if cls.action_played == "Assassin":
+                            cls.players[cls.turn].pay_three_coins()
                         break
 
                 else:
@@ -124,9 +134,9 @@ class Game:
                     print("Invalid accion number\n")
         
     @classmethod
-    def Select_Challenge_Counterattack(cls):
+    def Select_Challenge(cls):
 
-        if cls.action_played == "Income": 
+        if cls.action_played == "Income":
             input("Press any key to continue...")
             Console.clean()
             return
@@ -137,9 +147,12 @@ class Game:
             return
         
         elif cls.action_played == "Foreign Aid":
+            return
+                    
+        else:
             while True:
-                print("Some player wants to: \n")
-                print("Action:\n 2 = Counterattack\n")
+                print("Some player wants to challenge: \n\n")
+                
                 print("\nPlayers:")
 
                 for i in range(len(cls.players)):
@@ -148,22 +161,29 @@ class Game:
                     else:
                         print("", i, "=", cls.players[i].player)
                 
-                print("\nEnter the action number and the player number")
-                print("Example: 2,1")
-                print("To continue press 'c' ")
-                select = input("---> ").split(',')
+                print("\nEnter the player number to chanllenge or")
+                print("press 'c' to continue")
+                select = input("---> ")
                 Console.clean()
 
                 if select[0] == "c":
                     break
                 else:
-                    cls.Number_Action = int(select[0])
-                    cls.challenging_player = int(select[1])
+                    cls.select_challenge = 1
+                    cls.challenging_player.append[int(select)]
+    
+    @classmethod
+    def Select_Counterattack(cls):
+        if cls.action_played == "Income":
+            return
+
+        elif cls.action_played == "Coup":
+            return
 
         else:
             while True:
-                print("Some player wants to: \n")
-                print("Action:\n 1 = Challenge \n 2 = Counterattack\n")
+                print("Some player wants to counterattack: \n\n")
+
                 print("\nPlayers:")
 
                 for i in range(len(cls.players)):
@@ -171,18 +191,17 @@ class Game:
                         continue
                     else:
                         print("", i, "=", cls.players[i].player)
-                        
-                print("\nEnter the action number and the player number")
-                print("Example: 1,2")
-                print("To continue press 'c' ")
-                select = input("---> ").split(',')
+
+                print("\nEnter the player number to counterattack or")
+                print("press 'c' to continue")
+                select = input("---> ")
                 Console.clean()
 
                 if select[0] == "c":
                     break
                 else:
-                    cls.Number_Action = int(select[0])
-                    cls.challenging_player = int(select[1])
+                    cls.select_counterattack = 2
+                    cls.counterattack_player[int(select)]
         
     @classmethod
     def Challenge(cls):
@@ -217,19 +236,14 @@ class Game:
             print("The only card to counterattck the Foreign Aid is:\n")
             print("0 = Duke\n")
 
-        elif cls.action_played == 3:  # Duke
-            pass
-
         elif cls.action_played == "Assassin":  
             print("The only card to counterattck the action Assassin is:")
             print("4 = Contessa\n")
 
-        elif cls.action_played == 5:  # Ambassador
-            pass
-
-        elif cls.action_played == 6:  # Captain
-            pass
-        
+        elif cls.action_played == "Captain":  
+            print("The cards to counterattck the Captain is:\n")
+            print("2 = Ambaddassor")
+            print("3 = Captain")
         
         print("%s selecte the number card" % cls.players[cls.challenging_player].player)
 
@@ -242,40 +256,10 @@ class Game:
         print("%s;" % cls.players[cls.turn].player)
         print(cls.players[cls.challenging_player].player,"say that he have the %s\n" % cls.list_cards[select])
         
-        print("You have to options:")
-        print("0 = Belive him\n1 = Not belive him\n")
-
-        choose = int(input("Choose the option number: "))
-        Console.clean()
-
-        if choose == 0:#Player turn Belive
-            print(cls.players[cls.turn].player, "belive % s" % cls.players[cls.challenging_player].player)
-            input("Press any key to continue")
-            Console.clean()
-
-        elif choose == 1: #Player turn Not belive
-            true_or_false = cls.players[cls.turn].compare_cards(cls.list_cards[select])
-
-            if true_or_false == False: #Other player donthave the card
-                print("The player %s dont`t have the card" %cls.players[cls.challenging_player].player)
-                card_lose = cls.players[cls.challenging_player].delete_one_card()
-                cls.card.cards_lose(card_lose)
-                cls.action()
-
-            elif true_or_false == True: #Other player have the card
-                print("The player %s have the card" %cls.players[cls.challenging_player].player)
-                print(cls.action_played)
-
-                print("\nThe player %s lose one card" %cls.players[cls.turn].player)
-                card_lose = cls.players[cls.turn].delete_one_card()
-                cls.card.cards_lose(card_lose)
-                input("Press any key to continue")
-                Console.clean()
-
-                print("The player %s change the card" % cls.players[cls.challenging_player].player)
-                cls.players[cls.challenging_player].delete_one_card()
-                card = cls.card.One_random_Card()
-                cls.players[cls.challenging_player].add_one_card(card)
+        ###############################################
+        """
+        cls.Challenge()
+        """
 
 
     @classmethod
@@ -296,7 +280,7 @@ class Game:
                     print(i, cls.players[i].player)
                 
             select = int(input(("\nChoose the player to lose Influence:")))
-            cls.players[select].delete_card()
+            cls.players[select].delete_one_card()
             cls.players[cls.turn].pay_seven_coins()
                 
         elif cls.action_played == "Duke":  #(tax)
@@ -311,8 +295,7 @@ class Game:
                     print(i, cls.players[i].player)
                 
             select = int(input(("Choose the player to lose Influence: ")))
-            cls.players[select].delete_card()
-            cls.players[cls.turn].pay_three_coins()
+            cls.players[select].delete_one_card()
                 
         elif cls.action_played == "Ambassador":  # (Exhange)
             cards = cls.card.randomCards()
@@ -326,10 +309,19 @@ class Game:
                 else:
                     print(i," = ",cls.players[i].player, "have",cls.players[i].coin, "coins")
 
-            select = int(input(("Choose the player to lose 2 coins: ")))
+            select = int(input(("Choose the player to lose 2 coins: "))) 
             cls.players[select].delete_two_coins()
             cls.players[cls.turn].add_two_coin()
 
+    @classmethod
+    def Clean_values(cls):
+        cls.action_played = None  
+        cls.select_challenge = None  
+        cls.select_counterattack = None
+        cls.challenging_player = [] 
+        cls.counterattack_player = []  
+
+        
     @classmethod
     def Delete_player(cls):
         for i in range(len(cls.players)):

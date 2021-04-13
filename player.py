@@ -30,7 +30,12 @@ class Player:
 
     #Delete coins
     def delete_two_coins(self):
-        self.coin -= 2
+        if self.coin == 1:
+            self.coin -= 1
+            
+        elif self.coin >= 2:
+            self.coin -= 2
+    
 
     def pay_three_coins(self):
         self.coin -= 3
