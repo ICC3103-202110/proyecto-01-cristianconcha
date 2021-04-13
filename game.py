@@ -1,6 +1,6 @@
-import os  
 from player import Player
 from cards import Cards
+from console import Console
 class Game:
     print("-----------------------------------")
     print("---------Wellcome to Coup----------")
@@ -22,7 +22,7 @@ class Game:
 
 
         while True:
-            os.system('cls||clear')
+            Console.clean()
             
             cls.print_Coins()
             print("")
@@ -52,7 +52,7 @@ class Game:
             if len(cls.players) == 1:
                 break
 
-        os.system('cls||clear')
+        Console.clean()
         print("-----------------------------------")
         print("The winner is %s" % cls.players[0].player)
         print("-----------------------------------")
@@ -74,7 +74,6 @@ class Game:
         print("Coins:")
         for i in range(len(cls.players)):
             cls.players[i].printCoins()
-
         print("")
     
     @classmethod  # Borrar depues
@@ -82,7 +81,6 @@ class Game:
         print("Cards:")
         for i in range(len(cls.players)):
             cls.players[i].printCard()
-
         print("")
         
     @classmethod
@@ -93,13 +91,11 @@ class Game:
             if cls.players[cls.turn].coin >= 10:
                 print("You have more than 10 coins, \nso you must use the coup action\n")
                 input("Press any key to continue...")
-                os.system('cls||clear')
+                Console.clean()
                 cls.action_played = "Coup"
                 print("\n", cls.players[cls.turn].player, "select", cls.action_played, "\n")
                 break
                 
-
-            
             else:
                 for i in range(len(cls.actions)):
                     print(i, "=" , cls.actions[i])
@@ -110,7 +106,7 @@ class Game:
 
                 if action >= 0 and action < 7:
                     cls.action_played = cls.actions[action]
-                    os.system('cls||clear')
+                    Console.clean()
 
                     if cls.action_played == "Coup" and cls.players[cls.turn].coin < 7:
                         print("You don`t have 7 coins\n")
@@ -124,7 +120,7 @@ class Game:
                         break
 
                 else:
-                    os.system('cls||clear') 
+                    Console.clean()
                     print("Invalid accion number\n")
         
     @classmethod
@@ -132,12 +128,12 @@ class Game:
 
         if cls.action_played == "Income": 
             input("Press any key to continue...")
-            os.system('cls||clear')
+            Console.clean()
             return
 
         elif cls.action_played == "Coup":
             input("Press any key to continue...")
-            os.system('cls||clear')
+            Console.clean()
             return
         
         elif cls.action_played == "Foreign Aid":
@@ -156,7 +152,7 @@ class Game:
                 print("Example: 2,1")
                 print("To continue press 'c' ")
                 select = input("---> ").split(',')
-                os.system('cls||clear')
+                Console.clean()
 
                 if select[0] == "c":
                     break
@@ -180,7 +176,7 @@ class Game:
                 print("Example: 1,2")
                 print("To continue press 'c' ")
                 select = input("---> ").split(',')
-                os.system('cls||clear')
+                Console.clean()
 
                 if select[0] == "c":
                     break
@@ -203,7 +199,7 @@ class Game:
             print("The player %s lose one card" %cls.players[cls.challenging_player].player)
             cls.players[cls.challenging_player].delete_one_card()
             input("Press any key to continue")
-            os.system('cls||clear') 
+            Console.clean()
             
             print("The player %s change the card" % cls.players[cls.turn].player)
             card = cls.card.One_random_Card()
@@ -212,7 +208,7 @@ class Game:
 
     @classmethod
     def Counterattack(cls):
-        os.system('cls||clear')
+        Console.clean()
 
         if cls.action_played == "Foreign Aid":  
             print("The only card to counterattck the Foreign Aid is:\n")
@@ -238,7 +234,7 @@ class Game:
         print("Your cards:", end=" ")
         cls.players[cls.turn].printCard()
         select = int(input("\nSelect the card number: "))
-        os.system('cls||clear') 
+        Console.clean()
 
         print("%s;" % cls.players[cls.turn].player)
         print(cls.players[cls.challenging_player].player,"say that he have the %s\n" % cls.list_cards[select])
@@ -247,7 +243,7 @@ class Game:
         print("0 = Belive him\n1 = Not belive him\n")
 
         choose = int(input("Choose the option number: "))
-        os.system('cls||clear') 
+        Console.clean()
 
         if choose == 0:#Player turn Belive
             print(cls.players[cls.turn].player, "belive % s" % cls.players[cls.challenging_player].player)
@@ -267,7 +263,7 @@ class Game:
                 print("\nThe player %s lose one card" %cls.players[cls.turn].player)
                 cls.players[cls.turn].delete_one_card()
                 input("Press any key to continue")
-                os.system('cls||clear')
+                Console.clean()
 
                 print("The player %s change the card" %cls.players[cls.challenging_player].player)
                 card = cls.card.One_random_Card()
