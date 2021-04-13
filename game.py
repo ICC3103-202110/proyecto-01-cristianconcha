@@ -190,14 +190,17 @@ class Game:
         
         if true_or_false == False:  #Player turn Dont have the card
             print("The player %s dont`t have the card\n" %cls.players[cls.turn].player)
-            cls.players[cls.turn].delete_one_card()
+            card_lose = cls.players[cls.turn].delete_one_card()
+            cls.card.cards_lose(card_lose)
+
 
         elif true_or_false == True: #Player turn Have the car
             print("The player %s have the card" % cls.players[cls.turn].player)
             print(cls.action_played)
             
             print("The player %s lose one card" %cls.players[cls.challenging_player].player)
-            cls.players[cls.challenging_player].delete_one_card()
+            card_lose = cls.players[cls.challenging_player].delete_one_card()
+            cls.card.cards_lose(card_lose)
             input("Press any key to continue")
             Console.clean()
             
@@ -247,13 +250,16 @@ class Game:
 
         if choose == 0:#Player turn Belive
             print(cls.players[cls.turn].player, "belive % s" % cls.players[cls.challenging_player].player)
+            input("Press any key to continue")
+            Console.clean()
 
         elif choose == 1: #Player turn Not belive
             true_or_false = cls.players[cls.turn].compare_cards(cls.list_cards[select])
 
             if true_or_false == False: #Other player donthave the card
                 print("The player %s dont`t have the card" %cls.players[cls.challenging_player].player)
-                cls.players[cls.challenging_player].delete_one_card()
+                card_lose = cls.players[cls.challenging_player].delete_one_card()
+                cls.card.cards_lose(card_lose)
                 cls.action()
 
             elif true_or_false == True: #Other player have the card
@@ -261,11 +267,13 @@ class Game:
                 print(cls.action_played)
 
                 print("\nThe player %s lose one card" %cls.players[cls.turn].player)
-                cls.players[cls.turn].delete_one_card()
+                card_lose = cls.players[cls.turn].delete_one_card()
+                cls.card.cards_lose(card_lose)
                 input("Press any key to continue")
                 Console.clean()
 
-                print("The player %s change the card" %cls.players[cls.challenging_player].player)
+                print("The player %s change the card" % cls.players[cls.challenging_player].player)
+                cls.players[cls.challenging_player].delete_one_card()
                 card = cls.card.One_random_Card()
                 cls.players[cls.challenging_player].add_one_card(card)
 
@@ -307,8 +315,8 @@ class Game:
             cls.players[cls.turn].pay_three_coins()
                 
         elif cls.action_played == "Ambassador":  # (Exhange)
-            card = cls.card.randomCards()
-            cls.players[cls.turn].add_two_cards(card)
+            cards = cls.card.randomCards()
+            cls.players[cls.turn].add_two_cards(cards)
             cls.players[cls.turn].delete_two_cards()
             
         elif cls.action_played == "Captain":  # (Steal)

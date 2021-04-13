@@ -57,8 +57,11 @@ class Player:
             print(i, self.cards[i])
 
         delete = int(input("Choose the number card to delete: "))
+        card = self.cards[delete]
         self.cards.pop(delete)
         print("")
+        return card
+        
 
     def delete_two_cards(self):
         for a in range(2):
