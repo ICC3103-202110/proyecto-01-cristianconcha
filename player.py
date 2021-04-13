@@ -49,6 +49,13 @@ class Player:
     def delete_card(self):
         self.cards.pop()
     
+    def delete_two_cards(self):
+        for a in range(2):
+            if len(self.cards) == 0:
+                break
+            else:
+                self.cards.pop()
+    
     def delete_one_card(self):
         for i in range(len(self.cards)):
             print(i, self.cards[i])

@@ -172,18 +172,25 @@ class Game:
     def Challenge(cls):
         true_or_false = cls.players[cls.turn].compare_cards(cls.action_played)
         
-        if true_or_false == False:
+        if true_or_false == False:  #Player turn Dont have the card
             print("The player %s dont`t have the card\n" %cls.players[cls.turn].player)
             cls.players[cls.turn].delete_one_card()
 
-        elif true_or_false == True:
+        elif true_or_false == True: #Player turn Have the car
             print("The player %s have the card" % cls.players[cls.turn].player)
             print(cls.action_played)
-
-            print("The player %s lose one card" %cls.players[challenging_player].player)
-            cls.players[cls.challenging_player].delete_one_card()
-            input("Press any key to continue")
-            os.system('cls||clear') 
+            
+            if cls.action_played == "Assassin":
+                print("\nThe player %s lose two cards" %cls.players[cls.challenging_player].player)
+                cls.players[cls.challenging_player].delete_two_cards()
+                input("Press any key to continue")
+                os.system('cls||clear')
+              
+            else:
+                print("The player %s lose one card" %cls.players[cls.challenging_player].player)
+                cls.players[cls.challenging_player].delete_one_card()
+                input("Press any key to continue")
+                os.system('cls||clear') 
             
             print("The player %s change the card" % cls.players[cls.turn].player)
             card = cls.card.One_random_Card()
@@ -228,12 +235,11 @@ class Game:
         choose = int(input("Choose the option number: "))
         os.system('cls||clear') 
 
-        if choose == 0:
+        if choose == 0:#Player turn Belive
             print(cls.players[cls.turn].player, "belive % s" % cls.players[cls.challenging_player].player)
 
-        elif choose == 1:
-            true_or_false = cls.players[cls.turn].compare_cards(
-                cls.list_cards[select])
+        elif choose == 1: #Player turn Not belive
+            true_or_false = cls.players[cls.turn].compare_cards(cls.list_cards[select])
 
             if true_or_false == False:
                 print("The player %s dont`t have the card" %cls.players[cls.challenging_player].player)
@@ -241,11 +247,12 @@ class Game:
 
             elif true_or_false == True:
                 print("The player %s have the card" %cls.players[cls.challenging_player].player)
-                print(cls.list_cards[select])
+                print(cls.action_played)
 
                 print("\nThe player %s lose one card" %cls.players[cls.turn].player)
                 cls.players[cls.turn].delete_one_card()
-                os.system('cls||clear')  # cambiar
+                input("Press any key to continue")
+                os.system('cls||clear')
 
                 print("The player %s change the card" %cls.players[cls.challenging_player].player)
                 card = cls.card.One_random_Card()
