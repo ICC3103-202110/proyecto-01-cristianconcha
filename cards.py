@@ -25,8 +25,8 @@ class Cards:
         self.cards.pop(number)
         return card
     
-    def cards_lose(self, card):
-        self.cards_lose.append[card]
+    def card_lose(self, card):
+        self.cards_lose.append(card)
 
 
     

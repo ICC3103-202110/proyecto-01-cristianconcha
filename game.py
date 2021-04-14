@@ -180,7 +180,7 @@ class Game:
                     break
                 else:
                     cls.select_challenge = 1
-                    cls.challenging_players.append[int(select)]
+                    cls.challenging_players.append(int(select))
     
     @classmethod
     def Select_Counterattack(cls):
@@ -211,7 +211,7 @@ class Game:
                     break
                 else:
                     cls.select_counterattack = 2
-                    cls.counterattack_players[int(select)]
+                    cls.counterattack_players.append(int(select))
         
     @classmethod
     def Challenge(cls):
@@ -221,29 +221,29 @@ class Game:
         input("Press any key to continue")
         Console.clean()
 
-        true_or_false = cls.players[player_how_have_card].compare_cards(cls.action_played)
+        true_or_false = cls.players[cls.player_how_have_card].compare_cards(cls.action_played)
         
         if true_or_false == False:  #Player turn Dont have the card
-            print("The player %s dont`t have the card\n" %cls.players[player_how_have_card].player)
-            card_lose = cls.players[player_how_have_card].delete_one_card()
-            cls.card.cards_lose(card_lose)
+            print("The player %s dont`t have the card\n" %cls.players[cls.player_how_have_card].player)
+            card_lose = cls.players[cls.player_how_have_card].delete_one_card()
+            cls.card.card_lose(card_lose)
 
 
         elif true_or_false == True: #Player turn Have the car
-            print("The player %s have the card" %cls.players[player_how_have_card].player)
+            print("The player %s have the card" %cls.players[cls.player_how_have_card].player)
             print(cls.action_played)
             input("Press any key to continue")
             Console.clean()
             
             print("The player %s lose one card" %cls.players[cls.other_player].player)
             card_lose = cls.players[cls.other_player].delete_one_card()
-            cls.card.cards_lose(card_lose)
+            cls.card.card_lose(card_lose)
             input("Press any key to continue")
             Console.clean()
             
             print("The player %s change the card" %cls.players[cls.player_how_have_card].player)
             card = cls.card.One_random_Card()
-            cls.action()
+            cls.Action()
             cls.players[cls.player_how_have_card].add_one_card(card)
             input("Press any key to continue")
             Console.clean()
@@ -375,9 +375,10 @@ class Game:
             else:
                 continue
 
-        if len(delete) > 0:   
-            cls.players.remove(delete[0])
-            cls.NUMBER_Players -= 1
+        if len(delete) > 0:
+            for i in range(len(delete)):  
+                cls.players.remove(delete[i])
+                cls.NUMBER_Players -= 1
 
 
     @classmethod

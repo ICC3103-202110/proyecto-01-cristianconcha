@@ -32,7 +32,7 @@ class Player:
     def delete_two_coins(self):
         if self.coin == 1:
             self.coin -= 1
-            
+
         elif self.coin >= 2:
             self.coin -= 2
     
@@ -64,7 +64,6 @@ class Player:
         delete = int(input("Choose the number card to delete: "))
         card = self.cards[delete]
         self.cards.pop(delete)
-        print("")
         return card
         
 
