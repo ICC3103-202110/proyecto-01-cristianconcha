@@ -243,8 +243,8 @@ class Game:
             
             print("The player %s change the card" %cls.players[cls.player_how_have_card].player)
             card = cls.card.One_random_Card()
-            cls.Action()
             cls.players[cls.player_how_have_card].add_one_card(card)
+            cls.Action()
             input("Press any key to continue")
             Console.clean()
 
@@ -294,11 +294,11 @@ class Game:
 
     @classmethod
     def select_the_counterattack_player(cls):
-        for i in range(len(cls.counterattack_player)-1):
-            number = random.randint(0, len(cls.counterattack_player))
+        for i in range(len(cls.counterattack_players)-1):
+            number = random.randint(0, len(cls.counterattack_players))
             cls.counterattack_player.pop(number)
 
-        cls.other_player = int(cls.counterattack_player[0])
+        cls.other_player = int(cls.counterattack_players[0])
     
     @classmethod
     def Action(cls):  #corroborate inputs numbers
