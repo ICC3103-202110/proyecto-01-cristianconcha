@@ -107,6 +107,7 @@ class Game:
                 input("Press any key to continue...")
                 Console.clean()
                 cls.action_played = "Coup"
+                cls.players[cls.player_how_have_card].pay_seven_coins()
                 print("\n", cls.players[cls.player_how_have_card].player,"select", cls.action_played, "\n")
                 break
                 
