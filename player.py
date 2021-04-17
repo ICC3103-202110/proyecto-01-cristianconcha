@@ -11,6 +11,7 @@ class Player:
     
     #Print
     def printCard(self):
+        print("\nYour cards:", end=" ")
         for i in range(len(self.cards)):
             print(self.cards[i], end=" ")
         print("")
@@ -63,10 +64,11 @@ class Player:
             self.cards.pop()
     
     def delete_one_card(self):
+        print("Choose the number card to delete:\n")
         for i in range(len(self.cards)):
             print(i, self.cards[i])
 
-        delete = int(input("Choose the number card to delete: "))
+        delete = int(input("\n---> "))
         card = self.cards[delete]
         self.cards.pop(delete)
         return card
@@ -74,9 +76,10 @@ class Player:
 
     def delete_two_cards(self):
         for a in range(2):
+            print("Choose the number card to delete:\n")
             for i in range(len(self.cards)):
                 print(i, self.cards[i])
-            delete = int(input("Choose the number card to delete: "))
+            delete = int(input("\n---> "))
             self.cards.pop(delete)
             print("")
     
