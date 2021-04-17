@@ -32,9 +32,11 @@ class Game:
             Console.clean()
             
             cls.print_Coins()
+            cls.print_players_cards()
             print("")
             cls.print_cards()  #borrar
             print("")
+
 
             cls.Player_Accion()
             cls.Select_Challenge()
@@ -78,7 +80,7 @@ class Game:
 
     @classmethod #ready
     def print_Coins(cls):
-        print("Coins:")
+        print("Coins    ", end="| ")
         for i in range(len(cls.players)):
             cls.players[i].printCoins()
         print("")
@@ -91,8 +93,11 @@ class Game:
         print("")
     
     @classmethod
-    def print_played_cards(cls):
-        pass
+    def print_players_cards(cls):
+        print("Influence", end="| ")
+        for i in range(len(cls.players)):
+            cls.players[i].print_len_cards()
+        print("")
         
     @classmethod
     def Player_Accion(cls):
@@ -245,6 +250,7 @@ class Game:
             print("The player %s change the card" %cls.players[cls.player_how_have_card].player)
             card = cls.card.One_random_Card()
             cls.players[cls.player_how_have_card].add_one_card(card)
+            
             cls.Action()
             input("Press any key to continue")
             Console.clean()
@@ -395,7 +401,5 @@ class Game:
             cls.turn += 1
                 
                     
-
-
 if __name__ == "__main__":
     Game.play()
