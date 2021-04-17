@@ -28,10 +28,10 @@ class Player:
     def add_one_coin(self):
         self.coin += 1
     
-    def add_two_coin(self):
+    def add_two_coins(self):
         self.coin += 2
     
-    def add_three_coin(self):
+    def add_three_coins(self):
         self.coin += 3
 
     #Delete coins
@@ -73,7 +73,6 @@ class Player:
         self.cards.pop(delete)
         return card
         
-
     def delete_two_cards(self):
         for a in range(2):
             print("Choose the number card to delete:\n")

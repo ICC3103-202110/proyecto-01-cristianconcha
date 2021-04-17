@@ -300,9 +300,10 @@ class Game:
             cls.players[cls.player_how_have_card].add_one_coin()
         
         elif cls.action_played == "Foreign Aid":  
-            cls.players[cls.player_how_have_card].add_two_coin()
+            cls.players[cls.player_how_have_card].add_two_coins()
         
         elif cls.action_played == "Coup":
+            print("Choose the player to lose Influence \n")
             
             for i in range(len(cls.players)):
                 if i == cls.player_how_have_card:
@@ -310,17 +311,16 @@ class Game:
                 else:
                     print(i, cls.players[i].player)
                 
-            select = int(input(("\nChoose the player to lose Influence:")))
+            select = Console.select_player()
             Console.clean()
-            input("Press any key to continue")
-            Console.clean()
+            Console.pass_next_player(cls.players[select].player)
             cls.players[select].delete_one_card()
-            
-                
+              
         elif cls.action_played == "Duke":  #(tax)
-            cls.players[cls.player_how_have_card].add_three_coin()
+            cls.players[cls.player_how_have_card].add_three_coins()
         
         elif cls.action_played == "Assassin":  # (assassinate)
+            print("Choose the player to lose Influence \n")
             
             for i in range(len(cls.players)):
                 if i == cls.player_how_have_card:
@@ -328,10 +328,9 @@ class Game:
                 else:
                     print(i, cls.players[i].player)
                 
-            select = int(input(("Choose the player to lose Influence: ")))
+            select = Console.select_player()
             Console.clean()
-            input("Press any key to continue")
-            Console.clean()
+            Console.pass_next_player(cls.players[select].player)
             cls.players[select].delete_one_card()
                 
         elif cls.action_played == "Ambassador":  # (Exhange)
@@ -340,13 +339,14 @@ class Game:
             cls.players[cls.player_how_have_card].delete_two_cards()
             
         elif cls.action_played == "Captain":  # (Steal)
+            print("Choose the player to lose 2 coins \n")
             for i in range(len(cls.players)):
                 if i == cls.player_how_have_card:
                     continue
                 else:
                     print(i," = ",cls.players[i].player, "have",cls.players[i].coin, "coins")
 
-            select = int(input(("Choose the player to lose 2 coins: "))) 
+            select = Console.select_player()
             cls.players[select].delete_two_coins()
             cls.players[cls.player_how_have_card].add_two_coin()
 

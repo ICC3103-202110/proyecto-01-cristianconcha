@@ -15,6 +15,11 @@ class Console:
     def select_card():
         card_number = int(input("\nSelect the card number: "))
         return card_number
+
+    @staticmethod
+    def select_player():
+        player = int(input("---> "))
+        return player
     
     @staticmethod
     def player_select(player, card):
@@ -44,11 +49,10 @@ class Console:
         input("Press any key to continue...")
         os.system('cls || clear')
     
-
     @staticmethod
     def pass_next_player(player_name):
         print("\nPass the computer to %s \n" % player_name)
-        input("Press any key to continue...")
+        input("Press any key to continue... ")
         os.system('cls || clear')
 
 

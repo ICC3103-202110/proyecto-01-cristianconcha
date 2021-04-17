@@ -20,11 +20,12 @@ class Cards:
         return card
     
     def One_random_Card(self):
+        card = []
         number = random.randint(0, len(self.cards))
-        card = self.cards[number]
+        card.append(self.cards[number])
         self.cards.pop(number)
-        return [card]
-    
+        return card
+        
     def card_lose(self, card):
         self.cards_lose.append(card)
 
