@@ -3,9 +3,7 @@ from player import Player
 from cards import Cards
 from console import Console
 class Game:
-    print("-----------------------------------")
-    print("---------Wellcome to Coup----------")
-    print("-----------------------------------\n")
+    
     actions = ["Income", "Foreign Aid", "Coup", "Duke", "Assassin", "Ambassador", "Captain", "Contessa"]
     NUMBER_Players = 3  #int(input("Enter the number of playeres (3 or 4): "))
     card = Cards()
@@ -26,6 +24,7 @@ class Game:
 
     @classmethod
     def play(cls):
+        Console.wellcome()
         cls.name_players()
 
         while True:
@@ -54,14 +53,7 @@ class Game:
             if len(cls.players) == 1:
                 break
 
-        Console.clean()
-        print("-----------------------------------")
-        print("The winner is %s" % cls.players[0].player)
-        print("-----------------------------------")
-
-
-
-
+        Console.winner(cls.players[0].player)
         
   
     @classmethod 

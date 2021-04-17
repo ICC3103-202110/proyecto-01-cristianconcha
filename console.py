@@ -3,6 +3,19 @@ import os
 class Console:
 
     @staticmethod
+    def wellcome():
+        os.system('cls || clear')
+        print("-----------------------------------")
+        print("---------Wellcome to Coup----------")
+        print("-----------------------------------\n")
+
+    @staticmethod
+    def winner(winner):
+        os.system('cls || clear')
+        print("\n\nThe winner is %s \n\n" % winner)
+        print("Thanks for play coup !")
+        
+    @staticmethod
     def clean():
         os.system('cls || clear')
 
