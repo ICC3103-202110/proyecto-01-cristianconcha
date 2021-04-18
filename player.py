@@ -14,7 +14,7 @@ class Player:
         print("\nYour cards:", end=" ")
         for i in range(len(self.cards)):
             print(self.cards[i], end=" ")
-        print("")
+        print("\n")
 
     def printCoins(self):
         print(self.player + ":", end = " ")
@@ -23,24 +23,29 @@ class Player:
     def print_len_cards(self):
         print(self.player + ":", end=" ")
         print(len(self.cards), end=" | ")
-
+    
     #Add coins
     def add_one_coin(self):
         self.coin += 1
     
-    def add_two_coins(self):
-        self.coin += 2
+    def add_two_coins(self, total_coins):
+        self.coin += total_coins
     
     def add_three_coins(self):
         self.coin += 3
 
     #Delete coins
     def delete_two_coins(self):
+        total_coins = 0
         if self.coin == 1:
             self.coin -= 1
-
+            total_coins += 1
+            
         elif self.coin >= 2:
             self.coin -= 2
+            total_coins += 2
+            
+        return total_coins
     
 
     def pay_three_coins(self):
@@ -82,19 +87,21 @@ class Player:
             self.cards.pop(delete)
             print("")
     
+    def delete_card_played(self,card):
+        self.cards.remove(card)
+    
     #Compare Card
     def compare_cards(self, card):
         count = self.cards.count(card)
         if count == 0:
             return False
         else:
-            #Cambiar:debo elgir con cual me quedo
-            self.cards.remove(card)
             return True
     
     #len cards
     def len_cards(self):
         return len(self.cards)
+
 
 
 

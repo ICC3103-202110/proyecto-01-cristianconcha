@@ -25,9 +25,20 @@ class Cards:
         card.append(self.cards[number])
         self.cards.pop(number)
         return card
+
+    def add_card(self, card):
+        self.cards.append(card)
         
     def card_lose(self, card):
         self.cards_lose.append(card)
+
+    def print_cards_lose(self):
+        print("Lost Cards:")
+        self.cards_lose.sort()
+        for i in range(len(self.cards_lose)):
+            print(self.cards_lose[i], end=", ")
+        print("\n")
+
 
 
     

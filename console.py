@@ -36,7 +36,7 @@ class Console:
     
     @staticmethod
     def player_select(player, card):
-        print(player," select ", card )
+        print(player,"select", card, "\n" )
 
     @staticmethod
     def invalid_action():
@@ -67,6 +67,33 @@ class Console:
         print("\nPass the computer to %s \n" % player_name)
         input("Press any key to continue... ")
         os.system('cls || clear')
+
+    #Counterattack
+    @staticmethod
+    def counterattack_foreign_aid():
+        print("The only card to counterattack the Foreign Aid is:\n")
+        print("3 = Duke\n")
+    
+    @staticmethod
+    def counterattack_captain():
+        print("The cards to counterattack the Captain is:\n")
+        print("5 = Ambaddassor")
+        print("6 = Captain\n")
+    
+    @staticmethod
+    def counterattack_assassin():
+        print("The only card to counterattack the action Assassin is:\n")
+        print("7 = Contessa\n")
+
+    @staticmethod
+    def print_losers(player):
+        print(player, end=", ")
+
+    
+    
+
+
+
 
 
     
