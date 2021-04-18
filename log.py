@@ -4,32 +4,30 @@ class Log:
     def __init__(self, log=0):
         self.log = []
     
-    #Accions
-    @staticmethod
+    #Actions
+
     def income(self, player):
         self.log.append(player,"take 1 coin for Income")
         
-    @staticmethod
+
     def foreign_aid(self,player):
         self.log.append(player,"take 2 coins for Foreign Aid")
-    
-    @staticmethod
+
     def coup(self, player, player2):
         self.log.append(player, "pay 7 coins to eliminate one influence of", player2, "for Coup")
 
-    @staticmethod
+
     def tax(self, player):
-        self.log.append(player,"take 3 coins for Duke")
+        self.log.append(player,"take 3 coins for Tax")
 
-    @staticmethod
+
     def assassinate(self, player, player2):
-        self.log.append(player, "pay 3 coins to eliminate one influence of", player2, "for Assassin")
+        self.log.append(player, "pay 3 coins to eliminate one influence of", player2, "for Assassinate")
 
-    @staticmethod
+
     def exchange(self, player):
-        self.log.append(player, "exchange 2 cards for Ambassador")
+        self.log.append(player, "exchange 2 cards for Exchange")
     
-    @staticmethod
     def steal(self, player, player2, coins):
-        self.log.append(player, "take",coins,"coins of", player2, "for Captain")
+        self.log.append(player, "take",coins,"coin(s) of", player2, "for Steal")
     

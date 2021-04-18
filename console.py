@@ -68,6 +68,21 @@ class Console:
         input("Press any key to continue... ")
         os.system('cls || clear')
 
+    #select assassinate
+    @staticmethod
+    def coup(player, player2):
+        print(player, "select",player2, "to lost one influence")
+
+    @staticmethod
+    def assassinate(player, player2):
+        print(player, "select", player2, "to assassinate one influence")
+    
+    #select steal
+    @staticmethod
+    def steal(player, player2):
+        print(player, "want to take 2 coins of", player2)
+
+
     #Counterattack
     @staticmethod
     def counterattack_foreign_aid():
