@@ -62,10 +62,15 @@ class Game:
     #Create players
     @classmethod 
     def name_players(cls):
+        """#change
         for i in range(1, cls.NUMBER_Players + 1):
             
             name = input("Give the player's %d name: " % i)
             cls.players.append(Player(name, cls.card.randomCards()))
+        """
+        cls.players.append(Player("Amelia", ["Assassin", "Duke"]))#delete
+        cls.players.append(Player("Bernabé", ["Captain", "Contessa"]))#delete
+        cls.players.append(Player("Carmen", ["Duke", "Contessa"]))#delete
 
     #Prints
     @classmethod 
@@ -183,7 +188,8 @@ class Game:
                             cls.log.pay_coup(cls.players[cls.player_how_have_card].player)
                             assassinate_or_steal = Console.select_player()
                             Console.clean()
-                            Console.coup(cls.player_how_have_card, cls.players[assassinate_or_steal].player)
+                            Console.coup(cls.players[cls.player_how_have_card].player,
+                                        cls.players[assassinate_or_steal].player)
    
                         elif cls.action_played == "Assassin":
                             cls.players[cls.player_how_have_card].pay_three_coins()
@@ -191,13 +197,15 @@ class Game:
                             cls.log.pay_assassinate(cls.players[cls.player_how_have_card].player)
                             assassinate_or_steal = Console.select_player()
                             Console.clean()
-                            Console.assassinate(cls.player_how_have_card, cls.players[assassinate_or_steal].player)
+                            Console.assassinate(cls.players[cls.player_how_have_card].player,
+                                                cls.players[assassinate_or_steal].player)
 
                         elif cls.action_played == "Captain":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
                             cls.Captain_choose()
                             assassinate_or_steal = Console.select_player()
-                            Console.steal(cls.player_how_have_card,cls.players[assassinate_or_steal].player)
+                            Console.steal(cls.players[cls.player_how_have_card].player,
+                                            cls.players[assassinate_or_steal].player)
                         
                         break
 

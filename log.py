@@ -67,7 +67,7 @@ class Log:
         self.log.append((player+" counterattack "+player2+" for the action "+self.action))
     
     def said_that_have(self, player, card):
-        self.log.apppend((player+" said that have the "+card))
+        self.log.append((player+" said that have the "+card))
 
     #lost
     def player_lost(self, player):

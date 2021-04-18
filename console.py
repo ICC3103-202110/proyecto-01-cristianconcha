@@ -31,7 +31,7 @@ class Console:
 
     @staticmethod
     def select_player():
-        player = int(input("---> "))
+        player = int(input("\n---> "))
         return player
     
     @staticmethod
@@ -75,7 +75,7 @@ class Console:
 
     @staticmethod
     def assassinate(player, player2):
-        print(player, "select", player2, "to assassinate one influence")
+        print(player, "select", player2, "to lost one influence (Assassinate)")
     
     #select steal
     @staticmethod
