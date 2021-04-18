@@ -37,10 +37,10 @@ class Log:
     
     #Pays
     def pay_coup(self, player):
-        self.log.append((player+" play 7 coins for delete one influence"))
+        self.log.append((player+" pay 7 coins for delete one influence"))
     
     def pay_assassinate(self, player):
-        self.log.append((player+" play 3 coins for assessinate one influence"))
+        self.log.append((player+" pay 3 coins for assessinate one influence"))
 
     #10 or more coins
     def more_coins(self, player):

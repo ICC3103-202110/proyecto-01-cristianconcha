@@ -39,17 +39,8 @@ class Game:
             cls.Select_Challenge()
             cls.Select_Counterattack()
 
-            if cls.select_challenge == 1:
-                cls.select_the_challenging_player()
-                cls.Challenge()
+            cls.challenge_counterattack_action()
 
-            elif cls.select_counterattack == 2:
-                cls.select_the_counterattack_player()
-                cls.Counterattack()
-
-            else:
-                cls.Action()
-            
             cls.Delete_player()
             cls.Clean_values()
             cls.player_turn()
@@ -276,7 +267,21 @@ class Game:
                 else:
                     cls.select_counterattack = 2
                     cls.counterattack_players.append(int(select))
-        
+    
+    @classmethod
+    def challenge_counterattack_action(cls):
+        if cls.select_challenge == 1 or cls.select_challenge == 3:
+            #1 for challenge the player and 3 for challenge the countterattack
+            cls.select_the_challenging_player()
+            cls.Challenge()
+
+        elif cls.select_counterattack == 2:
+            cls.select_the_counterattack_player()
+            cls.Counterattack()
+
+        else:
+            cls.Action()
+
     @classmethod
     def Challenge(cls):
         true_or_false = cls.players[cls.player_how_have_card].compare_cards(cls.action_played)
@@ -313,8 +318,8 @@ class Game:
             card = cls.card.One_random_Card() 
             cls.players[cls.player_how_have_card].add_one_card(card)
 
-            #### add a condition
-            cls.Action()
+            if cls.select_challenge == 1:
+                cls.Action()
             
             Console.press_to_continue()
 
@@ -341,9 +346,18 @@ class Game:
         cls.log.said_that_have(cls.players[cls.player_how_have_card].player,  cls.action_played)
         Console.press_to_continue()
 
+        cls.challenge_the_counterattack()
+        
+    @classmethod
+    def challenge_the_counterattack(cls):
+        cls.select_challenge = 0
+        cls.challenging_players = []
         cls.Select_Challenge()
-        cls.Challenge()
-    
+
+        if cls.select_challenge == 1:
+            cls.select_challenge = 3
+            cls.challenge_counterattack_action()
+
     @classmethod
     def select_the_challenging_player(cls):
         for i in range(len(cls.challenging_players)-1):
