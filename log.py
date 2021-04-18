@@ -45,20 +45,33 @@ class Log:
     #10 or more coins
     def more_coins(self, player):
         self.log.append((player, "have more than 10 coins, and uses the Coup"))
-        
+    
+    #Challenge 
     def challenge(self, player, player2):
         self.log.append((player, "challenge", player2, "for the action", self.action))
 
-    def counterattack(self, player, player2):
-        self.log.append((player, "counterattack", player2,"for the action", self.action))
+    def dont_have_card(self, player, card):
+        self.log.append((player, "don´t have the card:", card))
+    
+    def have_card(self, player, card):
+        self.log.append((player, "have the card:", card))
+    
+    def player_lose_card(self, player, card):
+        self.log.append((player, "lose the influence:", card, "for challenge"))
+    
+    def change_card(self, player, card):
+        self.log.append((player, "change the", card, "for another card"))
 
-    #Challenge
     #Counterattack
-    #say is he wins or lose one card
+    def counterattack(self, player, player2):
+        self.log.append((player, "counterattack", player2, "for the action", self.action))
+    
+    def said_that_have(self, player, card):
+        self.log.apppend((player, "said that have the",card))
 
-
-
-
+    #lost
+    def player_lost(self, player):
+        self.log.append((player,"lost"))
 
     #Final Action
     def income(self, player):
@@ -85,4 +98,4 @@ class Log:
     #print
     def print_log(self): #add this in the file game
         for i in range(len(self.log)):
-            print(log[i])
+            print(self.log[i])
