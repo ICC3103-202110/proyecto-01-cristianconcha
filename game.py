@@ -147,7 +147,7 @@ class Game:
                 Console.press_to_continue()
                 cls.action_played = "Coup"
                 cls.players[cls.player_how_have_card].pay_seven_coins()
-                cls.log.more_coins()
+                cls.log.more_coins(cls.players[cls.player_how_have_card].player)
                 break
                 
             else:
