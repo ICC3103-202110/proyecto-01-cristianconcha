@@ -74,4 +74,7 @@ class Log:
     def steal(self, player, player2, coins):
         self.log.append((player, "take",coins,"coin(s) of", player2, "for Steal"))
     
-
+    #print
+    def print_log(self): #add this in the file game
+        for i in range(len(self.log)):
+            print(log[i])
