@@ -52,6 +52,14 @@ class Log:
     def counterattack(self, player, player2):
         self.log.append((player, "counterattack", player2,"for the action", self.action))
 
+    #Challenge
+    #Counterattack
+    #say is he wins or lose one card
+
+
+
+
+
     #Final Action
     def income(self, player):
         self.log.append((player,"take 1 coin for Income"))
