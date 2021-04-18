@@ -60,7 +60,7 @@ class Game:
 
         Console.winner(cls.players[0].player)
         
-  
+    #Create players
     @classmethod 
     def name_players(cls):
         for i in range(1, cls.NUMBER_Players + 1):
@@ -68,6 +68,7 @@ class Game:
             name = input("Give the player's %d name: " % i)
             cls.players.append(Player(name, cls.card.randomCards()))
 
+    #Prints
     @classmethod 
     def print_Coins(cls):
         print("Coins    ", end="| ")
@@ -75,7 +76,7 @@ class Game:
             cls.players[i].printCoins()
         print("")
     
-    @classmethod  # Borrar depues
+    @classmethod  # Delete
     def print_cards(cls):
         print("Cards:")
         for i in range(len(cls.players)):
@@ -94,7 +95,42 @@ class Game:
         for i in range(len(cls.players)):
             cls.players[i].print_len_cards()
         print("")
-        
+    
+
+    #Print the players who can be affected
+    @classmethod
+    def Coup_choose(cls):
+        print("Choose the player to lose Influence \n")
+        for i in range(len(cls.players)):
+            if i == cls.player_how_have_card:
+                continue
+            else:
+                print(i, cls.players[i].player)
+    
+    @classmethod 
+    def Assassin_choose(cls): 
+        print("Choose the player to lose Influence \n")
+
+        for i in range(len(cls.players)):
+            if i == cls.player_how_have_card:
+                continue
+
+            elif cls.players[i].len_cards() == 0:
+                continue
+
+            else:
+                print(i, cls.players[i].player)
+    
+    @classmethod
+    def Captain_choose(cls):  
+        print("Choose the player to lose 2 coins \n")
+        for i in range(len(cls.players)):
+            if i == cls.player_how_have_card:
+                continue
+            else:
+                print(i, " = ", cls.players[i].player, "have", cls.players[i].coin, "coins")
+
+    #Actions
     @classmethod
     def Player_Accion(cls):
         while True:
@@ -138,45 +174,21 @@ class Game:
                     else:
                         if cls.action_played == "Coup":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
-                            print("Choose the player to lose Influence \n")
-                            for i in range(len(cls.players)):
-                                if i == cls.player_how_have_card:
-                                    continue
-                                else:
-                                    print(i, cls.players[i].player)
-                            
+                            cls.Coup_choose()
                             assassinate_or_steal = Console.select_player()
                             Console.clean()
                             Console.coup(cls.player_how_have_card,cls.players[assassinate_or_steal].player)
                             
                         elif cls.action_played == "Assassin":
                             cls.players[cls.player_how_have_card].pay_three_coins()
-
-                            print("Choose the player to lose Influence \n")
-
-                            for i in range(len(cls.players)):
-                                if i == cls.player_how_have_card:
-                                    continue
-
-                                elif cls.players[i].len_cards() == 0:
-                                    continue
-
-                                else:
-                                    print(i, cls.players[i].player)
-
+                            cls.Assassin_choose()
                             assassinate_or_steal = Console.select_player()
                             Console.clean()
                             Console.assassinate(cls.player_how_have_card, cls.players[assassinate_or_steal].player)
 
                         elif cls.action_played == "Captain":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
-                            print("Choose the player to lose 2 coins \n")
-                            for i in range(len(cls.players)):
-                                if i == cls.player_how_have_card:
-                                    continue
-                                else:
-                                    print(i, " = ", cls.players[i].player,"have", cls.players[i].coin, "coins")
-
+                            cls.Captain_choose()
                             assassinate_or_steal = Console.select_player()
                             Console.steal(cls.player_how_have_card,cls.players[assassinate_or_steal].player)
                         
