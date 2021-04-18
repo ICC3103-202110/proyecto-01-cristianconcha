@@ -59,9 +59,9 @@ class Game:
             name = input("Give the player's %d name: " % i)
             cls.players.append(Player(name, cls.card.randomCards()))
         """
-        cls.players.append(Player("Amelia", ["Assassin", "Duke"]))#delete
+        cls.players.append(Player("Amelia", ["Contessa", "Duke"]))#delete
         cls.players.append(Player("Bernabé", ["Captain", "Contessa"]))#delete
-        cls.players.append(Player("Carmen", ["Duke", "Contessa"]))#delete
+        cls.players.append(Player("Carmen", ["Duke", "Assassin"]))#delete
 
     #Prints
     @classmethod 
