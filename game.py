@@ -96,7 +96,6 @@ class Game:
             cls.players[i].print_len_cards()
         print("")
     
-
     #Print the players who can be affected
     @classmethod
     def Coup_choose(cls):
@@ -151,6 +150,7 @@ class Game:
                 Console.press_to_continue()
                 cls.action_played = "Coup"
                 cls.players[cls.player_how_have_card].pay_seven_coins()
+                cls.log.more_coins()
                 break
                 
             else:
@@ -179,13 +179,15 @@ class Game:
                         if cls.action_played == "Coup":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
                             cls.Coup_choose()
+                            cls.log.pay_coup()
                             assassinate_or_steal = Console.select_player()
                             Console.clean()
-                            Console.coup(cls.player_how_have_card,cls.players[assassinate_or_steal].player)
-                            
+                            Console.coup(cls.player_how_have_card, cls.players[assassinate_or_steal].player)
+   
                         elif cls.action_played == "Assassin":
                             cls.players[cls.player_how_have_card].pay_three_coins()
                             cls.Assassin_choose()
+                            cls.log.pay_assassinate()
                             assassinate_or_steal = Console.select_player()
                             Console.clean()
                             Console.assassinate(cls.player_how_have_card, cls.players[assassinate_or_steal].player)
@@ -336,9 +338,11 @@ class Game:
             cls.challenging_players.pop(number)
 
         cls.other_player = int(cls.challenging_players[0])
+        cls.log.challenge(cls.players[cls.other_player].player,
+                          cls.players[cls.player_how_have_card].player)
         Console.clean()
-        print("%s was selected to challenge\n" %
-              cls.players[cls.other_player].player)
+        print("%s was selected to challenge\n" %cls.players[cls.other_player].player)
+
 
     @classmethod
     def select_the_counterattack_player(cls):
@@ -347,9 +351,10 @@ class Game:
             cls.counterattack_player.pop(number)
 
         cls.player_how_have_card = int(cls.counterattack_players[0])
+        cls.log.counterattack(cls.players[cls.player_how_have_card].player,
+                          cls.players[cls.turn].player)
         Console.clean()
-        print("%s was selected to Counterattack\n" %
-              cls.players[cls.player_how_have_card].player)
+        print("%s was selected to Counterattack\n" %cls.players[cls.player_how_have_card].player)
     
     @classmethod
     def Action(cls):  #corroborate inputs numbers
