@@ -28,6 +28,9 @@ class Cards:
 
     def add_card(self, card):
         self.cards.append(card)
+    
+    def add_two_cards(self, card):
+        self.cards += card
         
     def card_lose(self, card):
         self.cards_lose.append(card)

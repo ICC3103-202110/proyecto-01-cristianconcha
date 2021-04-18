@@ -1,6 +1,6 @@
 
 class Player:
-    def __init__(self, player, cards, coin = 2): #change coins
+    def __init__(self, player, cards, coin = 7): #change coins
         self.__player = player
         self.cards = cards
         self.coin = coin
@@ -79,13 +79,18 @@ class Player:
         return card
         
     def delete_two_cards(self):
+        cards = []
         for a in range(2):
             print("Choose the number card to delete:\n")
+            
             for i in range(len(self.cards)):
                 print(i, self.cards[i])
             delete = int(input("\n---> "))
             self.cards.pop(delete)
+            cards.append(self.cards[delete])
             print("")
+
+        return cards
     
     def delete_card_played(self,card):
         self.cards.remove(card)

@@ -212,7 +212,7 @@ class Game:
             
         elif cls.action_played == "Coup":
             Console.player_select(cls.players[cls.player_how_have_card].player, cls.action_played)
-            Console.print_next_play(cls.players[cls.player_how_have_card].player)
+            Console.pass_next_player(cls.players[cls.player_how_have_card].player)
             
         elif cls.action_played == "Foreign Aid":
             pass
@@ -412,7 +412,8 @@ class Game:
         elif cls.action_played == "Ambassador":  # (Exhange)
             cards = cls.card.randomCards()
             cls.players[cls.player_how_have_card].add_two_cards(cards)
-            cls.players[cls.player_how_have_card].delete_two_cards()
+            cards = cls.players[cls.player_how_have_card].delete_two_cards()
+            cls.card.add_two_cards(cards)
             cls.log.exchange(cls.players[cls.player_how_have_card].player)
             
         elif cls.action_played == "Captain":  # (Steal)
