@@ -24,7 +24,7 @@ class Game:
     challenging_players = []  # Player to challenge
     counterattack_players = []  #Player to counter attack
     
-    assassinate_or_steal = None #number player who lost
+    assassinate_or_steal = 0 #number player who lost
     
 
     @classmethod
@@ -143,7 +143,7 @@ class Game:
             print("")
             cls.print_losers()
             cls.card.print_cards_lose()
-            cls.print_cards()  #borrar
+            cls.print_cards()  #delete
             print("")
 
             if cls.players[cls.player_how_have_card].coin >= 10:
@@ -172,6 +172,10 @@ class Game:
                         print("You don`t have 3 coins\n")
 
                     else:
+                        cls.log.action_selected(cls.action_played,
+                        cls.players[cls.player_how_have_card].player,
+                        cls.players[cls.assassinate_or_steal].player)
+
                         if cls.action_played == "Coup":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
                             cls.Coup_choose()
