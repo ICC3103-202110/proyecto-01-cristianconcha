@@ -85,9 +85,10 @@ class Player:
             
             for i in range(len(self.cards)):
                 print(i, self.cards[i])
+
             delete = int(input("\n---> "))
-            self.cards.pop(delete)
             cards.append(self.cards[delete])
+            self.cards.pop(delete)
             print("")
 
         return cards

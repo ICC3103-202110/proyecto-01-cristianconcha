@@ -96,6 +96,7 @@ class Log:
         self.log.append((player + " take " + coins + " coin(s) of " + player2 + " for Steal"))
     
     def turn(self, player):
+        self.log.append(int(1))
         self.log.append(("--- "+player+" turn ---"))
     
     #print
