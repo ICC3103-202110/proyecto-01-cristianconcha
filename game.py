@@ -2,11 +2,13 @@ from numpy import random
 from player import Player
 from cards import Cards
 from console import Console
+from log import Log
 class Game:
  
     actions = ["Income", "Foreign Aid", "Coup", "Duke", "Assassin", "Ambassador", "Captain", "Contessa"]
     NUMBER_Players = 3  #int(input("Enter the number of playeres (3 or 4): "))
     card = Cards()
+    log = Log()
     players = []
     losers = []
     turn = 0
@@ -238,7 +240,7 @@ class Game:
 
             cls.players[cls.player_how_have_card].delete_card_played(cls.action_played)
             cls.card.add_card(cls.action_played)
-            
+
             card = cls.card.One_random_Card()
             print("Esta es la carta: ", card)
             print("Cartas:", cls.players[cls.player_how_have_card].cards)
