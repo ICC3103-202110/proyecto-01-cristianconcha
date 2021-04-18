@@ -54,11 +54,6 @@ class Game:
             cls.Clean_values()
             cls.player_turn()
 
-            if cls.turn == cls.NUMBER_Players:
-                Console.clean()
-                cls.log.print_log()
-                Console.press_to_continue()
-
             if len(cls.players) == 1:
                 break
 
@@ -136,6 +131,8 @@ class Game:
     #Actions
     @classmethod
     def Player_Accion(cls):
+        cls.log.turn(cls.players[cls.turn].player)
+        
         while True:
             cls.player_how_have_card = int(cls.turn)
             
@@ -305,9 +302,10 @@ class Game:
             cls.card.add_card(cls.action_played)
             cls.log.change_card(cls.players[cls.player_how_have_card].player, cls.action_played)
 
-            card = cls.card.One_random_Card()
-                    
+            card = cls.card.One_random_Card() 
             cls.players[cls.player_how_have_card].add_one_card(card)
+
+            #### add a condition
             cls.Action()
             
             Console.press_to_continue()
@@ -341,7 +339,7 @@ class Game:
     @classmethod
     def select_the_challenging_player(cls):
         for i in range(len(cls.challenging_players)-1):
-            number = random.randint(0, len(cls.challenging_players))
+            number = random.randint(0, len(cls.challenging_players)-1)
             cls.challenging_players.pop(number)
 
         cls.other_player = int(cls.challenging_players[0])
@@ -353,7 +351,7 @@ class Game:
     @classmethod
     def select_the_counterattack_player(cls):
         for i in range(len(cls.counterattack_players)-1):
-            number = random.randint(0, len(cls.counterattack_players))
+            number = random.randint(0, len(cls.counterattack_players)-1)###
             cls.counterattack_player.pop(number)
 
         cls.player_how_have_card = int(cls.counterattack_players[0])
@@ -367,39 +365,39 @@ class Game:
 
         if cls.action_played == "Income":  
             cls.players[cls.player_how_have_card].add_one_coin()
-            cls.log.income(cls.players[player_how_have_card].player)
+            cls.log.income(cls.players[cls.player_how_have_card].player)
         
         elif cls.action_played == "Foreign Aid":  
             cls.players[cls.player_how_have_card].add_two_coins()
-            cls.log.foreign_aid(cls.players[player_how_have_card].player)
+            cls.log.foreign_aid(cls.players[cls.player_how_have_card].player)
         
         elif cls.action_played == "Coup":
             Console.pass_next_player(cls.players[assassinate_or_steal].player)
             cls.players[assassinate_or_steal].delete_one_card()
-            cls.log.coup(cls.players[player_how_have_card].player,
-                         cls.players[assassinate_or_steal].player)
+            cls.log.coup(cls.players[cls.player_how_have_card].player,
+                         cls.players[cls.assassinate_or_steal].player)
               
         elif cls.action_played == "Duke":  #(tax)
             cls.players[cls.player_how_have_card].add_three_coins()
-            cls.log.tax(cls.players[player_how_have_card].player)
+            cls.log.tax(cls.players[cls.player_how_have_card].player)
         
         elif cls.action_played == "Assassin":  # (assassinate)
             Console.pass_next_player(cls.players[assassinate_or_steal].player)
-            cls.players[assassinate_or_steal].delete_one_card()
-            cls.log.assassinate(cls.players[player_how_have_card].player,
-            cls.players[assassinate_or_steal].player)
+            cls.players[cls.assassinate_or_steal].delete_one_card()
+            cls.log.assassinate(cls.players[cls.player_how_have_card].player,
+            cls.players[cls.assassinate_or_steal].player)
                 
         elif cls.action_played == "Ambassador":  # (Exhange)
             cards = cls.card.randomCards()
             cls.players[cls.player_how_have_card].add_two_cards(cards)
             cls.players[cls.player_how_have_card].delete_two_cards()
-            cls.log.exchange(cls.players[player_how_have_card].player)
+            cls.log.exchange(cls.players[cls.player_how_have_card].player)
             
         elif cls.action_played == "Captain":  # (Steal)
-            total_coins = cls.players[assassinate_or_steal].delete_two_coins()
+            total_coins = cls.players[cls.ssassinate_or_steal].delete_two_coins()
             cls.players[cls.player_how_have_card].add_two_coins(total_coins)
-            cls.log.steal(cls.players[player_how_have_card].player,
-                          cls.players[assassinate_or_steal].player,
+            cls.log.steal(cls.players[cls.player_how_have_card].player,
+                          cls.players[cls.assassinate_or_steal].player,
                           total_coins)
 
     @classmethod
@@ -433,6 +431,9 @@ class Game:
     def player_turn(cls):
         
         if cls.turn == cls.NUMBER_Players - 1:
+            Console.clean()
+            cls.log.print_log()
+            Console.press_to_continue()
             cls.turn = 0
 
         elif len(cls.players)-1 < cls.NUMBER_Players-1:
@@ -440,7 +441,9 @@ class Game:
 
         else:
             cls.turn += 1
-                
-                    
+        
+                  
 if __name__ == "__main__":
     Game.play()
+ 
+                
