@@ -72,6 +72,12 @@ class Console:
         print("\nPass the computer to %s \n" % player_name)
         input("Press any key to continue... ")
         os.system('cls || clear')
+    
+    @staticmethod
+    def pass_next_player_cards(player_name):
+        print("\nPass the computer to %s to see his cards" % player_name)
+        input("Press any key to continue... ")
+        os.system('cls || clear')
 
     #select assassinate
     @staticmethod

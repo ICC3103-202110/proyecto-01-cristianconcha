@@ -33,6 +33,7 @@ class Game:
         Console.wellcome()
         cls.number_of_players()
         cls.name_players()
+        #cls.see_player_cards()
 
         while True:
             Console.clean()
@@ -105,6 +106,14 @@ class Game:
             cls.players[i].print_len_cards()
         print("\n")
     
+    @classmethod
+    def see_player_cards(cls):
+        Console.clean()
+        for i in range(len(cls.players)):
+            Console.pass_next_player_cards(cls.players[i].player)
+            cls.players[i].printCard()
+            Console.press_to_continue()
+
     #Print the players who can be affected
     @classmethod
     def Coup_choose(cls):
