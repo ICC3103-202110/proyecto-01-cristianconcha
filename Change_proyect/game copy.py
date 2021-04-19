@@ -53,7 +53,6 @@ class Game:
     #Create players
     #Prints    
 
-
     #Print the players who can be affected
     @classmethod
     def Coup_or_Assassin_choose(cls): #action

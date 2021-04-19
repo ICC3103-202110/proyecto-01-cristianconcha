@@ -1,10 +1,12 @@
 from console import Console
 from player import Player
 from prints import Print
+from cards import Cards
 
 class Game:
 
     NUMBER_PLAYERS = None
+    card = Cards()
     players = []
     losers = []
 
@@ -22,13 +24,9 @@ class Game:
             Print.coins(cls.players)
             Print.len_cards(cls.players)
             Print.print_losers(cls.losers)
+            Print.cards_lose(cls.card.cards_lose)
             break
             
-
-
-
-
-
 
 
 

@@ -46,6 +46,13 @@ class Print():
         for i in range(len(losers)):
             print(losers[i].player + ":", end=", ")   
         print("\n")
+
+    @staticmethod
+    def cards_lose(cards_lose):
+        print("Lost Cards:")
+        for i in range(len(cards_lose)):
+            print(cards_lose[i], end=", ")
+        print("\n")
     
     
     
