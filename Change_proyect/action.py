@@ -14,7 +14,7 @@ class Action:
         self.assassinate_or_steal = assassinate_or_steal
 
 
-    def select_action(self):  # action
+    def select_action(self):  
 
         while True:
             print("\nTurn: ")  # delete ###########

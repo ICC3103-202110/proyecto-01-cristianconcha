@@ -4,6 +4,7 @@ from prints import Print
 from cards import Cards
 from action import Action
 from challenge import Challenge
+from counterattack import Countterattack
 from log import Log
 
 class Game:
@@ -11,7 +12,7 @@ class Game:
     NUMBER_PLAYERS = None
     card = Cards()
     challenge = Challenge()
-    counterattack = Counterattack()
+    counterattack = Countterattack()
     log = Log()
 
     players = []
@@ -41,7 +42,18 @@ class Game:
             select_challenge = challenge.select_challenge()
             select_counterattack = counterattack.select_counterattack()
 
-            
+   
+            if select_challenge == 1:
+                challenge.select_the_challenging_player()
+                true_or_false_counter = challenge.start_challenge()
+
+            if select_counterattack == 2 and true_or_false_counter == True:
+                counterattack.select_the_counterattack_player()
+                #cls.Counterattack()
+
+            else:
+                pass
+                #cls.Action()
 
 
 
