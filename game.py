@@ -394,8 +394,8 @@ class Game:
             cls.log.foreign_aid(cls.players[cls.player_how_have_card].player)
         
         elif cls.action_played == "Coup":
-            Console.pass_next_player(cls.players[assassinate_or_steal].player)
-            cls.players[assassinate_or_steal].delete_one_card()
+            Console.pass_next_player(cls.players[cls.assassinate_or_steal].player)
+            cls.players[cls.assassinate_or_steal].delete_one_card()
             cls.log.coup(cls.players[cls.player_how_have_card].player,
                          cls.players[cls.assassinate_or_steal].player)
               
@@ -404,7 +404,7 @@ class Game:
             cls.log.tax(cls.players[cls.player_how_have_card].player)
         
         elif cls.action_played == "Assassin":  # (assassinate)
-            Console.pass_next_player(cls.players[assassinate_or_steal].player)
+            Console.pass_next_player(cls.players[cls.assassinate_or_steal].player)
             cls.players[cls.assassinate_or_steal].delete_one_card()
             cls.log.assassinate(cls.players[cls.player_how_have_card].player,
             cls.players[cls.assassinate_or_steal].player)
