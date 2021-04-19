@@ -54,18 +54,6 @@ class Game:
     #Create players
 
 
-    @classmethod 
-    def name_players(cls):
-        """#change
-        for i in range(1, cls.NUMBER_Players + 1):
-            
-            name = input("Give the player's %d name: " % i)
-            cls.players.append(Player(name, cls.card.randomCards()))
-        """
-        cls.players.append(Player("Amelia", ["Contessa", "Duke"]))#delete
-        cls.players.append(Player("Bernabé", ["Captain", "Contessa"]))#delete
-        cls.players.append(Player("Carmen", ["Duke", "Assassin"]))#delete
-
     #Prints
     @classmethod 
     def print_Coins(cls):

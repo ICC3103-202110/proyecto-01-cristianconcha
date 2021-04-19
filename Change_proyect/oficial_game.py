@@ -3,7 +3,9 @@ from player import Player
 
 class Game:
 
+    NUMBER_PLAYERS = None
     players = []
+    losers = []
 
 
     @classmethod
@@ -21,7 +23,7 @@ class Game:
         while True:
             number = Console.number_of_players()
             if number == 3 or number == 4:
-                cls.NUMBER_Players = number
+                cls.NUMBER_PLAYERS= number
                 break
             else:
                 print("The game only accept 3 or 4 players")
