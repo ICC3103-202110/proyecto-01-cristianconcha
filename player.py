@@ -54,44 +54,59 @@ class Player:
         self.coin -= 7
 
     #Add card
-    def add_one_card(self, card):#are the same
+    def add_one_card(self, card):
         self.cards += card
 
     def add_two_cards(self, card):
         self.cards += card
 
     #Delete card
-    def delete_card(self):
+    def delete_card(self):  #see if i use this
         if len(self.cards) == 0:
             return
         else:
             self.cards.pop()
     
     def delete_one_card(self):
-        print("Choose the number card to delete:\n")
-        for i in range(len(self.cards)):
-            print(i, self.cards[i])
+        while True:
+            print("Choose the number card to delete:\n")
+            for i in range(len(self.cards)):
+                print(i, self.cards[i])
 
-        delete = int(input("\n---> "))
-        card = self.cards[delete]
-        self.cards.pop(delete)
-        return card
+            delete = int(input("\n---> "))
+
+            if delete < len(self.cards):
+                card = self.cards[delete]
+                self.cards.pop(delete)
+                return card
+            else:
+                print("The number is invalid\n")
         
     def delete_two_cards(self):
         cards = []
-        for a in range(2):
+        len_card = 0
+
+        while True:
             print("Choose the number card to delete:\n")
             
             for i in range(len(self.cards)):
                 print(i, self.cards[i])
 
             delete = int(input("\n---> "))
-            cards.append(self.cards[delete])
-            self.cards.pop(delete)
-            print("")
 
-        return cards
-    
+            if delete < len(self.cards):
+                cards.append(self.cards[delete])
+                self.cards.pop(delete)
+                len_card += 1
+                if len_card == 2:
+                    return cards
+
+            else:
+                print("The number is invalid\n\n")
+
+            
+
+        
     def delete_card_played(self,card):
         self.cards.remove(card)
     
