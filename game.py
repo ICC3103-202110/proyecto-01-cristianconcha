@@ -115,7 +115,7 @@ class Game:
 
     #Print the players who can be affected
     @classmethod
-    def Coup_choose(cls):
+    def Coup_or_Assassin_choose(cls):
         while True:
             print("Choose the player to lose Influence \n")
             for i in range(len(cls.players)):
@@ -130,21 +130,6 @@ class Game:
             else:
                 Console.clean()
                 print("The number is invalid\n")
-
-        
-    @classmethod 
-    def Assassin_choose(cls): 
-        print("Choose the player to lose Influence \n")
-
-        for i in range(len(cls.players)):
-            if i == cls.player_how_have_card:
-                continue
-
-            elif cls.players[i].len_cards() == 0:
-                continue
-
-            else:
-                print(i, cls.players[i].player)
     
     @classmethod
     def Captain_choose(cls):
@@ -213,7 +198,7 @@ class Game:
 
                         if cls.action_played == "Coup":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
-                            cls.assassinate_or_steal = cls.Coup_choose()
+                            cls.assassinate_or_steal = cls.Coup_or_Assassin_choose()
                             cls.log.pay_coup(cls.players[cls.player_how_have_card].player)
                             Console.clean()
                             Console.coup(cls.players[cls.player_how_have_card].player,
@@ -221,10 +206,7 @@ class Game:
    
                         elif cls.action_played == "Assassin":
                             cls.players[cls.player_how_have_card].pay_three_coins()
-                            cls.Assassin_choose()
-
-                            cls.assassinate_or_steal = Console.select_player()
-
+                            cls.assassinate_or_steal = cls.Coup_or_Assassin_choose()
                             cls.log.pay_assassinate(cls.players[cls.player_how_have_card].player)
                             Console.clean()
                             Console.assassinate(cls.players[cls.player_how_have_card].player,
@@ -233,7 +215,6 @@ class Game:
                         elif cls.action_played == "Captain":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
                             cls.assassinate_or_steal = cls.Captain_choose()
-                            
                             Console.clean()
                             Console.steal(cls.players[cls.player_how_have_card].player,
                                             cls.players[cls.assassinate_or_steal].player)
