@@ -9,21 +9,6 @@ class Player:
     def player(self):
         return self.__player
     
-    #Print
-    def printCard(self):
-        print("\nYour cards:", end=" ")
-        for i in range(len(self.cards)):
-            print(self.cards[i], end=" ")
-        print("\n")
-
-    def printCoins(self):
-        print(self.player + ":", end = " ")
-        print(self.coin, end=" | ")
-    
-    def print_len_cards(self):
-        print(self.player + ":", end=" ")
-        print(len(self.cards), end=" | ")
-    
     #Add coins
     def add_one_coin(self):
         self.coin += 1

@@ -1,5 +1,6 @@
 from console import Console
 from player import Player
+from prints import Print
 
 class Game:
 
@@ -10,9 +11,22 @@ class Game:
 
     @classmethod
     def play(cls):
+        Print.wellcome()
+        cls.number_of_players()
+        cls.name_players()
+
+        #Print.see_players_cards(cls.players)
+
+        while True:
+            Console.clean()
+            Print.coins(cls.players)
+            Print.len_cards(cls.players)
+            Print.print_losers(cls.losers)
+            break
+            
 
 
-        pass
+
 
 
 

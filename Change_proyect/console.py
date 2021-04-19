@@ -2,12 +2,6 @@ import os
 
 class Console:
 
-    @staticmethod
-    def wellcome():
-        os.system('cls || clear')
-        print("-----------------------------------")
-        print("---------Wellcome to Coup----------")
-        print("-----------------------------------\n")
 
     @staticmethod
     def winner(winner):
@@ -135,9 +129,6 @@ class Console:
             else:
                 print("The number is invalid\n")
 
-    @staticmethod
-    def print_losers(player):
-        print(player, end=", ")
 
 
     

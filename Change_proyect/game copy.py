@@ -28,13 +28,12 @@ class Game:
 
     @classmethod
     def play(cls): ###
-        Console.wellcome()
-        cls.number_of_players()
-        cls.name_players()
-        #cls.see_player_cards()
+        
+
+
 
         while True:
-            Console.clean()
+            
             
             cls.Player_Accion()
             cls.Select_Challenge()
@@ -52,43 +51,8 @@ class Game:
         Console.winner(cls.players[0].player)
         
     #Create players
+    #Prints    
 
-
-    #Prints
-    @classmethod 
-    def print_Coins(cls):
-        print("Coins    ", end="| ")
-        for i in range(len(cls.players)):
-            cls.players[i].printCoins()
-        print("")
-    
-    @classmethod  # Delete
-    def print_cards(cls):
-        print("Cards:")
-        for i in range(len(cls.players)):
-            cls.players[i].printCard()
-        
-    @classmethod
-    def print_losers(cls):
-        print("Losers: ")
-        for i in range(len(cls.losers)):
-            Console.print_losers(cls.losers[i])
-        print("")
-
-    @classmethod
-    def print_players_cards(cls):
-        print("Influence", end="| ")
-        for i in range(len(cls.players)):
-            cls.players[i].print_len_cards()
-        print("\n")
-    
-    @classmethod
-    def see_player_cards(cls):
-        Console.clean()
-        for i in range(len(cls.players)):
-            Console.pass_next_player_cards(cls.players[i].player)
-            cls.players[i].printCard()
-            Console.press_to_continue()
 
     #Print the players who can be affected
     @classmethod
