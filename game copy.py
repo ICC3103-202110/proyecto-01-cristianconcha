@@ -1,7 +1,5 @@
 from numpy import random
-from player import Player
 from cards import Cards
-from console import Console
 from log import Log
 class Game:
  
@@ -29,7 +27,7 @@ class Game:
     
 
     @classmethod
-    def play(cls):
+    def play(cls): ###
         Console.wellcome()
         cls.number_of_players()
         cls.name_players()
@@ -54,16 +52,7 @@ class Game:
         Console.winner(cls.players[0].player)
         
     #Create players
-    @classmethod
-    def number_of_players(cls):
-        
-        while True:
-            number = Console.number_of_players()
-            if number == 3 or number == 4:
-                cls.NUMBER_Players = number
-                break
-            else:
-                print("The game only accept 3 or 4 players")
+
 
     @classmethod 
     def name_players(cls):
