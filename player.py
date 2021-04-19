@@ -47,7 +47,6 @@ class Player:
             
         return total_coins
     
-
     def pay_three_coins(self):
         self.coin -= 3
 

@@ -18,6 +18,11 @@ class Console:
     @staticmethod
     def clean():
         os.system('cls || clear')
+    
+    @staticmethod
+    def number_of_players():
+        number = int(input("Enter the number of playeres (3 or 4): "))
+        return number
 
     @staticmethod
     def select_action():

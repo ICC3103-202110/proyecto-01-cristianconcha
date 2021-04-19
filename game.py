@@ -6,9 +6,10 @@ from log import Log
 class Game:
  
     actions = ["Income", "Foreign Aid", "Coup", "Duke", "Assassin", "Ambassador", "Captain", "Contessa"]
-    NUMBER_Players = 3  #int(input("Enter the number of playeres (3 or 4): "))
+    NUMBER_Players = None
     card = Cards()
     log = Log()
+    
     players = []
     losers = []
     turn = 0
@@ -30,6 +31,7 @@ class Game:
     @classmethod
     def play(cls):
         Console.wellcome()
+        cls.number_of_players()
         cls.name_players()
 
         while True:
@@ -51,6 +53,18 @@ class Game:
         Console.winner(cls.players[0].player)
         
     #Create players
+    @classmethod
+    def number_of_players(cls):
+
+        while True:
+            number = Console.number_of_players()
+            if number == 3 or number == 4:
+                cls.NUMBER_Players = number
+                break
+            else:
+                print("The game only accept 3 or 4 players")
+
+        
     @classmethod 
     def name_players(cls):
         """#change
