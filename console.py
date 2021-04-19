@@ -104,6 +104,7 @@ class Console:
     def print_losers(player):
         print(player, end=", ")
 
+
     
     
 

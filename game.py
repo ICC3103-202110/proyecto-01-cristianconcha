@@ -89,7 +89,7 @@ class Game:
         print("Influence", end="| ")
         for i in range(len(cls.players)):
             cls.players[i].print_len_cards()
-        print("")
+        print("\n")
     
     #Print the players who can be affected
     @classmethod
@@ -132,14 +132,13 @@ class Game:
         while True:
             cls.player_how_have_card = int(cls.turn)
             
-            print("\nTurn: ",cls.turn) #delete
+            print("\nTurn: ",cls.turn) #delete ###########
             Console.player_turn(cls.players[cls.player_how_have_card].player)
             cls.print_Coins()
             cls.print_players_cards()
-            print("")
             cls.print_losers()
             cls.card.print_cards_lose()
-            cls.print_cards()  #delete
+            cls.print_cards()  #delete ##############
             print("")
 
             if cls.players[cls.player_how_have_card].coin >= 10:
@@ -176,27 +175,28 @@ class Game:
                         if cls.action_played == "Coup":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
                             cls.Coup_choose()
+                            cls.assassinate_or_steal = Console.select_player()
                             cls.log.pay_coup(cls.players[cls.player_how_have_card].player)
-                            assassinate_or_steal = Console.select_player()
                             Console.clean()
                             Console.coup(cls.players[cls.player_how_have_card].player,
-                                        cls.players[assassinate_or_steal].player)
+                                        cls.players[cls.assassinate_or_steal].player)
    
                         elif cls.action_played == "Assassin":
                             cls.players[cls.player_how_have_card].pay_three_coins()
                             cls.Assassin_choose()
+                            cls.assassinate_or_steal = Console.select_player()
                             cls.log.pay_assassinate(cls.players[cls.player_how_have_card].player)
-                            assassinate_or_steal = Console.select_player()
                             Console.clean()
                             Console.assassinate(cls.players[cls.player_how_have_card].player,
-                                                cls.players[assassinate_or_steal].player)
+                                                cls.players[cls.assassinate_or_steal].player)
 
                         elif cls.action_played == "Captain":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
                             cls.Captain_choose()
-                            assassinate_or_steal = Console.select_player()
+                            cls.assassinate_or_steal = Console.select_player()
+                            Console.clean()
                             Console.steal(cls.players[cls.player_how_have_card].player,
-                                            cls.players[assassinate_or_steal].player)
+                                            cls.players[cls.assassinate_or_steal].player)
                         
                         break
 
@@ -225,6 +225,7 @@ class Game:
                 
                 print("\nPlayers:")
                 for i in range(len(cls.players)):
+
                     if i == cls.player_how_have_card:
                         continue
                     else:
@@ -234,6 +235,7 @@ class Game:
                 
                 if select == "c":
                     break
+                
                 else:
                     cls.select_challenge = 1
                     cls.challenging_players.append(int(select))
@@ -271,7 +273,7 @@ class Game:
     @classmethod
     def challenge_counterattack_action(cls):
         if cls.select_challenge == 1 or cls.select_challenge == 3:
-            #1 for challenge the player and 3 for challenge the countterattack
+            #1 for challenge the first action and 3 for challenge the countterattack
             cls.select_the_challenging_player()
             cls.Challenge()
 
@@ -297,7 +299,8 @@ class Game:
 
         elif true_or_false == True:  #Player turn Have the car
             
-            print("The player %s" % cls.players[cls.player_how_have_card].player, "have the %s" % cls.action_played)
+            print("The player %s" % cls.players[cls.player_how_have_card].player, 
+            "have the %s" % cls.action_played)
             cls.log.have_card(cls.players[cls.player_how_have_card].player, cls.action_played)
             
             print("\nThe player %s lose one card" % cls.players[cls.other_player].player)
@@ -342,7 +345,8 @@ class Game:
         cls.action_played = cls.actions[select]
         Console.clean()
 
-        print(cls.players[cls.player_how_have_card].player, "say that he have the %s\n" % cls.action_played)
+        print(cls.players[cls.player_how_have_card].player, 
+        "say that he have the %s\n" % cls.action_played)
         cls.log.said_that_have(cls.players[cls.player_how_have_card].player,  cls.action_played)
         Console.press_to_continue()
 
@@ -355,7 +359,7 @@ class Game:
         cls.Select_Challenge()
 
         if cls.select_challenge == 1:
-            cls.select_challenge = 3
+            cls.select_challenge = 3 #challenge the counterattack
             cls.challenge_counterattack_action()
 
     @classmethod
@@ -373,7 +377,7 @@ class Game:
     @classmethod
     def select_the_counterattack_player(cls):
         for i in range(len(cls.counterattack_players)-1):
-            number = random.randint(0, len(cls.counterattack_players)-1)###
+            number = random.randint(0, len(cls.counterattack_players)-1)
             cls.counterattack_player.pop(number)
 
         cls.player_how_have_card = int(cls.counterattack_players[0])
@@ -390,7 +394,7 @@ class Game:
             cls.log.income(cls.players[cls.player_how_have_card].player)
         
         elif cls.action_played == "Foreign Aid":  
-            cls.players[cls.player_how_have_card].add_two_coins()
+            cls.players[cls.player_how_have_card].add_two_coins(2)
             cls.log.foreign_aid(cls.players[cls.player_how_have_card].player)
         
         elif cls.action_played == "Coup":
