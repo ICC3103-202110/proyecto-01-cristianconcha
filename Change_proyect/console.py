@@ -94,7 +94,7 @@ class Console: #inputs or clean console
         while True:
             print("Choose the player to lose Influence \n")
             for i in range(len(players)):
-                if i == player:
+                if players[i] == player:
                     continue
                 else:
                     print(i, players[i].player)
@@ -111,7 +111,7 @@ class Console: #inputs or clean console
         while True:
             print("Choose the player to lose 2 coins \n")
             for i in range(len(players)):
-                if i == player:
+                if players[i] == player:
                     continue
                 else:
                     print(i, " = ", players[i].player,

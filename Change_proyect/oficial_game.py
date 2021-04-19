@@ -3,13 +3,17 @@ from player import Player
 from prints import Print
 from cards import Cards
 from action import Action
+from challenge import Challenge
 from log import Log
 
 class Game:
 
     NUMBER_PLAYERS = None
     card = Cards()
+    challenge = Challenge()
+    counterattack = Counterattack()
     log = Log()
+
     players = []
     losers = []
     turn = 0
@@ -33,6 +37,11 @@ class Game:
             log.turn(cls.turn)  # change
             action = Action(cls.players, cls.players[cls.turn], cls.log)
             action.select_action()
+
+            select_challenge = challenge.select_challenge()
+            select_counterattack = counterattack.select_counterattack()
+
+            
 
 
 

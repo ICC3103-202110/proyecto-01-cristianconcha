@@ -56,72 +56,9 @@ class Game:
     #Actions
 
         
-    @classmethod
-    def Select_Challenge(cls): #challenge
-
-        if cls.action_played == "Income":
-            Console.player_select(cls.players[cls.player_how_have_card].player, cls.action_played)
-            Console.press_to_continue()
-            
-        elif cls.action_played == "Coup":
-            Console.player_select(cls.players[cls.player_how_have_card].player, cls.action_played)
-            Console.pass_next_player(cls.players[cls.player_how_have_card].player)
-            
-        elif cls.action_played == "Foreign Aid":
-            pass
-                    
-        else:
-            while True:
-                Console.player_select(
-                    cls.players[cls.player_how_have_card].player, cls.action_played)
-                print("Some player wants to challenge: \n")
-                
-                print("\nPlayers:")
-                for i in range(len(cls.players)):
-
-                    if i == cls.player_how_have_card:
-                        continue
-                    else:
-                        print("", i, "=", cls.players[i].player)
-                
-                select = Console.select_player_number()
-                
-                if select == "c":
-                    break
-                
-                else:
-                    cls.select_challenge = 1
-                    cls.challenging_players.append(int(select))
     
-    @classmethod
-    def Select_Counterattack(cls):
-        if cls.action_played == "Income":
-            pass
+    
 
-        elif cls.action_played == "Coup":
-            pass
-
-        else:
-            while True:
-                Console.player_select(
-                    cls.players[cls.player_how_have_card].player, cls.action_played)
-
-                print("Some player wants to counterattack: \n")
-                print("Players:")
-
-                for i in range(len(cls.players)):
-                    if i == cls.player_how_have_card:
-                        continue
-                    else:
-                        print("", i, "=", cls.players[i].player)
-
-                select = Console.select_player_number()
-
-                if select == "c":
-                    break
-                else:
-                    cls.select_counterattack = 2
-                    cls.counterattack_players.append(int(select))
     
     @classmethod
     def challenge_counterattack_action(cls):
