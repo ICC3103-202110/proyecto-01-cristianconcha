@@ -115,7 +115,7 @@ class Game:
 
     #Print the players who can be affected
     @classmethod
-    def Coup_or_Assassin_choose(cls):
+    def Coup_or_Assassin_choose(cls): #action
         while True:
             print("Choose the player to lose Influence \n")
             for i in range(len(cls.players)):
@@ -132,7 +132,7 @@ class Game:
                 print("The number is invalid\n")
     
     @classmethod
-    def Captain_choose(cls):
+    def Captain_choose(cls): #action
         while True:
             print("Choose the player to lose 2 coins \n")
             for i in range(len(cls.players)):
@@ -150,7 +150,7 @@ class Game:
 
     #Actions
     @classmethod
-    def Player_Accion(cls):
+    def Player_Accion(cls): #action
         cls.log.turn(cls.players[cls.turn].player)
         
         while True:
@@ -225,7 +225,7 @@ class Game:
                     Console.invalid_action()
         
     @classmethod
-    def Select_Challenge(cls):
+    def Select_Challenge(cls): #challenge
 
         if cls.action_played == "Income":
             Console.player_select(cls.players[cls.player_how_have_card].player, cls.action_played)
@@ -306,7 +306,7 @@ class Game:
             cls.Action()
 
     @classmethod
-    def Challenge(cls):
+    def Challenge(cls): #challenge
         true_or_false = cls.players[cls.player_how_have_card].compare_cards(cls.action_played)
         
         if true_or_false == False:  #Player turn Dont have the card
@@ -348,7 +348,7 @@ class Game:
             Console.press_to_continue()
 
     @classmethod
-    def Counterattack(cls):
+    def Counterattack(cls): #counterattack
         Console.pass_next_player(cls.players[cls.player_how_have_card].player)
 
         if cls.action_played == "Foreign Aid":  
@@ -371,7 +371,7 @@ class Game:
         cls.challenge_the_counterattack()
         
     @classmethod
-    def challenge_the_counterattack(cls):
+    def challenge_the_counterattack(cls): 
         cls.select_challenge = 0
         cls.challenging_players = []
         cls.Select_Challenge()
@@ -381,7 +381,7 @@ class Game:
             cls.challenge_counterattack_action()
 
     @classmethod
-    def select_the_challenging_player(cls):
+    def select_the_challenging_player(cls): #challenge
         for i in range(len(cls.challenging_players)-1):
             number = random.randint(0, len(cls.challenging_players)-1)
             cls.challenging_players.pop(number)
@@ -393,7 +393,7 @@ class Game:
         print("%s was selected to challenge\n" %cls.players[cls.other_player].player)
 
     @classmethod
-    def select_the_counterattack_player(cls):
+    def select_the_counterattack_player(cls): #counterattack
         for i in range(len(cls.counterattack_players)-1):
             number = random.randint(0, len(cls.counterattack_players)-1)
             cls.counterattack_player.pop(number)
@@ -405,7 +405,7 @@ class Game:
         print("%s was selected to Counterattack\n" %cls.players[cls.player_how_have_card].player)
     
     @classmethod
-    def Action(cls):  #corroborate inputs numbers
+    def Action(cls):  #actions
 
         if cls.action_played == "Income":  
             cls.players[cls.player_how_have_card].add_one_coin()
@@ -456,7 +456,7 @@ class Game:
         cls.counterattack_player = []  
       
     @classmethod
-    def Delete_player(cls):
+    def Delete_player(cls): 
         delete = []
         for i in range(len(cls.players)):
             if cls.players[i].len_cards() == 0: #contar cartas

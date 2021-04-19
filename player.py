@@ -85,7 +85,6 @@ class Player:
     def delete_two_cards(self):
         cards = []
         len_card = 0
-
         while True:
             print("Choose the number card to delete:\n")
             
@@ -100,13 +99,9 @@ class Player:
                 len_card += 1
                 if len_card == 2:
                     return cards
-
             else:
                 print("The number is invalid\n\n")
-
-            
-
-        
+ 
     def delete_card_played(self,card):
         self.cards.remove(card)
     
