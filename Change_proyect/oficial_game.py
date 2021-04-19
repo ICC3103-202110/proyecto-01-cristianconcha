@@ -36,7 +36,7 @@ class Game:
             Print.cards_lose(cls.card.cards_lose)
 
             log.turn(cls.turn)  # change
-            action = Action(cls.players, cls.players[cls.turn], cls.log)
+            action = Action(cls.players, cls.players[cls.turn],cls.card ,cls.log)
             action.select_action()
 
             select_challenge = challenge.select_challenge()
@@ -46,14 +46,26 @@ class Game:
             if select_challenge == 1:
                 challenge.select_the_challenging_player()
                 true_or_false_counter = challenge.start_challenge()
-
-            if select_counterattack == 2 and true_or_false_counter == True:
-                counterattack.select_the_counterattack_player()
-                #cls.Counterattack()
-
-            else:
+            
+            if select_counterattack == 0 and true_or_false_counter == True:
+                #action
                 pass
-                #cls.Action()
+            
+            elif select_counterattack == 2 and true_or_false_counter == True:
+                counterattack.select_the_counterattack_player()
+                counterattack.start_counterattack()
+                select_challenge = challenge.select_challenge()
+
+                if select_challenge == 1:
+                    challenge.select_the_challenging_player()
+                    true_or_false_counter = challenge.start_challenge()
+
+                    if true_or_false_counter == False:
+                        #action
+                        pass
+
+
+
 
 
 

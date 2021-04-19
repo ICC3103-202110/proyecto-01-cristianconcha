@@ -72,9 +72,12 @@ class Challenge(Action):
             print("The player %s dont`t have the card\n" %self.player_how_have_card.player)
             Console.pass_next_player(self.player_how_have_card.player)
             card_lose = self.player_how_have_card.delete_one_card()
-            #cls.card.card_lose(card_lose)
+            self.card.card_lose(card_lose)
             self.log.dont_have_card(self.player_how_have_card.player, self.action_played)
             self.log.player_lose_card(self.player_how_have_card.player, card_lose)
+
+            self.select_challenge = 0
+            self.challenging_players = []
 
             return False
 
@@ -88,7 +91,7 @@ class Challenge(Action):
             Console.pass_next_player(self.other_player.player)
 
             card_lose = self.other_player.delete_one_card()
-            ##self.card.card_lose(card_lose)
+            self.card.card_lose(card_lose)
             self.log.player_lose_card(self.other_player.player, card_lose)
             Console.clean()
 
@@ -96,11 +99,14 @@ class Challenge(Action):
             Console.pass_next_player(self.player_how_have_card.player)
 
             self.player_how_have_card.delete_card_played(self.action_played)
-            #self.card.add_card(self.action_played)
+            self.card.add_card(self.action_played)
             self.log.change_card(self.player_how_have_card.player, self.action_played)
 
-            ##card = self.card.One_random_Card()
+            card = self.card.One_random_Card()
             self.player_how_have_card.add_one_card(card)
+
+            self.select_challenge = 0
+            self.challenging_players = []
 
             return True
 

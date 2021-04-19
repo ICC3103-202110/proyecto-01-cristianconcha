@@ -4,9 +4,10 @@ from prints import Print
 from log import Log
 class Action:
 
-    def __init__(self,players ,player_how_have_card, log, action_played=0, assassinate_or_steal=0):
+    def __init__(self,players ,player_how_have_card, card, log, action_played=0, assassinate_or_steal=0):
         self.players = players
         self.player_how_have_card = player_how_have_card
+        self.card = card
         self.log = log
         self.actions = ["Income", "Foreign Aid", "Coup",
                         "Duke", "Assassin", "Ambassador", "Captain", "Contessa"]

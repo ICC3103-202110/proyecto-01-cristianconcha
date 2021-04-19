@@ -56,40 +56,7 @@ class Game:
     #Actions
 
         
-    @classmethod
-    def Counterattack(cls): #counterattack
-        Console.pass_next_player(cls.players[cls.player_how_have_card].player)
-
-        if cls.action_played == "Foreign Aid":  
-            select = Console.counterattack_foreign_aid()
-
-        elif cls.action_played == "Captain":
-            select = Console.counterattack_captain()
-
-        elif cls.action_played == "Assassin":  
-            select =Console.counterattack_assassin()
-        
-        cls.action_played = cls.actions[select]
-        Console.clean()
-
-        print(cls.players[cls.player_how_have_card].player, 
-        "say that he have the %s\n" % cls.action_played)
-        cls.log.said_that_have(cls.players[cls.player_how_have_card].player,  cls.action_played)
-        Console.press_to_continue()
-
-        cls.challenge_the_counterattack()
-        
-    @classmethod
-    def challenge_the_counterattack(cls): 
-        cls.select_challenge = 0
-        cls.challenging_players = []
-        cls.Select_Challenge()
-
-        if cls.select_challenge == 1:
-            cls.select_challenge = 3 #challenge the counterattack
-            cls.challenge_counterattack_action()
-
-
+    
 
  
     
