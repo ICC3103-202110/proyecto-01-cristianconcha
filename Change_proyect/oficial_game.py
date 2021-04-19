@@ -2,13 +2,17 @@ from console import Console
 from player import Player
 from prints import Print
 from cards import Cards
+from action import Action
+from log import Log
 
 class Game:
 
     NUMBER_PLAYERS = None
     card = Cards()
+    log = Log()
     players = []
     losers = []
+    turn = 0
 
 
     @classmethod
@@ -25,6 +29,20 @@ class Game:
             Print.len_cards(cls.players)
             Print.print_losers(cls.losers)
             Print.cards_lose(cls.card.cards_lose)
+
+            log.turn(cls.turn)  # change
+            action = Action(cls.players[cls.turn], cls.log)
+            action.player_action()
+            
+
+
+
+
+
+
+
+
+
             break
             
 
@@ -53,7 +71,5 @@ class Game:
         cls.players.append(Player("Carmen", ["Duke", "Assassin"]))  # delete
 
     
-
-
 if __name__ == "__main__":
     Game.play()
