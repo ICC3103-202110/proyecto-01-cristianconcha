@@ -128,6 +128,7 @@ class Game:
             if select != cls.turn and select < len(cls.players):
                 return select
             else:
+                Console.clean()
                 print("The number is invalid\n")
 
         
@@ -146,13 +147,21 @@ class Game:
                 print(i, cls.players[i].player)
     
     @classmethod
-    def Captain_choose(cls):  
-        print("Choose the player to lose 2 coins \n")
-        for i in range(len(cls.players)):
-            if i == cls.player_how_have_card:
-                continue
+    def Captain_choose(cls):
+        while True:
+            print("Choose the player to lose 2 coins \n")
+            for i in range(len(cls.players)):
+                if i == cls.player_how_have_card:
+                    continue
+                else:
+                    print(i, " = ", cls.players[i].player, "have", cls.players[i].coin, "coins")
+
+            select = Console.select_player()
+            if select != cls.turn and select < len(cls.players):
+                return select
             else:
-                print(i, " = ", cls.players[i].player, "have", cls.players[i].coin, "coins")
+                Console.clean()
+                print("The number is invalid\n")
 
     #Actions
     @classmethod
@@ -223,9 +232,7 @@ class Game:
 
                         elif cls.action_played == "Captain":
                             cls.players[cls.player_how_have_card].pay_seven_coins()
-                            cls.Captain_choose()
-
-                            cls.assassinate_or_steal = Console.select_player()
+                            cls.assassinate_or_steal = cls.Captain_choose()
                             
                             Console.clean()
                             Console.steal(cls.players[cls.player_how_have_card].player,
