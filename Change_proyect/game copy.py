@@ -52,42 +52,7 @@ class Game:
         
     #Create players
     #Prints    
-
     #Print the players who can be affected
-    @classmethod
-    def Coup_or_Assassin_choose(cls): #action
-        while True:
-            print("Choose the player to lose Influence \n")
-            for i in range(len(cls.players)):
-                if i == cls.player_how_have_card:
-                    continue
-                else:
-                    print(i, cls.players[i].player)
-
-            select = Console.select_player()
-            if select != cls.turn and select < len(cls.players):
-                return select
-            else:
-                Console.clean()
-                print("The number is invalid\n")
-    
-    @classmethod
-    def Captain_choose(cls): #action
-        while True:
-            print("Choose the player to lose 2 coins \n")
-            for i in range(len(cls.players)):
-                if i == cls.player_how_have_card:
-                    continue
-                else:
-                    print(i, " = ", cls.players[i].player, "have", cls.players[i].coin, "coins")
-
-            select = Console.select_player()
-            if select != cls.turn and select < len(cls.players):
-                return select
-            else:
-                Console.clean()
-                print("The number is invalid\n")
-
     #Actions
 
         

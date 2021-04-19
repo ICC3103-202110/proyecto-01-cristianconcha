@@ -1,6 +1,7 @@
 import os
 
-class Console:
+
+class Console: #inputs or clean console
 
 
     @staticmethod
@@ -87,6 +88,41 @@ class Console:
     def steal(player, player2):
         print(player, "want to take 2 coins of", player2)
 
+    #action selection
+    @staticmethod
+    def Coup_or_Assassin_choose(players, player):
+        while True:
+            print("Choose the player to lose Influence \n")
+            for i in range(len(players)):
+                if i == player:
+                    continue
+                else:
+                    print(i, players[i].player)
+
+            select = int(input("\n---> "))
+            if players[select] != player and select < len(players):
+                return select
+            else:
+                Console.clean()
+                print("The number is invalid\n")
+
+    @staticmethod
+    def Captain_choose(players, player):
+        while True:
+            print("Choose the player to lose 2 coins \n")
+            for i in range(len(players)):
+                if i == player:
+                    continue
+                else:
+                    print(i, " = ", players[i].player,
+                          "have", players[i].coin, "coins")
+
+            select = int(input("\n---> "))
+            if players[select] != player and select < len(players):
+                return select
+            else:
+                Console.clean()
+                print("The number is invalid\n")
 
     #Counterattack
     @staticmethod

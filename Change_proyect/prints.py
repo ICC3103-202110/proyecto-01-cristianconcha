@@ -54,6 +54,24 @@ class Print():
             print(cards_lose[i], end=", ")
         print("\n")
     
+    @staticmethod
+    def player_card(player):
+        print("\nYour cards:", end=" ")
+        cards = player.cards
+        for a in range(len(cards)):
+            print(cards[a], end=" ")
+
+        print("\n")
+
+    
+    @staticmethod
+    def actions(action):
+        print("Actions:\n")
+        for i in range(len(action)):
+            print(i, "=", action[i])
+    
+
+    
     
     
 

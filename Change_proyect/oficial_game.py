@@ -31,9 +31,9 @@ class Game:
             Print.cards_lose(cls.card.cards_lose)
 
             log.turn(cls.turn)  # change
-            action = Action(cls.players[cls.turn], cls.log)
-            action.player_action()
-            
+            action = Action(cls.players, cls.players[cls.turn], cls.log)
+            action.select_action()
+
 
 
 
