@@ -20,8 +20,8 @@ class Console:
         os.system('cls || clear')
     
     @staticmethod
-    def number_of_players():
-        number = int(input("Enter the number of playeres (3 or 4): "))
+    def number_of_players(): #change
+        number = 3 #int(input("Enter the number of playeres (3 or 4): "))
         return number
 
     @staticmethod
@@ -93,17 +93,41 @@ class Console:
     def counterattack_foreign_aid():
         print("The only card to counterattack the Foreign Aid is:\n")
         print("3 = Duke\n")
-    
+
+        while True:
+            select = int(input("Select the card number: "))
+
+            if select == 3:
+                return select
+            else:
+                print("The number is invalid\n")
+
     @staticmethod
     def counterattack_captain():
         print("The cards to counterattack the Captain is:\n")
         print("5 = Ambaddassor")
         print("6 = Captain\n")
+
+        while True:
+            select = int(input("Select the card number: "))
+
+            if select == 5 or select == 6:
+                return select
+            else:
+                print("The number is invalid\n")
     
     @staticmethod
     def counterattack_assassin():
         print("The only card to counterattack the action Assassin is:\n")
         print("7 = Contessa\n")
+
+        while True:
+            select = int(input("Select the card number: "))
+
+            if select == 7:
+                return select
+            else:
+                print("The number is invalid\n")
 
     @staticmethod
     def print_losers(player):

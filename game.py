@@ -55,7 +55,7 @@ class Game:
     #Create players
     @classmethod
     def number_of_players(cls):
-
+        
         while True:
             number = Console.number_of_players()
             if number == 3 or number == 4:
@@ -345,17 +345,14 @@ class Game:
         Console.pass_next_player(cls.players[cls.player_how_have_card].player)
 
         if cls.action_played == "Foreign Aid":  
-            Console.counterattack_foreign_aid()
+            select = Console.counterattack_foreign_aid()
 
         elif cls.action_played == "Captain":
-            Console.counterattack_captain()
+            select = Console.counterattack_captain()
 
         elif cls.action_played == "Assassin":  
-            Console.counterattack_assassin()
+            select =Console.counterattack_assassin()
         
-        cls.players[cls.player_how_have_card].printCard()
-
-        select = Console.select_card()
         cls.action_played = cls.actions[select]
         Console.clean()
 
