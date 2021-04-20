@@ -2,27 +2,18 @@ from console import Console
 from player import Player
 from prints import Print
 from cards import Cards
-from action import Action
-from challenge import Challenge
-from counterattack import Counterattack
-
-from total_actions import Total_actions
-
+from total_actions import Total_actions #action,challenge and countterattack
 from log import Log
 
 class Game:
 
     NUMBER_PLAYERS = None
 
-    
     players = []
     player_how_have_card = None
     card = Cards()
     log = Log()
     action_played = None
-    assassinate_or_steal = None
-
-
 
     losers = []
     turn = 0
@@ -49,7 +40,7 @@ class Game:
             select_challenge = total_actions.select_challenge()
             select_counterattack = total_actions.select_counterattack()
 
-   
+            true_or_false_counter = None
             if select_challenge == 1:
                 total_actions.select_the_challenging_player()
                 true_or_false_counter = total_actions.start_challenge()
