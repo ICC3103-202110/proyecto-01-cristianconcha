@@ -4,16 +4,16 @@ from console import Console
 from numpy import random
 class Counterattack(Action):
 
-    def __init__(self, select_counterattack=0, counterattack_players=0):
-        self.select_counterattack_ = 0
-        self.challenging_players = []
+    
+    select_counterattack_ = 0
+    counterattack_players = []
 
     def select_counterattack(self):
         if self.action_played == "Income":
-            pass
+            return
 
         elif self.action_played == "Coup":
-            pass
+            return
 
         else:
             while True:
@@ -54,7 +54,7 @@ class Counterattack(Action):
         
        
     def start_counterattack(self): 
-        Console.pass_next_player(cls.players[cls.player_how_have_card].player)
+        Console.pass_next_player(self.player_how_have_card.player)
 
         if self.action_played == "Foreign Aid":  
             select = Console.counterattack_foreign_aid()

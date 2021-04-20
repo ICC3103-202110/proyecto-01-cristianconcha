@@ -5,9 +5,8 @@ from numpy import random
 
 class Challenge(Action):
 
-    def __init__(self, select_challenge=0, challenging_players=0):
-        self.select_challenge = 0
-        self.challenging_players = []
+    select_challenge = 0
+    challenging_players = []
 
     def select_challenge(self):  # challenge
 
@@ -76,9 +75,6 @@ class Challenge(Action):
             self.log.dont_have_card(self.player_how_have_card.player, self.action_played)
             self.log.player_lose_card(self.player_how_have_card.player, card_lose)
 
-            self.select_challenge = 0
-            self.challenging_players = []
-
             return False
 
         elif true_or_false == True:  # Player turn Have the car
@@ -104,9 +100,6 @@ class Challenge(Action):
 
             card = self.card.One_random_Card()
             self.player_how_have_card.add_one_card(card)
-
-            self.select_challenge = 0
-            self.challenging_players = []
 
             return True
 

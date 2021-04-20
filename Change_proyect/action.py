@@ -18,8 +18,7 @@ class Action:
     def select_action(self):  
 
         while True:
-            print("\nTurn: ")  # delete ###########
-
+            self.log.turn(self.player_how_have_card.player) 
             Console.player_turn(self.player_how_have_card.player)
 
             if self.player_how_have_card.coin >= 10:
@@ -48,46 +47,99 @@ class Action:
                         print("You don`t have 3 coins\n")
 
                     else:
-                        self.log.action_selected(self.action_played,
-                                                self.player_how_have_card.player,
-                                                self.assassinate_or_steal.player)  # change this
-                        
-
+                          
                         if self.action_played == "Coup":
                             self.player_how_have_card.pay_seven_coins()
 
-                            self.assassinate_or_steal = Console.Coup_or_Assassin_choose(
+                            select = Console.Coup_or_Assassin_choose(
                                 self.players, self.player_how_have_card)
-
+                            self.assassinate_or_steal = self.players[select]
+                            
+                            self.log.action_selected(self.action_played,
+                                                     self.player_how_have_card.player,
+                                                     self.assassinate_or_steal.player)
                             self.log.pay_coup(self.player_how_have_card.player)
                             Console.clean()
                             Console.coup(self.player_how_have_card.player,
                                          self.assassinate_or_steal.player)
+                            return self.action_played
 
                         elif self.action_played == "Assassin":
                             self.player_how_have_card.pay_three_coins()
 
-                            self.assassinate_or_steal = Console.Coup_or_Assassin_choose(
+                            select = Console.Coup_or_Assassin_choose(
                                 self.players, self.player_how_have_card)
-
+                            self.assassinate_or_steal = self.players[select]
+                            
+                            self.log.action_selected(self.action_played,
+                                                     self.player_how_have_card.player,
+                                                     self.assassinate_or_steal.player)
                             self.log.pay_assassinate(self.player_how_have_card.player)
                             Console.clean()
                             Console.assassinate(self.player_how_have_card.player,
                                                 self.assassinate_or_steal.player)
+                            return self.action_played
 
                         elif self.action_played == "Captain":
                             self.player_how_have_card.pay_seven_coins()
 
-                            self.assassinate_or_steal = Console.Captain_choose(
+                            select = Console.Coup_or_Assassin_choose(
                                 self.players, self.player_how_have_card)
-
+                            self.assassinate_or_steal = self.players[select]
+                            
+                            self.log.action_selected(self.action_played,
+                                                     self.player_how_have_card.player,
+                                                     self.assassinate_or_steal.player)
                             Console.clean()
                             Console.steal(self.player_how_have_card.player,
                                           self.assassinate_or_steal.player)
+                            return self.action_played
 
-
-                        return
+                        self.log.action_selected(self.action_played,
+                                                 self.player_how_have_card.player,
+                                                 None)
+                        return self.action_played
 
                 else:
                     Console.invalid_action()
 
+        
+    def run_action(self):  
+
+        if self.action_played == "Income":
+            self.player_how_have_card.add_one_coin()
+            self.log.income(self.player_how_have_card.player)
+
+        elif self.action_played == "Foreign Aid":
+            self.player_how_have_card.add_two_coins(2)
+            self.log.foreign_aid(self.player_how_have_card.player)
+
+        elif self.action_played == "Coup":
+            Console.pass_next_player(self.assassinate_or_steal.player)
+            self.assassinate_or_steal.delete_one_card()
+            self.log.coup(self.player_how_have_card.player,
+                         self.assassinate_or_steal.player)
+
+        elif self.action_played == "Duke":  # (tax)
+            self.player_how_have_card.add_three_coins()
+            self.log.tax(self.player_how_have_card.player)
+
+        elif self.action_played == "Assassin":  # (assassinate)
+            Console.pass_next_player(self.assassinate_or_steal.player)
+            self.assassinate_or_steal.delete_one_card()
+            self.log.assassinate(self.player_how_have_card.player,
+                                self.assassinate_or_steal.player)
+
+        elif self.action_played == "Ambassador":  # (Exhange)
+            cards = self.card.randomCards()
+            self.player_how_have_card.add_two_cards(cards)
+            cards = self.player_how_have_card.delete_two_cards()
+            self.card.add_two_cards(cards)
+            self.log.exchange(self.player_how_have_card.player)
+
+        elif self.action_played == "Captain":  # (Steal)
+            total_coins = self.ssassinate_or_steal.delete_two_coins()
+            self.player_how_have_card.add_two_coins(total_coins)
+            self.log.steal(self.player_how_have_card.player,
+                          self.assassinate_or_steal.player,
+                          total_coins)
