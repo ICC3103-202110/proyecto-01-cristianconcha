@@ -2,6 +2,7 @@ from player import Player
 from console import Console
 from prints import Print
 from log import Log
+from coins import Coins
 class Action:
 
     def __init__(self,players ,player_how_have_card, card, log, action_played=0, assassinate_or_steal=0):
@@ -26,9 +27,15 @@ class Action:
                 Console.press_to_continue()
                 self.action_played = "Coup"
 
+                select = Console.Coup_or_Assassin_choose(
+                            self.players, self.player_how_have_card)
+                self.assassinate_or_steal = self.players[select]
+                Print.coup(self.player_how_have_card.player,
+                           self.assassinate_or_steal.player)
+
                 self.player_how_have_card.pay_seven_coins()
-                self.log.more_coins(player_how_have_card.player)
-                self.player_how_have_card.player
+                self.log.more_coins(self.player_how_have_card.player)
+
                 break
 
             else:
@@ -93,7 +100,7 @@ class Action:
                             Console.clean()
                             Print.steal(self.player_how_have_card.player,
                                           self.assassinate_or_steal.player)
-                            return self.action_played
+                            break
 
                         self.log.action_selected(self.action_played,
                                                  self.player_how_have_card.player,
@@ -107,8 +114,9 @@ class Action:
     def run_action(self):  
 
         if self.action_played == "Income":
-            self.player_how_have_card.add_one_coin()
-            self.log.income(self.player_how_have_card.player)
+            Coins.add_one_coin(self.player_how_have_card)
+            #self.player_how_have_card.add_one_coin()
+            #self.log.income(self.player_how_have_card.player)
 
         elif self.action_played == "Foreign Aid":
             self.player_how_have_card.add_two_coins(2)

@@ -40,7 +40,8 @@ class Game:
             select_challenge = total_actions.select_challenge()
             select_counterattack = total_actions.select_counterattack()
 
-            true_or_false_counter = None
+            true_or_false_counter = True
+
             if select_challenge == 1:
                 total_actions.select_the_challenging_player()
                 true_or_false_counter = total_actions.start_challenge()
