@@ -2,13 +2,6 @@ import os
 
 
 class Console: #inputs or clean console
-
-
-    @staticmethod
-    def winner(winner):
-        os.system('cls || clear')
-        print("\n\nThe winner is %s \n\n" % winner)
-        print("Thanks for play coup !")
         
     @staticmethod
     def clean():

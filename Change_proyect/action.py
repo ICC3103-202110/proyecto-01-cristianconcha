@@ -143,3 +143,4 @@ class Action:
             self.log.steal(self.player_how_have_card.player,
                           self.assassinate_or_steal.player,
                           total_coins)
+

@@ -98,6 +98,12 @@ class Print():
     @staticmethod  
     def assassinate(player, player2):
         print(player, "select", player2, "to lost one influence (Assassinate)")
+    
+    @staticmethod
+    def winner(player):
+        Console.clean()
+        print("\n\nThe winner is %s \n\n" % player)
+        print("Thanks for play coup !")
 
     
 

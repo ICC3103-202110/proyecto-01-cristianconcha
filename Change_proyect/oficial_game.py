@@ -25,7 +25,7 @@ class Game:
         cls.number_of_players()
         cls.name_players()
 
-        #Print.see_players_cards(cls.players)
+        Print.see_players_cards(cls.players) #commit
 
         while True:
             Console.clean()
@@ -68,6 +68,7 @@ class Game:
             cls.player_turn()
             
             if len(cls.players) == 1:
+                ####
                 break
 
 
