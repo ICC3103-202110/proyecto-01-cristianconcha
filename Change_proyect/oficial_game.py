@@ -89,7 +89,7 @@ class Game:
         for i in range(1, cls.NUMBER_Players + 1):
             
             name = input("Give the player's %d name: " % i)
-            cls.players.append(Player(name, cls.card.randomCards()))
+            cls.players.append(Player(name, cls.card.two_random_cards()))
         """
         cls.players.append(Player("Amelia", ["Contessa", "Duke"]))  # delete
         cls.players.append(Player("Bernabé", ["Captain", "Contessa"]))  # delete

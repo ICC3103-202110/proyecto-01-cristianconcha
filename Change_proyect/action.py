@@ -33,7 +33,7 @@ class Action:
                 Print.coup(self.player_how_have_card.player,
                            self.assassinate_or_steal.player)
 
-                self.player_how_have_card.pay_seven_coins()
+                Coins.pay_seven_coins(self.player_how_have_card)
                 self.log.more_coins(self.player_how_have_card.player)
 
                 break
@@ -56,7 +56,7 @@ class Action:
                     else:
                           
                         if self.action_played == "Coup":
-                            self.player_how_have_card.pay_seven_coins()
+                            Coins.pay_seven_coins(self.player_how_have_card)
 
                             select = Console.Coup_or_Assassin_choose(
                                 self.players, self.player_how_have_card)
@@ -72,7 +72,7 @@ class Action:
                             break
 
                         elif self.action_played == "Assassin":
-                            self.player_how_have_card.pay_three_coins()
+                            Coins.pay_three_coins(self.player_how_have_card)
 
                             select = Console.Coup_or_Assassin_choose(
                                 self.players, self.player_how_have_card)
@@ -88,8 +88,7 @@ class Action:
                             break
 
                         elif self.action_played == "Captain":
-                            self.player_how_have_card.pay_seven_coins()
-
+                        
                             select = Console.Coup_or_Assassin_choose(
                                 self.players, self.player_how_have_card)
                             self.assassinate_or_steal = self.players[select]
@@ -113,40 +112,48 @@ class Action:
         
     def run_action(self):  
 
-        if self.action_played == "Income": #ready
+        if self.action_played == "Income":
+            
             Coins.add_one_coin(self.player_how_have_card)
             self.log.income(self.player_how_have_card.player)
 
-        elif self.action_played == "Foreign Aid": #ready
+        elif self.action_played == "Foreign Aid":
+            
             Coins.add_two_coins(self.player_how_have_card)
             self.log.foreign_aid(self.player_how_have_card.player)
 
         elif self.action_played == "Coup":
+
             Console.pass_next_player(self.assassinate_or_steal.player)
-            self.assassinate_or_steal.delete_one_card()
+            card_lose = self.card.delete_one_card(self.assassinate_or_steal)
+            self.card.card_lose_list(card_lose) 
             self.log.coup(self.player_how_have_card.player,
                          self.assassinate_or_steal.player)
 
-        elif self.action_played == "Duke":  # (tax) #ready
+        elif self.action_played == "Duke":  # (tax)
+            
             Coins.add_three_coins(self.player_how_have_card)
             self.log.tax(self.player_how_have_card.player)
 
         elif self.action_played == "Assassin":  # (assassinate)
+
             Console.pass_next_player(self.assassinate_or_steal.player)
-            self.assassinate_or_steal.delete_one_card()
+            card_lose = self.card.delete_one_card(self.assassinate_or_steal)
+            self.card.card_lose_list(card_lose) 
             self.log.assassinate(self.player_how_have_card.player,
                                 self.assassinate_or_steal.player)
 
         elif self.action_played == "Ambassador":  # (Exhange)
-            cards = self.card.randomCards()
-            self.player_how_have_card.add_two_cards(cards)
-            cards = self.player_how_have_card.delete_two_cards()
-            self.card.add_two_cards(cards)
+
+            cards = self.card.two_random_cards()
+            self.card.add_two_cards(cards, self.player_how_have_card)
+            cards = self.card.delete_two_cards(self.player_how_have_card)
+            self.card.add_two_cards_list(cards)
             self.log.exchange(self.player_how_have_card.player)
 
         elif self.action_played == "Captain":  # (Steal)
-            total_coins = self.assassinate_or_steal.delete_two_coins()
 
+            total_coins = Coins.select_the_coins_to_delete(self.assassinate_or_steal)
             Coins.add_coins(self.player_how_have_card, total_coins)
             self.log.steal(self.player_how_have_card.player,
                           self.assassinate_or_steal.player,

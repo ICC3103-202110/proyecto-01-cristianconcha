@@ -71,8 +71,8 @@ class Challenge(Action):
         if true_or_false == False:  # Player turn Dont have the card
             print("The player %s dont`t have the card\n" %self.player_how_have_card.player)
             Console.pass_next_player(self.player_how_have_card.player)
-            card_lose = self.player_how_have_card.delete_one_card()
-            self.card.card_lose(card_lose)
+            card_lose = self.card.delete_one_card(self.player_how_have_card)
+            self.card.card_lose_list(card_lose) 
             self.log.dont_have_card(self.player_how_have_card.player, self.action_played)
             self.log.player_lose_card(self.player_how_have_card.player, card_lose)
 
@@ -86,21 +86,18 @@ class Challenge(Action):
 
             print("\nThe player %s lose one card" %self.other_player.player)
             Console.pass_next_player(self.other_player.player)
-
-            card_lose = self.other_player.delete_one_card()
-            self.card.card_lose(card_lose)
+            card_lose = self.card.delete_one_card(self.other_player.delete)
+            self.card.card_lose_list(card_lose) 
             self.log.player_lose_card(self.other_player.player, card_lose)
             Console.clean()
 
             print("The player %s change the card" %self.player_how_have_card.player)
             Console.pass_next_player(self.player_how_have_card.player)
 
-            self.player_how_have_card.delete_card_played(self.action_played)
-            self.card.add_card(self.action_played)
+            self.card.delete_card_played(self.action_played, self.player_how_have_card.player)
+            self.card.add_card_list(self.action_played)
             self.log.change_card(self.player_how_have_card.player, self.action_played)
-
-            card = self.card.One_random_Card()
-            self.player_how_have_card.add_one_card(card)
+            self.card.add_one_card(self.player_how_have_card.player)
 
             return True
 
