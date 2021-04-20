@@ -85,6 +85,15 @@ class Print():
                 
         print("\n")
     
+    @staticmethod 
+    def invalid_action():
+        Console.clean()
+        print("Invalid action number\n")
+    
+    @staticmethod  
+    def player_select(player, card):
+        print(player, "select", card, "\n")
+    
     #select steal
     @staticmethod 
     def steal(player, player2):
@@ -104,7 +113,6 @@ class Print():
         Console.clean()
         print("\n\nThe winner is %s \n\n" % player)
         print("Thanks for play coup !")
-
     
 
 

@@ -2,6 +2,7 @@ from action import Action
 from player import Player
 from console import Console
 from numpy import random
+from prints import Print
 class Counterattack(Action):
 
     
@@ -17,7 +18,7 @@ class Counterattack(Action):
 
         else:
             while True:
-                Console.player_select(
+                Print.player_select(
                     self.player_how_have_card.player, self.action_played)
 
                 print("Some player wants to counterattack: \n")

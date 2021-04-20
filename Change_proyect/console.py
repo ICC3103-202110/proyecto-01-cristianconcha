@@ -1,6 +1,5 @@
 import os
 
-
 class Console: #inputs or clean console
         
     @staticmethod
@@ -9,33 +8,20 @@ class Console: #inputs or clean console
     
     @staticmethod
     def number_of_players(): #change
-        number = 3 #int(input("Enter the number of playeres (3 or 4): "))
-        return number
-
+        return 3  # int(input("Enter the number of playeres (3 or 4): "))
+        
     @staticmethod
     def select_action():
-        action = int(input("Select the accion number: "))
-        return action
-    
+        return int(input("Select the accion number: "))
+ 
     @staticmethod
     def select_card():
-        card_number = int(input("\nSelect the card number: "))
-        return card_number
+        return int(input("\nSelect the card number: "))
 
     @staticmethod
     def select_player():
-        player = int(input("\n---> "))
-        return player
-    
-    @staticmethod
-    def player_select(player, card):
-        print(player,"select", card, "\n" )
-
-    @staticmethod #print
-    def invalid_action():
-        os.system('cls || clear')
-        print("Invalid action number\n")
-
+        return int(input("\n---> "))
+        
     @staticmethod
     def select_player_number():
         print("\nEnter the player number to chanllenge or")

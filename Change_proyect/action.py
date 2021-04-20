@@ -101,7 +101,7 @@ class Action:
                         break
 
                 else:
-                    Console.invalid_action()
+                    Print.invalid_action()
 
         
     def run_action(self):  

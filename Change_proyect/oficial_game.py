@@ -68,7 +68,7 @@ class Game:
             cls.player_turn()
             
             if len(cls.players) == 1:
-                ####
+                Print.winner(cls.players[0].player)
                 break
 
 

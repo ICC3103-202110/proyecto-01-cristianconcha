@@ -1,6 +1,7 @@
 from action import Action
 from player import Player
 from console import Console
+from prints import Print
 from numpy import random
 
 class Challenge(Action):
@@ -11,12 +12,12 @@ class Challenge(Action):
     def select_challenge(self):  # challenge
 
         if self.action_played == "Income":
-            Console.player_select(
+            Print.player_select(
                 self.player_how_have_card.player, self.action_played)
             Console.press_to_continue()
 
         elif self.action_played == "Coup":
-            Console.player_select(
+            Print.player_select(
                 self.player_how_have_card.player, self.action_played)
             Console.pass_next_player(
                 self.player_how_have_card.player)
@@ -26,7 +27,7 @@ class Challenge(Action):
 
         else:
             while True:
-                Console.player_select(
+                Print.player_select(
                     self.player_how_have_card.player, self.action_played)
 
                 print("Some player wants to challenge: \n")
