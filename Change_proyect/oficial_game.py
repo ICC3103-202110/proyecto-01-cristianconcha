@@ -64,14 +64,14 @@ class Game:
                         
             else:
                 total_actions.run_action()
-            """
+        
             cls.Delete_player()
             cls.player_turn()
             
             if len(cls.players) == 1:
                 Print.winner(cls.players[0].player)
                 break
-            """
+            
 
     @classmethod
     def number_of_players(cls):
@@ -99,7 +99,7 @@ class Game:
     def Delete_player(cls):
         delete = []
         for i in range(len(cls.players)):
-            if cls.players[i].len_cards() == 0:  
+            if cls.card.len_cards(cls.players[i]) == 0:  
                 delete.append(cls.players[i])
             else:
                 continue
