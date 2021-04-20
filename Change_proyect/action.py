@@ -60,7 +60,7 @@ class Action:
                                                      self.assassinate_or_steal.player)
                             self.log.pay_coup(self.player_how_have_card.player)
                             Console.clean()
-                            Console.coup(self.player_how_have_card.player,
+                            Print.coup(self.player_how_have_card.player,
                                          self.assassinate_or_steal.player)
                             break
 
@@ -76,7 +76,7 @@ class Action:
                                                      self.assassinate_or_steal.player)
                             self.log.pay_assassinate(self.player_how_have_card.player)
                             Console.clean()
-                            Console.assassinate(self.player_how_have_card.player,
+                            Print.assassinate(self.player_how_have_card.player,
                                                 self.assassinate_or_steal.player)
                             break
 
@@ -91,7 +91,7 @@ class Action:
                                                      self.player_how_have_card.player,
                                                      self.assassinate_or_steal.player)
                             Console.clean()
-                            Console.steal(self.player_how_have_card.player,
+                            Print.steal(self.player_how_have_card.player,
                                           self.assassinate_or_steal.player)
                             return self.action_played
 
@@ -138,7 +138,7 @@ class Action:
             self.log.exchange(self.player_how_have_card.player)
 
         elif self.action_played == "Captain":  # (Steal)
-            total_coins = self.ssassinate_or_steal.delete_two_coins()
+            total_coins = self.assassinate_or_steal.delete_two_coins()
             self.player_how_have_card.add_two_coins(total_coins)
             self.log.steal(self.player_how_have_card.player,
                           self.assassinate_or_steal.player,

@@ -38,7 +38,7 @@ class Console: #inputs or clean console
     def player_select(player, card):
         print(player,"select", card, "\n" )
 
-    @staticmethod
+    @staticmethod #print
     def invalid_action():
         os.system('cls || clear')
         print("Invalid action number\n")
@@ -73,21 +73,7 @@ class Console: #inputs or clean console
         print("\nPass the computer to %s to see his cards" % player_name)
         input("Press any key to continue... ")
         os.system('cls || clear')
-
-    #select assassinate
-    @staticmethod
-    def coup(player, player2):
-        print(player, "select",player2, "to lost one influence")
-
-    @staticmethod
-    def assassinate(player, player2):
-        print(player, "select", player2, "to lost one influence (Assassinate)")
     
-    #select steal
-    @staticmethod
-    def steal(player, player2):
-        print(player, "want to take 2 coins of", player2)
-
     #action selection
     @staticmethod
     def Coup_or_Assassin_choose(players, player):
@@ -132,7 +118,6 @@ class Console: #inputs or clean console
 
         while True:
             select = int(input("Select the card number: "))
-
             if select == 3:
                 return select
             else:
@@ -146,7 +131,6 @@ class Console: #inputs or clean console
 
         while True:
             select = int(input("Select the card number: "))
-
             if select == 5 or select == 6:
                 return select
             else:
@@ -156,7 +140,6 @@ class Console: #inputs or clean console
     def counterattack_assassin():
         print("The only card to counterattack the action Assassin is:\n")
         print("7 = Contessa\n")
-
         while True:
             select = int(input("Select the card number: "))
 

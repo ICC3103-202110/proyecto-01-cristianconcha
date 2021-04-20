@@ -84,6 +84,20 @@ class Print():
                 print("- ", logs[i])
                 
         print("\n")
+    
+    #select steal
+    @staticmethod 
+    def steal(player, player2):
+        print(player, "want to take 2 coins of", player2)
+    
+    #select assassinate
+    @staticmethod
+    def coup(player, player2): 
+        print(player, "select", player2, "to lost one influence")
+
+    @staticmethod  
+    def assassinate(player, player2):
+        print(player, "select", player2, "to lost one influence (Assassinate)")
 
     
 
