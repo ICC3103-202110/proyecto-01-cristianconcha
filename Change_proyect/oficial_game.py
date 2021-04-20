@@ -25,7 +25,7 @@ class Game:
         cls.number_of_players()
         cls.name_players()
 
-        Print.see_players_cards(cls.players) #commit
+        #Print.see_players_cards(cls.players) #commit
 
         while True:
             Console.clean()
@@ -33,6 +33,7 @@ class Game:
             Print.len_cards(cls.players)
             Print.print_losers(cls.losers)
             Print.cards_lose(cls.card.cards_lose)
+            Print.see_player_cards(cls.players) #change
 
             total_actions = Total_actions(cls.players, cls.players[cls.turn], cls.card, cls.log)
             total_actions.select_action()

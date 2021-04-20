@@ -26,8 +26,7 @@ class Player:
         self.__coin = coin
     
 
-    def add_two_coins(self, total_coins):
-        self.coin += total_coins
+        
 
     
 

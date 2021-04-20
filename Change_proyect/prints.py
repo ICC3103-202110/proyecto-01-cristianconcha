@@ -23,6 +23,17 @@ class Print():
                 
             Console.pass_next_player_cards(players[i].player)
             Console.press_to_continue()
+    
+    @staticmethod
+    def see_player_cards(players):  #change 
+        for i in range(len(players)):
+            print("\nYour cards:", end=" ")
+            cards = players[i].cards
+
+            for a in range(len(cards)):
+                print(cards[a], end=" ")
+
+            print("\n")
 
     @staticmethod
     def coins(players):

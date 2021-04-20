@@ -1,5 +1,6 @@
 from numpy import random
 from player import Player
+from console import Console
 
 class Cards:
     def __init__(self, cards=0, cards_lose=0):
@@ -52,6 +53,7 @@ class Cards:
         self.cards.pop(number)
 
         player.cards += card
+        
     
     #delete player card
     def delete_card_played(self, card, player):
@@ -63,7 +65,7 @@ class Cards:
             for i in range(len(player.cards)):
                 print(i, player.cards[i])
 
-            delete = int(input("\n---> ")) #console
+            delete = Console.select()
 
             if delete < len(player.cards):
                 card = player.cards[delete]
@@ -82,7 +84,7 @@ class Cards:
             for i in range(len(player.cards)):
                 print(i, player.cards[i])
 
-            delete = int(input("\n---> ")) #console
+            delete = Console.select()
 
             if delete < len(self.cards):
                 cards.append(self.cards[delete])

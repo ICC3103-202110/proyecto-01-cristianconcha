@@ -145,8 +145,7 @@ class Action:
 
         elif self.action_played == "Ambassador":  # (Exhange)
 
-            cards = self.card.two_random_cards()
-            self.card.add_two_cards(cards, self.player_how_have_card)
+            self.card.add_two_cards(self.player_how_have_card)
             cards = self.card.delete_two_cards(self.player_how_have_card)
             self.card.add_two_cards_list(cards)
             self.log.exchange(self.player_how_have_card.player)

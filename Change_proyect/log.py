@@ -93,7 +93,7 @@ class Log:
         self.log.append((player+" exchange 2 cards for Exchange"))
     
     def steal(self, player, player2, coins): #change the player
-        self.log.append((player + " take "+ str(coins) +"coin(s) of " + player2 + " for Steal" ))
+        self.log.append((player + " take "+ str(coins) +" coin(s) of " + player2 + " for Steal" ))
     
     def turn(self, player):
         self.log.append(int(1))

@@ -12,16 +12,16 @@ class Console: #inputs or clean console
         
     @staticmethod
     def select_action():
-        return int(input("Select the accion number: "))
+        return int(input("Select the action number: "))
  
     @staticmethod
     def select_card():
         return int(input("\nSelect the card number: "))
 
     @staticmethod
-    def select_player():
+    def select():
         return int(input("\n---> "))
-        
+            
     @staticmethod
     def select_player_number():
         print("\nEnter the player number to chanllenge or")
