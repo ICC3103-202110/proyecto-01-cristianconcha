@@ -62,7 +62,7 @@ class Action:
                             Console.clean()
                             Console.coup(self.player_how_have_card.player,
                                          self.assassinate_or_steal.player)
-                            return self.action_played
+                            break
 
                         elif self.action_played == "Assassin":
                             self.player_how_have_card.pay_three_coins()
@@ -78,7 +78,7 @@ class Action:
                             Console.clean()
                             Console.assassinate(self.player_how_have_card.player,
                                                 self.assassinate_or_steal.player)
-                            return self.action_played
+                            break
 
                         elif self.action_played == "Captain":
                             self.player_how_have_card.pay_seven_coins()
@@ -98,7 +98,7 @@ class Action:
                         self.log.action_selected(self.action_played,
                                                  self.player_how_have_card.player,
                                                  None)
-                        return self.action_played
+                        break
 
                 else:
                     Console.invalid_action()

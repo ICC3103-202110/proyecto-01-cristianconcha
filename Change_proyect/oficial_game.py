@@ -5,6 +5,9 @@ from cards import Cards
 from action import Action
 from challenge import Challenge
 from counterattack import Counterattack
+
+from total_actions import Total_actions
+
 from log import Log
 
 class Game:
@@ -18,6 +21,8 @@ class Game:
     log = Log()
     action_played = None
     assassinate_or_steal = None
+
+
 
     losers = []
     turn = 0
@@ -38,38 +43,35 @@ class Game:
             Print.print_losers(cls.losers)
             Print.cards_lose(cls.card.cards_lose)
 
-            action = Action(cls.players, cls.players[cls.turn],cls.card ,cls.log)
-            cls.action_played = action.select_action()
+            total_actions = Total_actions(cls.players, cls.players[cls.turn], cls.card, cls.log)
+            total_actions.select_action()
 
-            challenge = Challenge(cls.players, cls.players[cls.turn], cls.card, cls.log, cls.action_played)
-            select_challenge = challenge.select_challenge()
-
-            counterattack = Counterattack(cls.players, cls.players[cls.turn], cls.card, cls.log, cls.action_played)
-            select_counterattack = counterattack.select_counterattack()
+            select_challenge = total_actions.select_challenge()
+            select_counterattack = total_actions.select_counterattack()
 
    
             if select_challenge == 1:
-                cls.challenge.select_the_challenging_player()
-                true_or_false_counter = cls.challenge.start_challenge()
+                total_actions.select_the_challenging_player()
+                true_or_false_counter = total_actions.start_challenge()
             
             if select_counterattack == 0 and true_or_false_counter == True:
-                action.run_action()
+                total_actions.run_action()
                 
             
             elif select_counterattack == 2 and true_or_false_counter == True:
-                cls.ounterattack.select_the_counterattack_player()
-                cls.counterattack.start_counterattack()
-                select_challenge = cls.challenge.select_challenge()
+                total_actions.select_the_counterattack_player()
+                total_actions.start_counterattack()
+                select_challenge = total_actions.select_challenge()
 
                 if select_challenge == 1:
-                    cls.challenge.select_the_challenging_player()
-                    true_or_false_counter = cls.challenge.start_challenge()
+                    total_actions.select_the_challenging_player()
+                    true_or_false_counter = total_actions.start_challenge()
 
                     if true_or_false_counter == False:
-                        action.run_action()
+                        total_actions.run_action()
                         
             else:
-                action.run_action()
+                total_actions.run_action()
             
             cls.Delete_player()
             cls.player_turn()

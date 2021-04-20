@@ -55,7 +55,7 @@ class Challenge(Action):
             number = random.randint(0, len(self.challenging_players)-1)
             self.challenging_players.pop(number)
 
-        self.other_player = self.players[int(self.counterattack_players[0])]
+        self.other_player = self.players[int(self.challenging_players[0])]
 
         self.log.challenge(self.other_player.player,
                            self.player_how_have_card.player)

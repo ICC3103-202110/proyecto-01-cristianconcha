@@ -63,7 +63,6 @@ class Print():
 
         print("\n")
 
-    
     @staticmethod
     def actions(action):
         print("Actions:\n")
