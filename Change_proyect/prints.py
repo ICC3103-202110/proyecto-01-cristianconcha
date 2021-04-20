@@ -70,6 +70,22 @@ class Print():
         for i in range(len(action)):
             print(i, "=", action[i])
     
+    @staticmethod
+    def log(logs):
+        count = 0
+        for i in range(len(logs)):
+
+            if logs[i] == 1:
+                print("\n")
+                count += 1
+            elif count == 1:
+                print(logs[i])
+                count -= 1
+            else:
+                print("- ", logs[i])
+                
+        print("\n")
+
 
     
     

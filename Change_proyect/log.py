@@ -99,18 +99,3 @@ class Log:
         self.log.append(int(1))
         self.log.append((player+" turn:"))
     
-    #print
-    def print_log(self):  #add this in the file game
-        count = 0
-        for i in range(len(self.log)):
-
-            if self.log[i] == 1:
-                print("\n")
-                count += 1
-            elif count == 1:
-                print(self.log[i])
-                count -= 1
-            else:
-                print("- ", self.log[i])
-
-        print("\n")

@@ -73,8 +73,7 @@ class Game:
             
             cls.Delete_player()
             cls.player_turn()
-            cls.log.print_log()
-
+            
             if len(cls.players) == 1:
                 break
 
@@ -122,6 +121,7 @@ class Game:
 
         if cls.turn == cls.NUMBER_PLAYERS - 1:
             Console.clean()
+            Print.log(cls.log.log)
             Console.press_to_continue()
             cls.turn = 0
 
