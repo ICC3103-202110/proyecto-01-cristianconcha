@@ -64,14 +64,14 @@ class Game:
                         
             else:
                 total_actions.run_action()
-            
+            """
             cls.Delete_player()
             cls.player_turn()
             
             if len(cls.players) == 1:
                 Print.winner(cls.players[0].player)
                 break
-
+            """
 
     @classmethod
     def number_of_players(cls):

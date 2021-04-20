@@ -113,13 +113,12 @@ class Action:
         
     def run_action(self):  
 
-        if self.action_played == "Income":
+        if self.action_played == "Income": #ready
             Coins.add_one_coin(self.player_how_have_card)
-            #self.player_how_have_card.add_one_coin()
-            #self.log.income(self.player_how_have_card.player)
+            self.log.income(self.player_how_have_card.player)
 
-        elif self.action_played == "Foreign Aid":
-            self.player_how_have_card.add_two_coins(2)
+        elif self.action_played == "Foreign Aid": #ready
+            Coins.add_two_coins(self.player_how_have_card)
             self.log.foreign_aid(self.player_how_have_card.player)
 
         elif self.action_played == "Coup":
@@ -128,8 +127,8 @@ class Action:
             self.log.coup(self.player_how_have_card.player,
                          self.assassinate_or_steal.player)
 
-        elif self.action_played == "Duke":  # (tax)
-            self.player_how_have_card.add_three_coins()
+        elif self.action_played == "Duke":  # (tax) #ready
+            Coins.add_three_coins(self.player_how_have_card)
             self.log.tax(self.player_how_have_card.player)
 
         elif self.action_played == "Assassin":  # (assassinate)
@@ -147,7 +146,8 @@ class Action:
 
         elif self.action_played == "Captain":  # (Steal)
             total_coins = self.assassinate_or_steal.delete_two_coins()
-            self.player_how_have_card.add_two_coins(total_coins)
+
+            Coins.add_coins(self.player_how_have_card, total_coins)
             self.log.steal(self.player_how_have_card.player,
                           self.assassinate_or_steal.player,
                           total_coins)

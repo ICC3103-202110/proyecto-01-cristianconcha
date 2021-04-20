@@ -2,13 +2,20 @@ from player import Player
 
 class Coins:
 
-    #Add coins
-    def add_one_coin(self, player):
-        player.coins(1)
-        
-    def add_two_coins(self, total_coins):
-        self.coin += total_coins
+    
+    @staticmethod
+    def add_one_coin(player):
+        player.coin += 1
+    
+    @staticmethod
+    def add_two_coins(player):
+        player.coin += 2
 
-    def add_three_coins(self, player):
-        player.coins(3)
+    @staticmethod
+    def add_three_coins(player):
+        player.coin += 3
+    
+    @staticmethod
+    def add_coins(player, total_coins):
+        player.coin += total_coins
     

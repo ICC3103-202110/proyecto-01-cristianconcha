@@ -2,23 +2,35 @@
 class Player:
     def __init__(self, player, cards, coin = 7): #change coins
         self.__player = player
-        self.cards = cards
-        self.coin = coin
+        self.__cards = cards
+        self.__coin = coin
 
     @property 
     def player(self):
         return self.__player
     
-    #Add coins
-    def add_one_coin(self):
-        self.coin += 1
+    @property
+    def cards(self):
+        return self.__cards
+
+    @cards.setter
+    def cards(self, card):
+        self.__cards = cards
     
+    @property
+    def coin(self):
+        return self.__coin
+
+    @coin.setter
+    def coin(self, coin):
+        self.__coin = coin
+    
+
     def add_two_coins(self, total_coins):
         self.coin += total_coins
-    
-    def add_three_coins(self):
-        self.coin += 3
 
+    
+    """
     #Delete coins
     def delete_two_coins(self):
         total_coins = 0
@@ -102,7 +114,7 @@ class Player:
     def len_cards(self):
         return len(self.cards)
 
-
+    """
 
 
     
