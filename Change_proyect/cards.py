@@ -96,7 +96,7 @@ class Cards:
                 print("The number is invalid\n\n")
         
     #Compare Card
-    def compare_cards(self, card, player):
+    def compare_cards(self,player, card):
         count = player.cards.count(card)
         if count == 0:
             return False
