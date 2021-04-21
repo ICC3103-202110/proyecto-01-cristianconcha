@@ -15,7 +15,10 @@ class Counterattack(Action):
 
         elif self.action_played == "Coup":
             return
-
+        
+        elif self.action_played == "Duke":
+            return
+        
         else:
             while True:
                 Print.player_select(
