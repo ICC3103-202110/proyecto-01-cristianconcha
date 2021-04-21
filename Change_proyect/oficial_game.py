@@ -18,7 +18,6 @@ class Game:
     losers = []
     turn = 0
     
-
     @classmethod
     def play(cls):
         Print.wellcome()

@@ -25,7 +25,7 @@ class Print():
             Console.press_to_continue()
     
     @staticmethod
-    def see_player_cards(players):  #change 
+    def see_player_cards(players):  #delete
         for i in range(len(players)):
             print("\nYour cards:", end=" ")
             cards = players[i].cards
@@ -34,6 +34,14 @@ class Print():
                 print(cards[a], end=" ")
 
             print("\n")
+    
+    @staticmethod
+    def see_player_card(player):
+        print("\nYour cards:", end=" ")
+        cards = player.cards
+        for i in range(len(player.cards)):
+            print(cards[i], end=" ")
+        print("\n")
 
     @staticmethod
     def coins(players):
