@@ -65,7 +65,7 @@ class Challenge(Action):
 
        
     def start_challenge(self):  
-        true_or_false = self.player_how_have_card.compare_cards(
+        true_or_false = self.card.compare_cards(self.player_how_have_card,
         self.action_played)
 
         if true_or_false == False:  # Player turn Dont have the card
