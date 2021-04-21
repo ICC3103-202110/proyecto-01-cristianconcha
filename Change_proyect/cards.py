@@ -40,7 +40,8 @@ class Cards:
         card.append(self.cards[number])
         self.cards.pop(number)
 
-        player.cards += card
+        player.cards = player.cards + card
+
     
     def add_two_cards(self, player):
         card = []
@@ -52,7 +53,8 @@ class Cards:
         card.append(self.cards[number])
         self.cards.pop(number)
 
-        player.cards += card
+        
+        player.cards = player.cards + card
         
     
     #delete player card
@@ -69,7 +71,7 @@ class Cards:
 
             if delete < len(player.cards):
                 card = player.cards[delete]
-                player.cards = player.cards.pop(delete)
+                player.cards.pop(delete)
                 return card
             else:
                 print("The number is invalid\n")
@@ -86,11 +88,13 @@ class Cards:
 
             delete = Console.select()
 
-            if delete < len(self.cards):
+            if delete < len(player.cards):
                 cards.append(self.cards[delete])
-                player.cards = player.cards.pop(delete)
+                player.cards.pop(delete)
+    
                 len_card += 1
                 if len_card == 2:
+                    
                     return cards
             else:
                 print("The number is invalid\n\n")

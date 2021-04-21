@@ -86,7 +86,7 @@ class Challenge(Action):
 
             print("\nThe player %s lose one card" %self.other_player.player)
             Console.pass_next_player(self.other_player.player)
-            card_lose = self.card.delete_one_card(self.other_player.delete)
+            card_lose = self.card.delete_one_card(self.other_player)
             self.card.card_lose_list(card_lose) 
             self.log.player_lose_card(self.other_player.player, card_lose)
             Console.clean()
