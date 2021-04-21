@@ -96,7 +96,7 @@ class Print():
         print("Actions:\n")
         for i in range(len(action)):
             print(i, "=", action[i])
-        print("8 = If you want to see your cards")
+        print("8 = See cards")
     
     @staticmethod
     def log(logs):
