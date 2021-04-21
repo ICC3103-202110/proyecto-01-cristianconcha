@@ -35,46 +35,58 @@ class Cards:
 
     #Add player card
     def add_one_card(self, player):
-        card = []
-        number = random.randint(0, len(self.cards))
-        card.append(self.cards[number])
-        self.cards.pop(number)
+        if len(self.cards) >= 1:
+            card = []
+            number = random.randint(0, len(self.cards))
+            card.append(self.cards[number])
+            self.cards.pop(number)
+            player.cards = player.cards + card
 
-        player.cards = player.cards + card
-
-    
+        else:
+            print("No cards left in the desk")
+       
     def add_two_cards(self, player):
-        card = []
-        number = random.randint(0, len(self.cards))
-        card.append(self.cards[number])
-        self.cards.pop(number)
+        if len(self.cards) > 1:
+            card = []
+            number = random.randint(0, len(self.cards))
+            card.append(self.cards[number])
+            self.cards.pop(number)
 
-        number = random.randint(0, len(self.cards))
-        card.append(self.cards[number])
-        self.cards.pop(number)
+            number = random.randint(0, len(self.cards))
+            card.append(self.cards[number])
+            self.cards.pop(number)
 
+            player.cards = player.cards + card
         
-        player.cards = player.cards + card
+        elif len(self.cards) == 1:
+            card = []
+            number = random.randint(0, len(self.cards))
+            card.append(self.cards[number])
+            self.cards.pop(number)
+            player.cards = player.cards + card
         
-    
+        else:
+            print("No cards left in the desk")
+
     #delete player card
     def delete_card_played(self, card, player):
         player.cards = player.cards.remove(card)
 
     def delete_one_card(self, player):
-        while True:
-            print("Choose the number card to delete:\n")
-            for i in range(len(player.cards)):
-                print(i, player.cards[i])
+        if len(player.cards) > 0:
+            while True:
+                print("Choose the number card to delete:\n")
+                for i in range(len(player.cards)):
+                    print(i, player.cards[i])
 
-            delete = Console.select()
+                delete = Console.select()
 
-            if delete < len(player.cards):
-                card = player.cards[delete]
-                player.cards.pop(delete)
-                return card
-            else:
-                print("The number is invalid\n")
+                if delete < len(player.cards):
+                    card = player.cards[delete]
+                    player.cards.pop(delete)
+                    return card
+                else:
+                    print("The number is invalid\n")
     
     def delete_two_cards(self,player):
         cards = []

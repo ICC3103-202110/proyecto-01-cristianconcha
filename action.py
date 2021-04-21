@@ -152,7 +152,8 @@ class Action:
 
             self.card.add_two_cards(self.player_how_have_card)
             cards = self.card.delete_two_cards(self.player_how_have_card)
-            self.card.add_two_cards_list(cards)
+            if len(cards) > 0:
+                self.card.add_two_cards_list(cards)    
             self.log.exchange(self.player_how_have_card.player)
 
         elif self.action_played == "Captain":  # (Steal)
