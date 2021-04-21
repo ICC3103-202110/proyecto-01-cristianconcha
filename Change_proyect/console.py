@@ -1,6 +1,4 @@
 import os
-from player import Player
-from prints import Print
 
 class Console: #inputs or clean console
         
@@ -23,13 +21,7 @@ class Console: #inputs or clean console
     @staticmethod
     def select():
         return int(input("\n---> "))
-    
-    @staticmethod
-    def see_card():
-        see = input("\nPress 'c' to see your cards ")
-        if see == "c":
-            Print.see_player_card()
-            
+                
     @staticmethod
     def select_player_number():
         print("\nEnter the player number to chanllenge or")

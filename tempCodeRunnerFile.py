@@ -1,1 +1,0 @@
-cls.challenging_player

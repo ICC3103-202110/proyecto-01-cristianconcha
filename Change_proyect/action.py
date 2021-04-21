@@ -41,7 +41,7 @@ class Action:
             else:
                 Print.actions(self.actions)
                 Print.player_card(self.player_how_have_card)
-                Console.see_card(self.player_how_have_card)
+                
 
                 action = Console.select_action()
 
