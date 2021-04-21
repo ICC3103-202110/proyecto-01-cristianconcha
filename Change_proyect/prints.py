@@ -34,7 +34,16 @@ class Print():
                 print(cards[a], end=" ")
 
             print("\n")
-    
+    @staticmethod
+    def see_player_card(players):
+            print("\nYour cards:", end=" ")
+            cards = players.cards
+
+            for i in range(len(cards)):
+                print(cards[i], end=" ")
+
+            print("\n")
+
     @staticmethod
     def see_player_card(player):
         print("\nYour cards:", end=" ")
@@ -87,6 +96,7 @@ class Print():
         print("Actions:\n")
         for i in range(len(action)):
             print(i, "=", action[i])
+        print("8 = If you want to see your cards")
     
     @staticmethod
     def log(logs):

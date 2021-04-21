@@ -41,8 +41,6 @@ class Action:
             else:
                 Print.actions(self.actions)
                 Print.player_card(self.player_how_have_card)
-                
-
                 action = Console.select_action()
 
                 if action >= 0 and action < 7:
@@ -107,7 +105,9 @@ class Action:
                                                  self.player_how_have_card.player,
                                                  None)
                         break
-
+                
+                elif action == 8:
+                    Print.see_player_card(self.player_how_have_card)
                 else:
                     Print.invalid_action()
 
