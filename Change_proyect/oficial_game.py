@@ -34,7 +34,7 @@ class Game:
             Print.cards_lose(cls.card.cards_lose)
             Print.see_player_cards(cls.players) #change
 
-            total_actions = Total_actions(cls.players, cls.players[cls.turn], cls.card, cls.log)
+            total_actions = Total_actions(cls.players, cls.players[cls.turn], cls.card, cls.log, cls.turn)
             total_actions.select_action()
 
             select_challenge = total_actions.select_challenge()

@@ -5,11 +5,13 @@ from log import Log
 from coins import Coins
 class Action:
 
-    def __init__(self,players ,player_how_have_card, card, log, action_played=0, assassinate_or_steal=0):
+    def __init__(self, players, player_how_have_card, card, log, turn,other_player=0, action_played=0, assassinate_or_steal=0):
         self.players = players
         self.player_how_have_card = player_how_have_card
         self.card = card
+        self.turn = turn
         self.log = log
+        self.other_player = other_player
         self.actions = ["Income", "Foreign Aid", "Coup",
                         "Duke", "Assassin", "Ambassador", "Captain", "Contessa"]
         self.action_played = action_played
@@ -112,7 +114,8 @@ class Action:
                     Print.invalid_action()
 
         
-    def run_action(self):  
+    def run_action(self):
+        self.player_how_have_card = self.players[self.turn]
 
         if self.action_played == "Income":
             
