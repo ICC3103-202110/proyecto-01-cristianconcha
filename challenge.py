@@ -6,8 +6,8 @@ from numpy import random
 
 class Challenge(Action):
 
-    select_challenge = 0
-    challenging_players = []
+    __select_challenge = 0
+    __challenging_players = []
 
     def select_challenge(self):  # challenge
 
@@ -43,20 +43,20 @@ class Challenge(Action):
                 select = Console.select_player_number()
 
                 if select == "c":
-                    return self.select_challenge
+                    return self.__select_challenge
 
                 else:
-                    self.select_challenge = 1 
-                    self.challenging_players.append(int(select)) 
+                    self.__select_challenge = 1 
+                    self.__challenging_players.append(int(select)) 
 
 
     def select_the_challenging_player(self): 
 
-        for i in range(len(self.challenging_players)-1):
-            number = random.randint(0, len(self.challenging_players)-1)
-            self.challenging_players.pop(number)
+        for i in range(len(self.__challenging_players)-1):
+            number = random.randint(0, len(self.__challenging_players)-1)
+            self.__challenging_players.pop(number)
 
-        self.other_player = self.players[int(self.challenging_players[0])]
+        self.other_player = self.players[int(self.__challenging_players[0])]
 
         self.log.challenge(self.other_player.player,
                            self.player_how_have_card.player)
@@ -94,10 +94,10 @@ class Challenge(Action):
             print("The player %s change the card" %self.player_how_have_card.player)
             Console.pass_next_player(self.player_how_have_card.player)
 
-            self.card.delete_card_played(self.action_played, self.player_how_have_card.player)
+            self.card.delete_card_played(self.action_played, self.player_how_have_card)
             self.card.add_card_list(self.action_played)
             self.log.change_card(self.player_how_have_card.player, self.action_played)
-            self.card.add_one_card(self.player_how_have_card.player)
+            self.card.add_one_card(self.player_how_have_card)
 
             return True
 

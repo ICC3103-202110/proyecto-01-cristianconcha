@@ -86,7 +86,7 @@ class Cards:
 
     #delete player card
     def delete_card_played(self, card, player):
-        player.cards = player.cards.remove(card)
+        cards = player.cards.remove(card)
 
     def delete_one_card(self, player):
         if len(player.cards) > 0:
