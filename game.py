@@ -7,7 +7,7 @@ from log import Log
 
 class Game:
 
-    NUMBER_PLAYERS = None
+    __number_players = None
 
     __players = []
     __player_how_have_card = None
@@ -28,6 +28,8 @@ class Game:
 
         while True:
             Console.clean()
+            print("numer players  == %d" % (cls.__number_players))
+            print("numer players  == %d" % cls.__turn)
             Print.coins(cls.__players)
             Print.len_cards(cls.__players)
             Print.losers(cls.__losers)
@@ -78,7 +80,7 @@ class Game:
         while True:
             number = Console.number_of_players()
             if number == 3 or number == 4:
-                cls.NUMBER_PLAYERS= number
+                cls.__number_players = number
                 break
             else:
                 print("The game only accept 3 or 4 players")
@@ -86,7 +88,7 @@ class Game:
     @classmethod
     def __name_players(cls):
         """#change
-        for i in range(1, cls.NUMBER_Players + 1):
+        for i in range(1, cls.__number_players + 1):
             
             name = input("Give the player's %d name: " % i)
             cls.__players.append(Player(name, cls.__card.two_random_cards()))
@@ -110,12 +112,12 @@ class Game:
                 cls.__losers.append(delete[i].player)
                 cls.__players.remove(delete[i])
                 cls.__log.player_lost(delete[i].player)
-                cls.NUMBER_PLAYERS - 1
+                cls.__number_players -= 1
 
     @classmethod
     def __player_turn(cls):
 
-        if cls.__turn >= (cls.NUMBER_PLAYERS - 1):
+        if cls.__turn >= (cls.__number_players - 1):
             Console.clean()
             Print.log(cls.__log.log)
             Console.press_to_continue()

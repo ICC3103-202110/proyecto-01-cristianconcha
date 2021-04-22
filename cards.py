@@ -115,7 +115,7 @@ class Cards:
             delete = Console.select()
 
             if delete < len(player.cards):
-                cards.append(self.cards[delete])
+                cards.append(self.player.cards[delete])
                 player.cards.pop(delete)
     
                 len_card += 1
