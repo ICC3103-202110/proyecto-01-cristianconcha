@@ -15,12 +15,14 @@ class Challenge(Action):
             Print.player_select(
                 self.player_how_have_card.player, self.action_played)
             Console.press_to_continue()
+            return 0
 
         elif self.action_played == "Coup":
             Print.player_select(
                 self.player_how_have_card.player, self.action_played)
             Console.pass_next_player(
                 self.player_how_have_card.player)
+            return 0
 
         elif self.action_played == "Foreign Aid":
             return 0
