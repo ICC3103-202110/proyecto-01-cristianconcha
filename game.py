@@ -113,7 +113,7 @@ class Game:
                 cls.__players.remove(delete[i])
                 cls.__log.player_lost(delete[i].player)
                 cls.__number_players -= 1
-                if index[i] < cls.__turn:
+                if index[i] <= cls.__turn:
                     cls.__turn -= 1
 
 
