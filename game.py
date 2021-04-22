@@ -28,8 +28,6 @@ class Game:
 
         while True:
             Console.clean()
-            print("numer players  == %d" % (cls.__number_players))
-            print("numer players  == %d" % cls.__turn)
             Print.coins(cls.__players)
             Print.len_cards(cls.__players)
             Print.losers(cls.__losers)
@@ -101,9 +99,11 @@ class Game:
     @classmethod
     def __Delete_player(cls):
         delete = []
+        index = []
         for i in range(len(cls.__players)):
             if cls.__card.len_cards(cls.__players[i]) == 0:  
                 delete.append(cls.__players[i])
+                index.append(i)
             else:
                 continue
 
@@ -113,16 +113,17 @@ class Game:
                 cls.__players.remove(delete[i])
                 cls.__log.player_lost(delete[i].player)
                 cls.__number_players -= 1
-                print("numer players  == %d" % (cls.__number_players))
-                print("numer players  == %d" % cls.__turn)
-                input("")
+                if index[i] < cls.__turn:
+                    cls.__turn -= 1
+
 
     @classmethod
     def __player_turn(cls):
 
-        if cls.__turn >= (cls.__number_players - 1):
+        if cls.__turn >= (cls.__number_players-1):
             Console.clean()
             Print.log(cls.__log.log)
+            cls.__log.clean_log()
             Console.press_to_continue()
             cls.__turn = 0
 

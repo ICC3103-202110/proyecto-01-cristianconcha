@@ -2,8 +2,24 @@
 class Log:
 
     def __init__(self, log=0, action=0):
-        self.log = []
-        self.action = action
+        self.__log = []
+        self.__action = action
+    
+    @property
+    def log(self):
+        return self.__log
+
+    @log.setter
+    def cards(self, value):
+        self.__log = value
+
+    @property
+    def action(self):
+        return self.__action
+
+    @action.setter
+    def action(self, value):
+        self.__action = value
 
     #Action selected
     def action_selected(self, action, player, player2):
@@ -97,5 +113,9 @@ class Log:
     
     def turn(self, player):
         self.log.append(int(1))
-        self.log.append((player+" turn:"))
+        self.log.append((player + " turn:"))
+    
+    def clean_log(self):
+        self.log = []
+
     
