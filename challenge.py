@@ -92,8 +92,7 @@ class Challenge(Action):
             Console.clean()
 
             print("The player %s change the card" %self.player_how_have_card.player)
-            Console.pass_next_player(self.player_how_have_card.player)
-
+            
             self.card.delete_card_played(self.action_played, self.player_how_have_card)
             self.card.add_card_list(self.action_played)
             self.log.change_card(self.player_how_have_card.player, self.action_played)

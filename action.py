@@ -5,7 +5,7 @@ from log import Log
 from coins import Coins
 class Action:
 
-    def __init__(self, players, player_how_have_card, card, log, turn,other_player=0, action_played=0, assassinate_or_steal=0):
+    def __init__(self, players, player_how_have_card, card, log, turn, other_player=0, action_played=0, first_action=0,assassinate_or_steal=0):
         self.__players = players
         self.__player_how_have_card = player_how_have_card
         self.__card = card
@@ -15,6 +15,7 @@ class Action:
         self.__actions = ["Income", "Foreign Aid", "Coup",
                         "Duke", "Assassin", "Ambassador", "Captain", "Contessa"]
         self.__action_played = action_played
+        self.__first_action = first_action
         self.__assassinate_or_steal = assassinate_or_steal
 
     @property
@@ -88,6 +89,14 @@ class Action:
     @action_played.setter
     def action_played(self, value):
         self.__action_played = value
+    
+    @property
+    def first_action(self):
+        return self.__first_action
+    
+    @first_action.setter
+    def first_action(self, value):
+        self.__first_action = value
 
     @property
     def assassinate_or_steal(self):
@@ -127,6 +136,7 @@ class Action:
 
                 if action >= 0 and action < 7:
                     self.action_played = str(self.actions[action])
+                    self.first_action = str(self.actions[action])
                     Console.clean()
 
                     if self.action_played == "Coup" and self.player_how_have_card.coin < 7:
@@ -195,52 +205,51 @@ class Action:
 
         
     def run_action(self):
-        self.player_how_have_card = self.players[self.turn]
-
-        if self.action_played == "Income":
+        
+        if self.first_action == "Income":
             
-            Coins.add_one_coin(self.player_how_have_card)
-            self.log.income(self.player_how_have_card.player)
+            Coins.add_one_coin(self.players[self.turn])
+            self.log.income(self.players[self.turn].player)
 
-        elif self.action_played == "Foreign Aid":
+        elif self.first_action == "Foreign Aid":
             
-            Coins.add_two_coins(self.player_how_have_card)
-            self.log.foreign_aid(self.player_how_have_card.player)
+            Coins.add_two_coins(self.players[self.turn])
+            self.log.foreign_aid(self.players[self.turn].player)
 
-        elif self.action_played == "Coup":
+        elif self.first_action == "Coup":
 
             Console.pass_next_player(self.assassinate_or_steal.player)
             card_lose = self.card.delete_one_card(self.assassinate_or_steal)
             self.card.card_lose_list(card_lose) 
-            self.log.coup(self.player_how_have_card.player,
+            self.log.coup(self.self.players[self.turn].player,
                          self.assassinate_or_steal.player)
 
-        elif self.action_played == "Duke":  # (tax)
+        elif self.first_action == "Duke":  # (tax)
             
-            Coins.add_three_coins(self.player_how_have_card)
-            self.log.tax(self.player_how_have_card.player)
+            Coins.add_three_coins(self.players[self.turn])
+            self.log.tax(self.self.players[self.turn].player)
 
-        elif self.action_played == "Assassin":  # (assassinate)
+        elif self.first_action == "Assassin":  # (assassinate)
 
             Console.pass_next_player(self.assassinate_or_steal.player)
             card_lose = self.card.delete_one_card(self.assassinate_or_steal)
             self.card.card_lose_list(card_lose) 
-            self.log.assassinate(self.player_how_have_card.player,
+            self.log.assassinate(self.self.players[self.turn].player,
                                 self.assassinate_or_steal.player)
 
-        elif self.action_played == "Ambassador":  # (Exhange)
+        elif self.first_action == "Ambassador":  # (Exhange)
 
-            self.card.add_two_cards(self.player_how_have_card)
-            cards = self.card.delete_two_cards(self.player_how_have_card)
+            self.card.add_two_cards(self.players[self.turn])
+            cards = self.card.delete_two_cards(self.players[self.turn])
             if len(cards) > 0:
                 self.card.add_two_cards_list(cards)    
-            self.log.exchange(self.player_how_have_card.player)
+            self.log.exchange(self.players[self.turn].player)
 
-        elif self.action_played == "Captain":  # (Steal)
+        elif self.first_action == "Captain":  # (Steal)
 
             total_coins = Coins.select_the_coins_to_delete(self.assassinate_or_steal)
-            Coins.add_coins(self.player_how_have_card, total_coins)
-            self.log.steal(self.player_how_have_card.player,
+            Coins.add_coins(self.players[self.turn], total_coins)
+            self.log.steal(self.players[self.turn].player,
                           self.assassinate_or_steal.player,
                           total_coins)
 
