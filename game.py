@@ -49,7 +49,6 @@ class Game:
             if select_counterattack == 0 and true_or_false_counter == True:
                 total_actions.run_action()
                 
-            
             elif select_counterattack == 2 and true_or_false_counter == True:
                 total_actions.select_the_counterattack_player()
                 total_actions.start_counterattack()

@@ -9,7 +9,7 @@ class Challenge(Action):
     __select_challenge = 0
     __challenging_players = []
 
-    def select_challenge(self):  # challenge
+    def select_challenge(self):  
 
         if self.action_played == "Income":
             Print.player_select(
@@ -68,7 +68,7 @@ class Challenge(Action):
         true_or_false = self.card.compare_cards(self.player_how_have_card,
         self.action_played)
 
-        if true_or_false == False:  # Player turn Dont have the card
+        if true_or_false == False:  
             print("The player %s dont`t have the card\n" %self.player_how_have_card.player)
             Console.pass_next_player(self.player_how_have_card.player)
             card_lose = self.card.delete_one_card(self.player_how_have_card)
@@ -78,7 +78,7 @@ class Challenge(Action):
 
             return False
 
-        elif true_or_false == True:  # Player turn Have the car
+        elif true_or_false == True:
 
             print("The player %s" % self.player_how_have_card.player,
                   "have the %s" % self.action_played)
