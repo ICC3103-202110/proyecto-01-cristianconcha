@@ -60,6 +60,10 @@ class Game:
                         
             if select_counterattack == 0 and select_challenge == 0:
                 total_actions.run_action()
+            
+            elif select_counterattack == 0 and true_or_false_counter == True:
+                total_actions.run_action()
+            
         
             cls.__Delete_player()
             cls.__player_turn()
@@ -87,8 +91,8 @@ class Game:
             name = input("Give the player's %d name: " % i)
             cls.__players.append(Player(name, cls.__card.two_random_cards()))
         """
-        cls.__players.append(Player("Amelia", ["Contessa"]))  # delete
-        cls.__players.append(Player("Bernabé", ["Captain"]))  # delete
+        cls.__players.append(Player("Amelia", ["Assassin"]))  # delete
+        cls.__players.append(Player("Bernabé", ["Assassin"]))  # delete
         cls.__players.append(Player("Carmen", ["Assassin"]))  # delete
         cls.__players.append(Player("Tomas", ["Assassin"]))  # delete
 
