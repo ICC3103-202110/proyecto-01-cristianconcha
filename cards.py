@@ -45,9 +45,7 @@ class Cards:
         self.cards += card
         
     def card_lose_list(self, card):
-        self.cards_lose.append(card)
-        self.cards_lose.sort()
-    
+        self.cards_lose.append(card)    
 
     #Add player card
     def add_one_card(self, player):

@@ -108,19 +108,21 @@ class Game:
                 cls.__log.player_lost(delete[i].player)
                 cls.NUMBER_PLAYERS - 1
 
-
-
     @classmethod
     def __player_turn(cls):
 
-        if cls.__turn >= (cls.NUMBER_PLAYERS - 1):
+        if cls.__turn == (cls.NUMBER_PLAYERS - 1):
             Console.clean()
             Print.log(cls.__log.log)
             Console.press_to_continue()
             cls.__turn = 0
 
+
         elif len(cls.__players)-1 < cls.NUMBER_PLAYERS-1:
             cls.__turn -= 1
+        
+        elif cls.__turn >= (cls.NUMBER_PLAYERS - 1):
+            pass
 
         else:
             cls.__turn += 1
