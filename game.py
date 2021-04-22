@@ -21,8 +21,8 @@ class Game:
     @classmethod
     def play(cls):
         Print.wellcome()
-        cls.number_of_players()
-        cls.name_players()
+        cls.__number_of_players()
+        cls.__name_players()
 
         #Print.see_players_cards(cls.players) #commit
 
@@ -65,8 +65,8 @@ class Game:
             else:
                 total_actions.run_action()
         
-            cls.Delete_player()
-            cls.player_turn()
+            cls.__Delete_player()
+            cls.__player_turn()
             
             if len(cls.__players) == 1:
                 Print.winner(cls.__players[0].player)
@@ -74,7 +74,7 @@ class Game:
             
 
     @classmethod
-    def number_of_players(cls):
+    def __number_of_players(cls):
         while True:
             number = Console.number_of_players()
             if number == 3 or number == 4:
@@ -84,7 +84,7 @@ class Game:
                 print("The game only accept 3 or 4 players")
 
     @classmethod
-    def name_players(cls):
+    def __name_players(cls):
         """#change
         for i in range(1, cls.NUMBER_Players + 1):
             
@@ -96,7 +96,7 @@ class Game:
         cls.__players.append(Player("Carmen", ["Duke", "Assassin"]))  # delete
 
     @classmethod
-    def Delete_player(cls):
+    def __Delete_player(cls):
         delete = []
         for i in range(len(cls.__players)):
             if cls.__card.len_cards(cls.__players[i]) == 0:  
@@ -112,7 +112,7 @@ class Game:
                 cls.__log.player_lost(delete[i].player)
 
     @classmethod
-    def player_turn(cls):
+    def __player_turn(cls):
 
         if cls.__turn == cls.NUMBER_PLAYERS - 1:
             Console.clean()
