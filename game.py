@@ -61,7 +61,7 @@ class Game:
                     if true_or_false_counter == False:
                         total_actions.run_action()
                         
-            else:
+            if select_counterattack == 0 and select_challenge == 0:
                 total_actions.run_action()
         
             cls.__Delete_player()
@@ -90,10 +90,10 @@ class Game:
             name = input("Give the player's %d name: " % i)
             cls.__players.append(Player(name, cls.__card.two_random_cards()))
         """
-        cls.__players.append(Player("Amelia", ["Contessa", "Duke"]))  # delete
-        cls.__players.append(Player("Bernabé", ["Captain", "Contessa"]))  # delete
-        cls.__players.append(Player("Carmen", ["Duke", "Assassin"]))  # delete
-        cls.__players.append(Player("Tomas", ["Captain", "Assassin"]))  # delete
+        cls.__players.append(Player("Amelia", ["Contessa"]))  # delete
+        cls.__players.append(Player("Bernabé", ["Captain"]))  # delete
+        cls.__players.append(Player("Carmen", ["Assassin"]))  # delete
+        cls.__players.append(Player("Tomas", ["Assassin"]))  # delete
 
     @classmethod
     def __Delete_player(cls):
