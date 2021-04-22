@@ -53,6 +53,8 @@ class Game:
             elif select_counterattack == 2 and true_or_false_counter == True:
                 total_actions.select_the_counterattack_player()
                 total_actions.start_counterattack()
+                print("hello")
+                input()
                 select_challenge = total_actions.select_challenge()
 
                 if select_challenge == 1:

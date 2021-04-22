@@ -6,8 +6,8 @@ from prints import Print
 class Counterattack(Action):
 
     
-    select_counterattack_ = 0
-    counterattack_players = []
+    __select_counterattack_ = 0
+    __counterattack_players = []
 
     def select_counterattack(self):
         if self.action_played == "Income":
@@ -36,22 +36,22 @@ class Counterattack(Action):
                 select = Console.select_player_number()
 
                 if select == "c":
-                    return self.select_counterattack
+                    return self.__select_counterattack
 
                 else:
-                    self.select_counterattack = 2
-                    self.counterattack_players.append(int(select))
+                    self.__select_counterattack = 2
+                    self.__counterattack_players.append(int(select))
 
     
     def select_the_counterattack_player(self):  
-        for i in range(len(self.counterattack_players)-1):
-            number = random.randint(0, len(self.counterattack_players)-1)
-            self.counterattack_player.pop(number)
+        for i in range(len(self.__counterattack_players)-1):
+            number = random.randint(0, len(self.__counterattack_players)-1)
+            self.__counterattack_player.pop(number)
         
-        self.log.counterattack(self.players[int(self.counterattack_players[0])].player,
+        self.log.counterattack(self.players[int(self.__counterattack_players[0])].player,
                                self.player_how_have_card.player)
 
-        self.player_how_have_card = self.players[int(self.counterattack_players[0])]
+        self.player_how_have_card = self.players[int(self.__counterattack_players[0])]
 
         Console.clean()
         print("%s was selected to Counterattack\n" % self.player_how_have_card.player)
