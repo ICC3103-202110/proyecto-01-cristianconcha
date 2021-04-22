@@ -109,13 +109,12 @@ class Game:
             for i in range(len(delete)):
                 cls.__losers.append(delete[i].player)
                 cls.__players.remove(delete[i])
-                cls.NUMBER_PLAYERS -= 1
                 cls.__log.player_lost(delete[i].player)
 
     @classmethod
     def __player_turn(cls):
 
-        if cls.__turn == cls.NUMBER_PLAYERS - 1:
+        if cls.__turn >= (cls.NUMBER_PLAYERS - 1 - len(cls.__losers)):
             Console.clean()
             Print.log(cls.__log.log)
             Console.press_to_continue()
