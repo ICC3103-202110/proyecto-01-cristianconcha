@@ -221,7 +221,7 @@ class Action:
             Console.pass_next_player(self.assassinate_or_steal.player)
             card_lose = self.card.delete_one_card(self.assassinate_or_steal)
             self.card.card_lose_list(card_lose) 
-            self.log.coup(self.self.players[self.turn].player,
+            self.log.coup(self.players[self.turn].player,
                          self.assassinate_or_steal.player)
 
         elif self.first_action == "Duke":  # (tax)
