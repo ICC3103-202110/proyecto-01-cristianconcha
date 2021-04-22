@@ -116,6 +116,6 @@ class Log:
         self.log.append((player + " turn:"))
     
     def clean_log(self):
-        self.log = []
+        self.log.clear 
 
     
