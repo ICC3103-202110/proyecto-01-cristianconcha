@@ -227,14 +227,14 @@ class Action:
         elif self.first_action == "Duke":  # (tax)
             
             Coins.add_three_coins(self.players[self.turn])
-            self.log.tax(self.self.players[self.turn].player)
+            self.log.tax(self.players[self.turn].player)
 
         elif self.first_action == "Assassin":  # (assassinate)
 
             Console.pass_next_player(self.assassinate_or_steal.player)
             card_lose = self.card.delete_one_card(self.assassinate_or_steal)
             self.card.card_lose_list(card_lose) 
-            self.log.assassinate(self.self.players[self.turn].player,
+            self.log.assassinate(self.players[self.turn].player,
                                 self.assassinate_or_steal.player)
 
         elif self.first_action == "Ambassador":  # (Exhange)
