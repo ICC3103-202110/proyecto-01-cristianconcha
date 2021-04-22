@@ -9,14 +9,14 @@ class Game:
 
     NUMBER_PLAYERS = None
 
-    players = []
-    player_how_have_card = None
-    card = Cards()
-    log = Log()
-    action_played = None
+    __players = []
+    __player_how_have_card = None
+    __card = Cards()
+    __log = Log()
+    __action_played = None
 
-    losers = []
-    turn = 0
+    __losers = []
+    __turn = 0
     
     @classmethod
     def play(cls):
@@ -28,13 +28,13 @@ class Game:
 
         while True:
             Console.clean()
-            Print.coins(cls.players)
-            Print.len_cards(cls.players)
-            Print.print_losers(cls.losers)
-            Print.cards_lose(cls.card.cards_lose)
-            Print.see_player_cards(cls.players) #change
+            Print.coins(cls.__players)
+            Print.len_cards(cls.__players)
+            Print.print_losers(cls.__losers)
+            Print.cards_lose(cls.__card.cards_lose)
+            Print.see_player_cards(cls.__players) #change
 
-            total_actions = Total_actions(cls.players, cls.players[cls.turn], cls.card, cls.log, cls.turn)
+            total_actions = Total_actions(cls.__players, cls.__players[cls.__turn], cls.__card, cls.__log, cls.__turn)
             total_actions.select_action()
 
             select_challenge = total_actions.select_challenge()
@@ -68,8 +68,8 @@ class Game:
             cls.Delete_player()
             cls.player_turn()
             
-            if len(cls.players) == 1:
-                Print.winner(cls.players[0].player)
+            if len(cls.__players) == 1:
+                Print.winner(cls.__players[0].player)
                 break
             
 
@@ -89,42 +89,42 @@ class Game:
         for i in range(1, cls.NUMBER_Players + 1):
             
             name = input("Give the player's %d name: " % i)
-            cls.players.append(Player(name, cls.card.two_random_cards()))
+            cls.__players.append(Player(name, cls.__card.two_random_cards()))
         """
-        cls.players.append(Player("Amelia", ["Contessa", "Duke"]))  # delete
-        cls.players.append(Player("Bernabé", ["Captain", "Contessa"]))  # delete
-        cls.players.append(Player("Carmen", ["Duke", "Assassin"]))  # delete
+        cls.__players.append(Player("Amelia", ["Contessa", "Duke"]))  # delete
+        cls.__players.append(Player("Bernabé", ["Captain", "Contessa"]))  # delete
+        cls.__players.append(Player("Carmen", ["Duke", "Assassin"]))  # delete
 
     @classmethod
     def Delete_player(cls):
         delete = []
-        for i in range(len(cls.players)):
-            if cls.card.len_cards(cls.players[i]) == 0:  
-                delete.append(cls.players[i])
+        for i in range(len(cls.__players)):
+            if cls.__card.len_cards(cls.__players[i]) == 0:  
+                delete.append(cls.__players[i])
             else:
                 continue
 
         if len(delete) > 0:
             for i in range(len(delete)):
-                cls.losers.append(delete[i].player)
-                cls.players.remove(delete[i])
+                cls.__losers.append(delete[i].player)
+                cls.__players.remove(delete[i])
                 cls.NUMBER_PLAYERS -= 1
-                cls.log.player_lost(delete[i].player)
+                cls.__log.player_lost(delete[i].player)
 
     @classmethod
     def player_turn(cls):
 
-        if cls.turn == cls.NUMBER_PLAYERS - 1:
+        if cls.__turn == cls.NUMBER_PLAYERS - 1:
             Console.clean()
-            Print.log(cls.log.log)
+            Print.log(cls.__log.log)
             Console.press_to_continue()
-            cls.turn = 0
+            cls.__turn = 0
 
-        elif len(cls.players)-1 < cls.NUMBER_PLAYERS-1:
-            cls.turn -= 1
+        elif len(cls.__players)-1 < cls.NUMBER_PLAYERS-1:
+            cls.__turn -= 1
 
         else:
-            cls.turn += 1
+            cls.__turn += 1
 
     
 if __name__ == "__main__":

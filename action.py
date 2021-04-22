@@ -42,7 +42,7 @@ class Action:
 
             else:
                 Print.actions(self.actions)
-                Print.player_card(self.player_how_have_card)
+                Print.player_card(self.player_how_have_card) #delete
                 action = Console.select_action()
 
                 if action >= 0 and action < 7:
