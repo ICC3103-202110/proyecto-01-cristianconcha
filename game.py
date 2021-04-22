@@ -113,6 +113,9 @@ class Game:
                 cls.__players.remove(delete[i])
                 cls.__log.player_lost(delete[i].player)
                 cls.__number_players -= 1
+                print("numer players  == %d" % (cls.__number_players))
+                print("numer players  == %d" % cls.__turn)
+                input("")
 
     @classmethod
     def __player_turn(cls):

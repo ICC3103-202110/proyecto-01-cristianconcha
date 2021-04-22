@@ -119,7 +119,7 @@ class Cards:
                 player.cards.pop(delete)
     
                 len_card += 1
-                if len_card == 2:
+                if len_card == 2 or len(player.cards) == 0:
                     return cards
             else:
                 print("The number is invalid\n\n")
