@@ -241,8 +241,10 @@ class Action:
 
             self.card.add_two_cards(self.players[self.turn])
             cards = self.card.delete_two_cards(self.players[self.turn])
+
             if len(cards) > 0:
-                self.card.add_two_cards_list(cards)    
+                self.card.add_two_cards_list(cards)
+                
             self.log.exchange(self.players[self.turn].player)
 
         elif self.first_action == "Captain":  # (Steal)

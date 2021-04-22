@@ -122,7 +122,6 @@ class Cards:
     
                 len_card += 1
                 if len_card == 2:
-                    
                     return cards
             else:
                 print("The number is invalid\n\n")

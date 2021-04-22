@@ -44,12 +44,9 @@ class Game:
 
             if select_challenge == 1:
                 total_actions.select_the_challenging_player()
-                true_or_false_counter = total_actions.start_challenge()
-            
-            if select_counterattack == 0 and true_or_false_counter == True:
-                total_actions.run_action()
+                true_or_false_counter = total_actions.start_challenge
                 
-            elif select_counterattack == 2 and true_or_false_counter == True:
+            if select_counterattack == 2 and true_or_false_counter == True:
                 total_actions.select_the_counterattack_player()
                 total_actions.start_counterattack()
                 select_challenge = total_actions.select_challenge()
@@ -109,11 +106,14 @@ class Game:
                 cls.__losers.append(delete[i].player)
                 cls.__players.remove(delete[i])
                 cls.__log.player_lost(delete[i].player)
+                cls.NUMBER_PLAYERS - 1
+
+
 
     @classmethod
     def __player_turn(cls):
 
-        if cls.__turn >= (cls.NUMBER_PLAYERS - 1 - len(cls.__losers)):
+        if cls.__turn >= (cls.NUMBER_PLAYERS - 1):
             Console.clean()
             Print.log(cls.__log.log)
             Console.press_to_continue()
