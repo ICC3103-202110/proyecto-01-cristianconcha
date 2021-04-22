@@ -6,16 +6,96 @@ from coins import Coins
 class Action:
 
     def __init__(self, players, player_how_have_card, card, log, turn,other_player=0, action_played=0, assassinate_or_steal=0):
-        self.players = players
-        self.player_how_have_card = player_how_have_card
-        self.card = card
-        self.turn = turn
-        self.log = log
-        self.other_player = other_player
-        self.actions = ["Income", "Foreign Aid", "Coup",
+        self.__players = players
+        self.__player_how_have_card = player_how_have_card
+        self.__card = card
+        self.__turn = turn
+        self.__log = log
+        self.__other_player = other_player
+        self.__actions = ["Income", "Foreign Aid", "Coup",
                         "Duke", "Assassin", "Ambassador", "Captain", "Contessa"]
-        self.action_played = action_played
-        self.assassinate_or_steal = assassinate_or_steal
+        self.__action_played = action_played
+        self.__assassinate_or_steal = assassinate_or_steal
+
+    @property
+    def players(self):
+        return self.__players
+
+    @players.setter
+    def players(self, value):
+        self.__players = value
+    
+    @property
+    def player_how_have_card(self):
+        return self.__player_how_have_card
+
+    @player_how_have_card.setter
+    def player_how_have_card(self, value):
+        self.__player_how_have_card = value
+
+    @property
+    def card(self):
+        return self.__card
+
+    @card.setter
+    def card(self, value):
+        self.__players = value
+    
+    @property
+    def turn(self):
+        return self.__turn
+
+    @turn.setter
+    def turn(self, value):
+        self.__turn = value
+    
+    @property
+    def log(self):
+        return self.__log
+
+    @log.setter
+    def log(self, value):
+        self.__log = value
+
+    @property
+    def turn(self):
+        return self.__turn
+
+    @turn.setter
+    def turn(self, value):
+        self.__turn = value
+    
+    @property
+    def other_player(self):
+        return self.__other_player
+
+    @other_player.setter
+    def other_player(self, value):
+        self.__other_player = value
+
+    @property
+    def actions(self):
+        return self.__actions
+
+    @actions.setter
+    def actions(self, value):
+        self.__actions = value
+    
+    @property
+    def action_played(self):
+        return self.__action_played
+
+    @action_played.setter
+    def action_played(self, value):
+        self.__action_played = value
+
+    @property
+    def assassinate_or_steal(self):
+        return self.__assassinate_or_steal
+
+    @assassinate_or_steal.setter
+    def assassinate_or_steal(self, value):
+        self.__assassinate_or_steal = value
 
 
     def select_action(self):  
