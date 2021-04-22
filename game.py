@@ -30,7 +30,7 @@ class Game:
             Console.clean()
             Print.coins(cls.__players)
             Print.len_cards(cls.__players)
-            Print.print_losers(cls.__losers)
+            Print.losers(cls.__losers)
             Print.cards_lose(cls.__card.cards_lose)
             Print.see_player_cards(cls.__players) #change
 

@@ -69,10 +69,10 @@ class Print():
         print("\n")
 
     @staticmethod
-    def print_losers(losers):
+    def losers(losers):
         print("Losers: ")
         for i in range(len(losers)):
-            print(losers[i].player + ":", end=", ")   
+            print(losers[i] + ":", end=", ")   
         print("\n")
 
     @staticmethod
