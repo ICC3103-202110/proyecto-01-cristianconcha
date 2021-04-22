@@ -46,7 +46,7 @@ class Counterattack(Action):
     def select_the_counterattack_player(self):  
         for i in range(len(self.__counterattack_players)-1):
             number = random.randint(0, len(self.__counterattack_players)-1)
-            self.__counterattack_player.pop(number)
+            self.__counterattack_players.pop(number)
         
         self.log.counterattack(self.players[int(self.__counterattack_players[0])].player,
                                self.player_how_have_card.player)
