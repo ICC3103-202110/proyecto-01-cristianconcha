@@ -94,6 +94,7 @@ class Game:
         cls.__players.append(Player("Amelia", ["Contessa", "Duke"]))  # delete
         cls.__players.append(Player("Bernabé", ["Captain", "Contessa"]))  # delete
         cls.__players.append(Player("Carmen", ["Duke", "Assassin"]))  # delete
+        cls.__players.append(Player("Tomas", ["Captain", "Assassin"]))  # delete
 
     @classmethod
     def __Delete_player(cls):

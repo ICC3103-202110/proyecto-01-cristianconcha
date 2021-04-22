@@ -6,7 +6,7 @@ from prints import Print
 class Counterattack(Action):
 
     
-    __select_counterattack_ = 0
+    __select_counterattack = 0
     __counterattack_players = []
 
     def select_counterattack(self):
