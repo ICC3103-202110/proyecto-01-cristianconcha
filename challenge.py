@@ -23,7 +23,7 @@ class Challenge(Action):
                 self.player_how_have_card.player)
 
         elif self.action_played == "Foreign Aid":
-            pass
+            return 0
 
         else:
             while True:

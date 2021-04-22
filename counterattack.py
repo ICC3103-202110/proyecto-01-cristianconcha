@@ -11,13 +11,13 @@ class Counterattack(Action):
 
     def select_counterattack(self):
         if self.action_played == "Income":
-            return
+            return 0
 
         elif self.action_played == "Coup":
-            return
+            return 0
         
         elif self.action_played == "Duke":
-            return
+            return 0
         
         else:
             while True:
