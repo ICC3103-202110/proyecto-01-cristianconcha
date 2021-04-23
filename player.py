@@ -1,5 +1,5 @@
-
 class Player:
+    
     def __init__(self, player, cards, coin = 2): 
         self.__player = player
         self.__cards = cards

@@ -1,5 +1,6 @@
 from console import Console
 from player import Player
+
 class Print():
 
     @staticmethod

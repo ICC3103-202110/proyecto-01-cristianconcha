@@ -1,4 +1,3 @@
-
 class Log:
 
     def __init__(self, log=0, action=0):

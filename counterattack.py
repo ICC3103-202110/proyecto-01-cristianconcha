@@ -3,6 +3,7 @@ from player import Player
 from console import Console
 from prints import Print
 from numpy import random
+
 class Counterattack(Action):
 
     __select_counterattack = 0

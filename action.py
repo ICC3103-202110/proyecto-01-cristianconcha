@@ -3,6 +3,7 @@ from console import Console
 from prints import Print
 from log import Log
 from coins import Coins
+
 class Action:
 
     def __init__(self, players, player_how_have_card, card, log, turn, other_player=0, action_played=0, first_action=0,assassinate_or_steal=0):
