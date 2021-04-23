@@ -124,7 +124,7 @@ class Print():
     def winner(player):
         Console.clean()
         print("\n\nThe winner is %s \n\n" % player)
-        print("Thanks for play coup !")
+        print("Thanks for playing coup !")
     
 
 
