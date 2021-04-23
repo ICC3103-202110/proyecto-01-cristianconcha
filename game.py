@@ -24,7 +24,7 @@ class Game:
         cls.__number_of_players()
         cls.__name_players()
 
-        #Print.see_players_cards(cls.players) #commit
+        Print.see_players_cards(cls.__players) 
 
         while True:
             Console.clean()
@@ -32,8 +32,7 @@ class Game:
             Print.len_cards(cls.__players)
             Print.losers(cls.__losers)
             Print.cards_lose(cls.__card.cards_lose)
-            Print.see_player_cards(cls.__players) #change
-
+           
             total_actions = Total_actions(cls.__players, cls.__players[cls.__turn], cls.__card, cls.__log, cls.__turn)
             total_actions.select_action()
 
@@ -65,7 +64,7 @@ class Game:
                 total_actions.run_action()
             
         
-            cls.__Delete_player()
+            cls.__delete_player()
             cls.__player_turn()
             
             if len(cls.__players) == 1:
@@ -85,19 +84,14 @@ class Game:
 
     @classmethod
     def __name_players(cls):
-        """#change
         for i in range(1, cls.__number_players + 1):
             
             name = input("Give the player's %d name: " % i)
             cls.__players.append(Player(name, cls.__card.two_random_cards()))
-        """
-        cls.__players.append(Player("Amelia", ["Assassin"]))  # delete
-        cls.__players.append(Player("Bernabé", ["Assassin"]))  # delete
-        cls.__players.append(Player("Carmen", ["Assassin"]))  # delete
-        cls.__players.append(Player("Tomas", ["Assassin"]))  # delete
+
 
     @classmethod
-    def __Delete_player(cls):
+    def __delete_player(cls):
         delete = []
         index = []
         for i in range(len(cls.__players)):

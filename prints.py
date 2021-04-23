@@ -12,6 +12,7 @@ class Print():
     @staticmethod
     def see_players_cards(players):
         Console.clean()
+        Console.pass_next_player_cards(players[0].player)
         for i in range(len(players)):
             print("\nYour cards:", end=" ")
             cards = players[i].cards
@@ -20,30 +21,12 @@ class Print():
                 print(cards[a], end=" ")
 
             print("\n")
-                
-            Console.pass_next_player_cards(players[i].player)
             Console.press_to_continue()
-    
-    @staticmethod
-    def see_player_cards(players):  #delete
-        for i in range(len(players)):
-            print("\nYour cards:", end=" ")
-            cards = players[i].cards
-
-            for a in range(len(cards)):
-                print(cards[a], end=" ")
-
-            print("\n")
-    @staticmethod
-    def see_player_card(players):
-            print("\nYour cards:", end=" ")
-            cards = players.cards
-
-            for i in range(len(cards)):
-                print(cards[i], end=" ")
-
-            print("\n")
-
+            if i == (len(players)-1):
+                break
+            else:
+                Console.pass_next_player_cards(players[i+1].player)
+     
     @staticmethod
     def see_player_card(player):
         print("\nYour cards:", end=" ")

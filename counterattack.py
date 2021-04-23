@@ -1,11 +1,10 @@
 from action import Action
 from player import Player
 from console import Console
-from numpy import random
 from prints import Print
+from numpy import random
 class Counterattack(Action):
 
-    
     __select_counterattack = 0
     __counterattack_players = []
 

@@ -131,7 +131,7 @@ class Action:
 
             else:
                 Print.actions(self.actions)
-                Print.player_card(self.player_how_have_card) #delete
+                print("\n")
                 action = Console.select_action()
 
                 if action >= 0 and action < 7:

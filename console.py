@@ -7,8 +7,8 @@ class Console: #inputs or clean console
         os.system('cls || clear')
     
     @staticmethod
-    def number_of_players(): #change
-        return 4  # int(input("Enter the number of playeres (3 or 4): "))
+    def number_of_players(): 
+        return int(input("Enter the number of playeres (3 or 4): "))
         
     @staticmethod
     def select_action():

@@ -1,4 +1,3 @@
-from action import Action
 from challenge import Challenge
 from counterattack import Counterattack
 
