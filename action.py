@@ -117,6 +117,7 @@ class Action:
                 print("You have more than 10 coins, \nso you must use the coup action\n")
                 Console.press_to_continue()
                 self.action_played = "Coup"
+                self.first_action = "Coup"
 
                 select = Console.Coup_or_Assassin_choose(
                             self.players, self.player_how_have_card)
